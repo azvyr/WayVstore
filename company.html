@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company | WayV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script>
+      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } };
+    </script>
+  </head>
+  <body class="simple-page text-white">
+    <header id="nav" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="/" class="flex items-center space-x-2 text-lg font-semibold text-white">
+          <img src="assets/images/wayv-logo.svg" alt="WayV logo" class="h-8" />
+        </a>
+        <div class="hidden items-center space-x-8 text-sm font-medium text-slate-200 md:flex">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <a href="/waveos.html" class="hover:text-white transition-colors">WaveOS</a>
+          <a href="/tapmood.html" class="hover:text-white transition-colors">TapMood</a>
+          <a href="/company.html" class="hover:text-white transition-colors">Company</a>
+          <a href="/support.html" class="hover:text-white transition-colors">Support</a>
+        </div>
+        <div class="pill text-xs">Premium Experiences</div>
+      </nav>
+    </header>
+
+    <main class="simple-hero">
+      <section class="mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
+        <p class="pill mb-4">About WayV</p>
+        <h1 class="text-4xl font-semibold md:text-5xl">Design-first engineering</h1>
+        <p class="mt-4 text-lg text-slate-200">
+          WayV is a studio of designers and engineers obsessed with crafting technology that feels alive. We align hardware, software, and service moments to create premium experiences with soul.
+        </p>
+        <p class="mt-4 max-w-2xl text-base text-slate-300">
+          This page will evolve with our story, culture, and values. For now, know that everything we build is guided by clarity, calm, and the belief that personal technology should amplify human intuition.
+        </p>
+        <a href="/support.html" class="simple-button mt-8">Contact support</a>
+      </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

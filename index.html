@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WayV | Think Faster</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+            colors: {
+              midnight: '#0b1021',
+              deep: '#0f172a',
+              wayvBlue: '#1f4bff',
+              wayvPurple: '#a855f7',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="relative overflow-x-hidden">
+    <div class="hero-gradient"></div>
+    <header id="nav" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="/" class="flex items-center space-x-2 text-lg font-semibold text-white">
+          <img src="assets/images/wayv-logo.svg" alt="WayV logo" class="h-8" />
+        </a>
+        <div class="hidden items-center space-x-8 text-sm font-medium text-slate-200 md:flex">
+          <a href="#" class="hover:text-white transition-colors">Home</a>
+          <a href="/waveos.html" class="hover:text-white transition-colors">WaveOS</a>
+          <a href="/tapmood.html" class="hover:text-white transition-colors">TapMood</a>
+          <a href="/company.html" class="hover:text-white transition-colors">Company</a>
+          <a href="/support.html" class="hover:text-white transition-colors">Support</a>
+        </div>
+        <div class="pill text-xs">Premium Experiences</div>
+      </nav>
+    </header>
+
+    <main class="relative">
+      <section class="relative flex min-h-screen items-center justify-center px-6 pt-24">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0b1021]/60 to-[#0b1021]"></div>
+        <div class="absolute inset-x-0 top-24 mx-auto h-72 max-w-3xl rounded-full bg-gradient-to-r from-wayvBlue/40 via-wayvPurple/30 to-wayvBlue/20 blur-[120px]"></div>
+        <div class="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
+          <p class="hero-text mb-6 text-sm uppercase tracking-[0.35em] text-slate-200/80">WayV</p>
+          <img src="assets/images/wayv-logo.svg" alt="WayV" class="hero-text mb-6 h-14" />
+          <h1 class="hero-text text-5xl font-semibold leading-[1.05] text-white md:text-6xl lg:text-7xl">Think Faster.</h1>
+          <p class="hero-text mt-6 max-w-2xl text-lg text-slate-300 md:text-xl">
+            The future of personal technology crafted with design-first engineering and intelligence that feels alive.
+          </p>
+          <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+            <a href="#products" class="hero-button button-floating rounded-full bg-gradient-to-r from-wayvBlue to-wayvPurple px-6 py-3 text-base font-semibold text-white shadow-lg shadow-wayvBlue/25">
+              Explore Products
+            </a>
+            <a href="/company.html" class="hero-button button-floating rounded-full border border-white/10 px-6 py-3 text-base font-semibold text-white/80 hover:text-white">
+              Learn about WayV
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="section-padding relative z-10 bg-deep/40">
+        <div class="mx-auto flex max-w-6xl flex-col items-center space-y-10 text-center">
+          <div class="space-y-3" data-animate="showcase-title">
+            <p class="pill inline-flex">Crafted for humans</p>
+            <h2 class="text-3xl font-semibold text-white md:text-4xl">Explore the WayV line-up</h2>
+            <p class="text-slate-300 max-w-2xl">
+              Bold, intuitive products built to unlock faster thinking, smoother expression, and ambient intelligence.
+            </p>
+          </div>
+
+          <div class="grid w-full gap-8 lg:grid-cols-2">
+            <div data-animate="card" class="glass-card relative overflow-hidden rounded-3xl p-8">
+              <div class="absolute -left-10 -top-16 h-48 w-48 rounded-full bg-wayvBlue/20 blur-3xl"></div>
+              <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
+                <div class="placeholder-visual tint-blue relative flex h-64 flex-1 items-center justify-center overflow-hidden">
+                  <img src="assets/images/waveos-mock.svg" alt="WaveOS" class="relative z-10 h-full w-full object-cover" />
+                </div>
+                <div class="flex flex-1 flex-col items-start text-left">
+                  <p class="pill mb-3">Operating System</p>
+                  <h3 class="text-2xl font-semibold text-white">WaveOS</h3>
+                  <p class="text-slate-300">The next generation operating system with fluid UI, ambient intelligence, and effortless focus.</p>
+                  <a href="/waveos.html" class="hero-button button-floating mt-6 inline-flex items-center rounded-full bg-white/10 px-5 py-2 font-semibold text-white backdrop-blur">
+                    Learn more
+                    <span class="ml-2 text-lg">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div data-animate="card" class="glass-card relative overflow-hidden rounded-3xl p-8">
+              <div class="absolute -right-6 -top-12 h-44 w-44 rounded-full bg-wayvPurple/30 blur-3xl"></div>
+              <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
+                <div class="placeholder-visual tint-warm relative flex h-64 flex-1 items-center justify-center overflow-hidden">
+                  <img src="assets/images/tapmood-visual.svg" alt="TapMood" class="relative z-10 h-full w-full object-contain" />
+                </div>
+                <div class="flex flex-1 flex-col items-start text-left">
+                  <p class="pill mb-3">Emotional Analytics</p>
+                  <h3 class="text-2xl font-semibold text-white">TapMood</h3>
+                  <p class="text-slate-300">Emotional analytics for daily life with warm design, private sensing, and intuitive mood insights.</p>
+                  <a href="/tapmood.html" class="hero-button button-floating mt-6 inline-flex items-center rounded-full bg-white/10 px-5 py-2 font-semibold text-white backdrop-blur">
+                    Learn more
+                    <span class="ml-2 text-lg">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padding relative z-10 bg-white text-slate-900">
+        <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-white/90"></div>
+        <div class="relative mx-auto max-w-5xl text-center">
+          <div class="mx-auto max-w-3xl rounded-[32px] bg-gradient-to-r from-slate-50 to-white p-[1px] shadow-2xl shadow-slate-200/50">
+            <div class="vignette relative overflow-hidden rounded-[32px] bg-white px-10 py-16 md:px-16 md:py-20">
+              <p class="pill mx-auto mb-5 text-slate-500">Vision</p>
+              <h3 class="text-3xl font-semibold text-slate-900 md:text-4xl">WayV builds technology that feels alive.</h3>
+              <p class="mt-6 text-lg leading-relaxed text-slate-600">
+                We obsess over the small details so every interaction is graceful. From glassy surfaces to ambient awareness, our design-first engineering crafts experiences that understand you instinctively.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="relative z-10 border-t border-white/5 bg-[#0c1327]/70 py-10">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-sm text-slate-300 md:flex-row">
+        <div class="flex items-center space-x-3 text-white">
+          <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-8" />
+          <span class="text-xs text-slate-400">© 2024 WayV. All rights reserved.</span>
+        </div>
+        <div class="flex items-center space-x-6">
+          <a class="footer-link" href="/waveos.html">Products</a>
+          <a class="footer-link" href="/company.html">Company</a>
+          <a class="footer-link" href="/support.html">Support</a>
+          <a class="footer-link" href="/support.html">Legal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-UI+3pUgXtYpI+LHQtEwHPYpRDg6jy+E8h4qGLgKGO0xlpFYkIvkDKIUO0dz6RRXPOhybiPM4W9hX3Y6APbUReg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

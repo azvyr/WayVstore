@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WaveOS | WayV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script>
+      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } };
+    </script>
+  </head>
+  <body class="simple-page text-white">
+    <header id="nav" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="/" class="flex items-center space-x-2 text-lg font-semibold text-white">
+          <img src="assets/images/wayv-logo.svg" alt="WayV logo" class="h-8" />
+        </a>
+        <div class="hidden items-center space-x-8 text-sm font-medium text-slate-200 md:flex">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <a href="/waveos.html" class="hover:text-white transition-colors">WaveOS</a>
+          <a href="/tapmood.html" class="hover:text-white transition-colors">TapMood</a>
+          <a href="/company.html" class="hover:text-white transition-colors">Company</a>
+          <a href="/support.html" class="hover:text-white transition-colors">Support</a>
+        </div>
+        <div class="pill text-xs">Premium Experiences</div>
+      </nav>
+    </header>
+
+    <main class="simple-hero">
+      <section class="mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
+        <p class="pill mb-4">Operating System</p>
+        <h1 class="text-4xl font-semibold md:text-5xl">WaveOS</h1>
+        <p class="mt-4 max-w-2xl text-lg text-slate-200">
+          The next generation operating system. Crafted for calm focus, delightful motion, and responsive intelligence. Full story coming soon.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row">
+          <a href="/" class="simple-button">Back to home</a>
+          <a href="#" class="button-floating rounded-full border border-white/10 px-6 py-3 text-base font-semibold text-white/80">Notify me</a>
+        </div>
+        <div class="mt-12 h-[340px] w-full max-w-4xl rounded-3xl bg-white/5 p-6 backdrop-blur">
+          <img src="assets/images/waveos-mock.svg" alt="WaveOS preview" class="h-full w-full object-contain" />
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
