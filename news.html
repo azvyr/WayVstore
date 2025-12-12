@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News &amp; Updates | WayV</title>
+    <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/app.css" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 antialiased overflow-x-hidden">
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur glass-nav">
+      <div class="mx-auto max-w-[1240px] px-6">
+        <div class="flex h-20 items-center gap-4">
+          <a href="/" class="flex items-center gap-3">
+            <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-12 w-auto brand-mark" />
+            <span class="text-[17px] font-semibold tracking-wide">WayV</span>
+          </a>
+
+          <nav class="hidden md:flex flex-1 items-center justify-center gap-8 text-[13px] font-medium text-slate-500">
+            <a href="/" class="hover:text-slate-900">Home</a>
+            <a href="/waveos.html" class="hover:text-slate-900">WaveOS</a>
+            <a href="/tapmood.html" class="hover:text-slate-900">TapMood</a>
+            <a href="/wavium.html" class="hover:text-slate-900">Wavium Interactive</a>
+            <a href="/news.html" class="text-slate-900">News &amp; Updates</a>
+            <a href="/company.html" class="hover:text-slate-900">Company</a>
+            <a href="/support.html" class="hover:text-slate-900">Support</a>
+          </nav>
+
+          <div class="ml-auto flex items-center gap-3">
+            <button
+              type="button"
+              class="inline-flex items-center justify-center rounded-full border border-slate-300 p-2 text-slate-700 transition hover:border-slate-400 md:hidden"
+              aria-expanded="false"
+              aria-label="Toggle navigation menu"
+              data-menu-toggle
+            >
+              <svg data-menu-icon="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M4 8h16M4 12h16M4 16h16" />
+              </svg>
+              <svg data-menu-icon="close" xmlns="http://www.w3.org/2000/svg" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M6 6l12 12M6 18L18 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="md:hidden" data-mobile-menu hidden>
+          <div class="border-t border-slate-200 py-4 text-sm font-semibold text-slate-700">
+            <nav class="flex flex-col gap-3">
+              <a href="/" class="hover:text-slate-900">Home</a>
+              <a href="/waveos.html" class="hover:text-slate-900">WaveOS</a>
+              <a href="/tapmood.html" class="hover:text-slate-900">TapMood</a>
+              <a href="/wavium.html" class="hover:text-slate-900">Wavium Interactive</a>
+              <a href="/news.html" class="text-slate-900">News &amp; Updates</a>
+              <a href="/company.html" class="hover:text-slate-900">Company</a>
+              <a href="/support.html" class="hover:text-slate-900">Support</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-32 pb-24 relative">
+      <div class="hero-orb"></div>
+
+      <section class="px-6">
+        <div class="mx-auto max-w-[1100px] glass-panel rounded-3xl p-10 md:p-14 space-y-6 fade-up">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">WayV pulse</p>
+          <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">News &amp; Updates</h1>
+          <p class="text-lg text-slate-600">Fresh builds, studio notes, and the latest on our core projects.</p>
+        </div>
+      </section>
+
+      <section class="mt-20 px-6">
+        <div class="mx-auto max-w-[1100px] space-y-10">
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="soft-card rounded-3xl p-6 fade-up">
+              <p class="text-sm text-slate-500">TapMood</p>
+              <h3 class="mt-2 text-xl font-semibold">Public Beta</h3>
+              <p class="mt-3 text-slate-600">New reflections flow, refreshed journaling animations, and calmer haptics.</p>
+            </div>
+            <div class="soft-card rounded-3xl p-6 fade-up delay-1">
+              <p class="text-sm text-slate-500">WaveOS</p>
+              <h3 class="mt-2 text-xl font-semibold">Under Development</h3>
+              <p class="mt-3 text-slate-600">Desktop shells are getting a fluid control center with translucent panels.</p>
+            </div>
+            <div class="soft-card rounded-3xl p-6 fade-up delay-2">
+              <p class="text-sm text-slate-500">Wave Engine</p>
+              <h3 class="mt-2 text-xl font-semibold">Under Development</h3>
+              <p class="mt-3 text-slate-600">Motion runtime now syncs gestures, lighting, and audio in real-time.</p>
+            </div>
+          </div>
+
+          <div class="grid gap-8 md:grid-cols-2">
+            <div class="soft-card rounded-3xl p-8 fade-up">
+              <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Studio notes</p>
+              <h3 class="mt-3 text-2xl font-semibold">Designing for quiet motion</h3>
+              <p class="mt-4 text-slate-600">How we layer subtle animations to make every interaction feel Apple-smooth without stealing focus.</p>
+              <a href="mailto:hello@wayv.studio" class="inline-block mt-6 text-sm font-semibold hover:underline">Request the study →</a>
+            </div>
+            <div class="soft-card rounded-3xl p-8 fade-up delay-1">
+              <p class="text-sm uppercase tracking-[0.2em] text-slate-500">Events</p>
+              <h3 class="mt-3 text-2xl font-semibold">Wavium live sessions</h3>
+              <p class="mt-4 text-slate-600">Join our interactive team as we preview immersive launch formats and bespoke installations.</p>
+              <a href="/wavium.html" class="inline-block mt-6 text-sm font-semibold hover:underline">Explore Wavium →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-32 border-t border-slate-200 px-6 py-12">
+      <div class="mx-auto max-w-[1240px] flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-6" />
+          <span>© 2025 WayV</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/company.html" class="hover:text-slate-900">Company</a>
+          <a href="/support.html" class="hover:text-slate-900">Support</a>
+          <a href="/wavium.html" class="hover:text-slate-900">Wavium Interactive</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/navigation.js"></script>
+  </body>
+</html>

@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/images/wayv-logo.svg" type="image/svg+xml" />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/app.css" />
 
     <script>
       tailwind.config = {
@@ -21,21 +22,23 @@
     </script>
   </head>
 
-  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+  <body class="bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 antialiased overflow-x-hidden">
 
     <!-- TOP BAR -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-white/85 backdrop-blur border-b border-slate-200">
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur glass-nav">
       <div class="mx-auto max-w-[1240px] px-6">
-        <div class="flex h-16 items-center gap-4">
+        <div class="flex h-20 items-center gap-4">
           <a href="/" class="flex items-center gap-3">
-            <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-9 w-auto" />
-            <span class="text-[16px] font-semibold tracking-wide">WayV</span>
+            <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-12 w-auto brand-mark" />
+            <span class="text-[17px] font-semibold tracking-wide">WayV</span>
           </a>
 
-          <nav class="hidden md:flex flex-1 items-center justify-center gap-10 text-[13px] font-medium text-slate-500">
+          <nav class="hidden md:flex flex-1 items-center justify-center gap-8 text-[13px] font-medium text-slate-500">
             <a href="/" class="text-slate-900">Home</a>
             <a href="/waveos.html" class="hover:text-slate-900">WaveOS</a>
             <a href="/tapmood.html" class="hover:text-slate-900">TapMood</a>
+            <a href="/wavium.html" class="hover:text-slate-900">Wavium Interactive</a>
+            <a href="/news.html" class="hover:text-slate-900">News &amp; Updates</a>
             <a href="/company.html" class="hover:text-slate-900">Company</a>
             <a href="/support.html" class="hover:text-slate-900">Support</a>
           </nav>
@@ -64,6 +67,8 @@
               <a href="/" class="text-slate-900">Home</a>
               <a href="/waveos.html" class="hover:text-slate-900">WaveOS</a>
               <a href="/tapmood.html" class="hover:text-slate-900">TapMood</a>
+              <a href="/wavium.html" class="hover:text-slate-900">Wavium Interactive</a>
+              <a href="/news.html" class="hover:text-slate-900">News &amp; Updates</a>
               <a href="/company.html" class="hover:text-slate-900">Company</a>
               <a href="/support.html" class="hover:text-slate-900">Support</a>
             </nav>
@@ -72,23 +77,22 @@
       </div>
     </header>
 
-    <main class="pt-32">
+    <main class="pt-32 relative">
+      <div class="hero-orb"></div>
 
       <!-- HERO -->
       <section class="px-6">
-        <div class="mx-auto max-w-[1240px] grid gap-16 lg:grid-cols-2 lg:items-center">
+        <div class="mx-auto max-w-[1240px] grid gap-16 lg:grid-cols-2 lg:items-center glass-panel rounded-3xl p-10 md:p-14">
 
           <!-- COPY -->
-          <div class="max-w-xl">
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
-              TapMood
-            </p>
+          <div class="max-w-xl space-y-6 fade-up">
+            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">TapMood</p>
 
-            <h1 class="mt-4 text-4xl md:text-6xl font-semibold tracking-tight">
+            <h1 class="text-4xl md:text-6xl font-semibold tracking-tight">
               Feel every moment.
             </h1>
 
-            <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed">
+            <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
               A calm, private way to understand your emotional patterns.
               Designed to help you slow down, reflect, and move forward with clarity.
             </p>
@@ -96,7 +100,7 @@
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
               <a
                 href="/tapmood.html"
-                class="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+                class="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition glow-ring"
               >
                 Explore TapMood
               </a>
@@ -116,11 +120,11 @@
           </div>
 
           <!-- VISUAL -->
-          <div class="relative flex justify-center">
+          <div class="relative flex justify-center fade-up delay-1">
             <img
               src="assets/images/tapmood-visual.svg"
               alt="TapMood on iPhone"
-              class="w-full max-w-[420px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
+              class="w-full max-w-[420px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)] float-soft"
             />
           </div>
         </div>
@@ -128,37 +132,27 @@
 
       <!-- WAYV PHILOSOPHY -->
       <section class="mt-40 px-6">
-        <div class="mx-auto max-w-[900px] text-center">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
-            WayV
-          </p>
-          <h2 class="mt-4 text-3xl md:text-4xl font-semibold">
-            Technology should feel human.
-          </h2>
-          <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+        <div class="mx-auto max-w-[900px] text-center space-y-4 fade-up">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">WayV</p>
+          <h2 class="text-3xl md:text-4xl font-semibold">Technology should feel human.</h2>
+          <p class="text-lg text-slate-600 leading-relaxed">
             We build products the same way great hardware is built.
             With restraint, precision, and long term trust in mind.
           </p>
         </div>
 
-        <div class="mt-20 mx-auto max-w-[1100px] grid gap-14 md:grid-cols-3 text-center">
-          <div>
+        <div class="mt-16 mx-auto max-w-[1100px] grid gap-14 md:grid-cols-3 text-center">
+          <div class="soft-card rounded-3xl p-8 fade-up delay-1">
             <p class="font-semibold">Calm focus</p>
-            <p class="mt-3 text-sm text-slate-500">
-              Interfaces that never compete for attention.
-            </p>
+            <p class="mt-3 text-sm text-slate-500">Interfaces that never compete for attention.</p>
           </div>
-          <div>
+          <div class="soft-card rounded-3xl p-8 fade-up delay-2">
             <p class="font-semibold">Private intelligence</p>
-            <p class="mt-3 text-sm text-slate-500">
-              Insights that stay on your device.
-            </p>
+            <p class="mt-3 text-sm text-slate-500">Insights that stay on your device.</p>
           </div>
-          <div>
+          <div class="soft-card rounded-3xl p-8 fade-up delay-3">
             <p class="font-semibold">Thoughtful support</p>
-            <p class="mt-3 text-sm text-slate-500">
-              Real people behind every reply.
-            </p>
+            <p class="mt-3 text-sm text-slate-500">Real people behind every reply.</p>
           </div>
         </div>
       </section>
@@ -166,15 +160,13 @@
       <!-- PRODUCTS -->
       <section class="mt-48 px-6">
         <div class="mx-auto max-w-[1240px]">
-          <h2 class="text-center text-3xl md:text-4xl font-semibold">
-            Built by WayV
-          </h2>
+          <h2 class="text-center text-3xl md:text-4xl font-semibold fade-up">Built by WayV</h2>
 
           <div class="mt-24 grid gap-20 lg:grid-cols-2">
 
             <!-- WaveOS -->
-            <div>
-              <div class="h-80 rounded-3xl bg-slate-100 flex items-center justify-center">
+            <div class="soft-card rounded-3xl p-8 fade-up">
+              <div class="h-80 rounded-3xl bg-slate-100 flex items-center justify-center shimmer-border">
                 <img
                   src="assets/images/waveos-logo.svg"
                   alt="WaveOS"
@@ -193,8 +185,8 @@
             </div>
 
             <!-- TapMood -->
-            <div>
-              <div class="h-80 rounded-3xl bg-slate-100 flex items-center justify-center">
+            <div class="soft-card rounded-3xl p-8 fade-up delay-1">
+              <div class="h-80 rounded-3xl bg-slate-100 flex items-center justify-center shimmer-border">
                 <img
                   src="assets/images/tapmood-logo.svg"
                   alt="TapMood"
@@ -227,7 +219,7 @@
         <div class="flex items-center gap-6">
           <a href="/company.html" class="hover:text-slate-900">Company</a>
           <a href="/support.html" class="hover:text-slate-900">Support</a>
-          <a href="/support.html" class="hover:text-slate-900">Legal</a>
+          <a href="/news.html" class="hover:text-slate-900">Updates</a>
         </div>
       </div>
     </footer>
