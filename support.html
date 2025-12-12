@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,35 +10,50 @@
       tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } };
     </script>
   </head>
-  <body class="simple-page text-white">
-    <header id="nav" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" class="flex items-center space-x-2 text-lg font-semibold text-white">
-          <img src="assets/images/wayv-logo.svg" alt="WayV logo" class="h-8" />
+  <body class="simple-page">
+    <header id="nav" class="fixed top-4 left-0 right-0 z-40 flex justify-center px-4">
+      <nav class="nav-shell flex w-full max-w-6xl items-center justify-between">
+        <a href="/" class="flex items-center space-x-3 text-lg font-semibold text-white">
+          <img src="assets/images/wayv-logo.svg" alt="WayV logo" class="hero-logo" />
+          <span class="hidden text-base font-semibold text-slate-200 sm:inline">WayV</span>
         </a>
-        <div class="hidden items-center space-x-8 text-sm font-medium text-slate-200 md:flex">
-          <a href="/" class="hover:text-white transition-colors">Home</a>
-          <a href="/waveos.html" class="hover:text-white transition-colors">WaveOS</a>
-          <a href="/tapmood.html" class="hover:text-white transition-colors">TapMood</a>
-          <a href="/company.html" class="hover:text-white transition-colors">Company</a>
-          <a href="/support.html" class="hover:text-white transition-colors">Support</a>
+        <div class="hidden items-center space-x-8 text-sm font-medium md:flex">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/waveos.html" class="nav-link">WaveOS</a>
+          <a href="/tapmood.html" class="nav-link">TapMood</a>
+          <a href="/company.html" class="nav-link">Company</a>
+          <a href="/support.html" class="nav-link active">Support</a>
         </div>
-        <div class="pill text-xs">Premium Experiences</div>
+        <div class="flex items-center gap-3">
+          <button id="themeToggle" class="theme-toggle text-sm">🌙 Dark</button>
+          <button id="mobileMenuButton" class="menu-button md:hidden" aria-label="Toggle navigation">☰</button>
+        </div>
+        <div id="mobileDrawer" class="mobile-drawer md:hidden">
+          <div class="flex flex-col gap-3 text-sm font-semibold text-slate-200">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/waveos.html">WaveOS</a>
+            <a class="nav-link" href="/tapmood.html">TapMood</a>
+            <a class="nav-link" href="/company.html">Company</a>
+            <a class="nav-link" href="/support.html">Support</a>
+          </div>
+        </div>
       </nav>
     </header>
 
     <main class="simple-hero">
       <section class="mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
         <p class="pill mb-4">Support</p>
-        <h1 class="text-4xl font-semibold md:text-5xl">We are here to help</h1>
+        <h1 class="hero-title text-4xl md:text-5xl">We are here to help</h1>
         <p class="mt-4 max-w-2xl text-lg text-slate-200">
           Have a question about WaveOS or TapMood? Reach out and we will get back with a thoughtful, human response.
         </p>
-        <div class="mt-10 w-full max-w-3xl rounded-3xl bg-white/5 p-8 text-left shadow-xl backdrop-blur">
+        <div class="mt-10 w-full max-w-3xl simple-card text-left">
           <h2 class="text-2xl font-semibold text-white">Contact</h2>
-          <p class="mt-3 text-slate-300">Email us at <a class="text-wayvPurple" href="mailto:hello@wayv.studio">hello@wayv.studio</a></p>
+          <p class="mt-3 text-slate-300">
+            Email us at <a class="text-wayvPurple" href="mailto:hello@wayv.studio">hello@wayv.studio</a>
+          </p>
           <p class="mt-2 text-slate-400">Support hours: Monday – Friday, 9am – 6pm PST</p>
-          <div class="mt-6 flex flex-col gap-3 text-sm text-slate-300">
+          <div class="mt-6 grid gap-3 text-sm text-slate-300 md:grid-cols-2">
             <div class="flex items-center gap-2">
               <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
               <span>Priority members receive same-day replies.</span>
@@ -47,11 +62,34 @@
               <span class="h-2 w-2 rounded-full bg-sky-400"></span>
               <span>Check our status page for live updates.</span>
             </div>
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-amber-300"></span>
+              <span>Light and dark themes supported across our apps.</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full bg-pink-400"></span>
+              <span>Human advocates ready to help with onboarding.</span>
+            </div>
           </div>
-          <a href="/" class="button-floating mt-8 inline-block rounded-full border border-white/10 px-6 py-3 text-base font-semibold text-white/90">Back to home</a>
+          <a href="/" class="hero-button secondary-btn mt-8 inline-block">Back to home</a>
         </div>
       </section>
     </main>
+
+    <footer class="footer relative z-10 py-10">
+      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-sm md:flex-row">
+        <div class="flex items-center space-x-3 text-white">
+          <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-8" />
+          <span class="text-xs text-slate-400">© 2024 WayV. All rights reserved.</span>
+        </div>
+        <div class="flex items-center space-x-6">
+          <a class="footer-link" href="/waveos.html">Products</a>
+          <a class="footer-link" href="/company.html">Company</a>
+          <a class="footer-link" href="/support.html">Support</a>
+          <a class="footer-link" href="/support.html">Legal</a>
+        </div>
+      </div>
+    </footer>
 
     <script src="assets/js/main.js"></script>
   </body>

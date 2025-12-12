@@ -1,11 +1,14 @@
 const nav = document.getElementById('nav');
 const productCards = document.querySelectorAll('[data-animate="card"]');
+const themeToggle = document.getElementById('themeToggle');
+const mobileButton = document.getElementById('mobileMenuButton');
+const mobileDrawer = document.getElementById('mobileDrawer');
 
 function handleNav() {
-  if (window.scrollY > 20) {
-    nav?.classList.add('nav-blur', 'border', 'border-slate-800');
+  if (window.scrollY > 12) {
+    nav?.classList.add('nav-blur');
   } else {
-    nav?.classList.remove('nav-blur', 'border', 'border-slate-800');
+    nav?.classList.remove('nav-blur');
   }
 }
 
@@ -35,8 +38,40 @@ function initSmoothLinks() {
         event.preventDefault();
         const offsetTop = el.getBoundingClientRect().top + window.scrollY - 60;
         window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        mobileDrawer?.classList.remove('open');
       }
     });
+  });
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('wayv-theme', theme);
+  if (themeToggle) {
+    themeToggle.innerHTML = theme === 'light' ? '☀️ Light' : '🌙 Dark';
+  }
+}
+
+function initTheme() {
+  const stored = localStorage.getItem('wayv-theme');
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  const initial = stored || (prefersLight ? 'light' : 'dark');
+  setTheme(initial);
+  themeToggle?.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    setTheme(next);
+  });
+}
+
+function initMobileMenu() {
+  mobileButton?.addEventListener('click', () => {
+    mobileDrawer?.classList.toggle('open');
+  });
+  document.addEventListener('click', (event) => {
+    if (!mobileDrawer || !mobileButton) return;
+    if (!mobileDrawer.contains(event.target) && !mobileButton.contains(event.target)) {
+      mobileDrawer.classList.remove('open');
+    }
   });
 }
 
@@ -44,5 +79,7 @@ window.addEventListener('scroll', handleNav);
 window.addEventListener('load', () => {
   handleNav();
   initSmoothLinks();
+  initTheme();
+  initMobileMenu();
   animateIntro();
 });
