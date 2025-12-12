@@ -33,6 +33,31 @@ body {
   backdrop-filter: blur(18px);
 }
 
+.product-panel {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.08);
+}
+
+.product-visual {
+  position: relative;
+  padding: 28px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-copy {
+  padding: 24px 28px 28px;
+}
+
 .soft-card {
   position: relative;
   overflow: hidden;
