@@ -92,6 +92,25 @@
   };
 
   document.addEventListener('DOMContentLoaded', () => {
+    const normalizePath = (path) => {
+      if (!path) return '/';
+      return path.replace(/\/$/, '/').replace(/\/index\.html$/, '/');
+    };
+
+    const currentPath = normalizePath(window.location.pathname);
+
+    document.querySelectorAll('[data-nav-link]').forEach((link) => {
+      const baseColor = link.dataset.baseColor;
+      const linkPath = normalizePath(new URL(link.getAttribute('href'), window.location.origin).pathname);
+
+      if (linkPath === currentPath) {
+        if (baseColor) {
+          link.classList.remove(baseColor);
+        }
+        link.classList.add('text-slate-900');
+      }
+    });
+
     document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
       const header = button.closest('header');
       const menu = header?.querySelector('[data-mobile-menu]');
