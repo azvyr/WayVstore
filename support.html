@@ -1,96 +1,192 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Support | WayV</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/style.css" />
+
     <script>
-      tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } };
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
   </head>
-  <body class="simple-page">
-    <header id="nav" class="fixed top-4 left-0 right-0 z-40 flex justify-center px-4">
-      <nav class="nav-shell flex w-full max-w-6xl items-center justify-between">
-        <a href="/" class="flex items-center space-x-3 text-lg font-semibold text-white">
-          <img src="assets/images/wayv-logo.svg" alt="WayV logo" class="hero-logo" />
-          <span class="hidden text-base font-semibold text-slate-200 sm:inline">WayV</span>
-        </a>
-        <div class="hidden items-center space-x-8 text-sm font-medium md:flex">
-          <a href="/" class="nav-link">Home</a>
-          <a href="/waveos.html" class="nav-link">WaveOS</a>
-          <a href="/tapmood.html" class="nav-link">TapMood</a>
-          <a href="/company.html" class="nav-link">Company</a>
-          <a href="/support.html" class="nav-link active">Support</a>
-        </div>
-        <div class="flex items-center gap-3">
-          <button id="themeToggle" class="theme-toggle text-sm">🌙 Dark</button>
-          <button id="mobileMenuButton" class="menu-button md:hidden" aria-label="Toggle navigation">☰</button>
-        </div>
-        <div id="mobileDrawer" class="mobile-drawer md:hidden">
-          <div class="flex flex-col gap-3 text-sm font-semibold text-slate-200">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="/waveos.html">WaveOS</a>
-            <a class="nav-link" href="/tapmood.html">TapMood</a>
-            <a class="nav-link" href="/company.html">Company</a>
-            <a class="nav-link" href="/support.html">Support</a>
+
+  <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+    <!-- TOP BAR -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+      <div class="mx-auto max-w-[1200px] px-6">
+        <div class="flex h-14 items-center justify-between">
+          <!-- Brand -->
+          <a href="/" class="flex items-center gap-3">
+            <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-7 w-auto" />
+            <span class="text-[15px] font-semibold tracking-wide">WayV</span>
+          </a>
+
+          <!-- Navigation -->
+          <nav class="hidden md:flex items-center gap-8 text-[13px] font-medium text-slate-500">
+            <a href="/" class="hover:text-slate-900">Home</a>
+            <a href="/waveos.html" class="hover:text-slate-900">WaveOS</a>
+            <a href="/tapmood.html" class="hover:text-slate-900">TapMood</a>
+            <a href="/company.html" class="hover:text-slate-900">Company</a>
+            <a href="/support.html" class="text-slate-900">Support</a>
+          </nav>
+
+          <div class="hidden md:flex items-center gap-3">
+            <a
+              href="#contact"
+              class="rounded-full bg-slate-900 px-4 py-2 text-[13px] font-semibold text-white hover:bg-slate-800 transition"
+            >
+              Get help
+            </a>
           </div>
         </div>
-      </nav>
+      </div>
     </header>
 
-    <main class="simple-hero">
-      <section class="mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
-        <p class="pill mb-4">Support</p>
-        <h1 class="hero-title text-4xl md:text-5xl">We are here to help</h1>
-        <p class="mt-4 max-w-2xl text-lg text-slate-200">
-          Have a question about WaveOS or TapMood? Reach out and we will get back with a thoughtful, human response.
-        </p>
-        <div class="mt-10 w-full max-w-3xl simple-card text-left">
-          <h2 class="text-2xl font-semibold text-white">Contact</h2>
-          <p class="mt-3 text-slate-300">
-            Email us at <a class="text-wayvPurple" href="mailto:hello@wayv.studio">hello@wayv.studio</a>
+    <main class="pt-32">
+      <!-- HERO -->
+      <section class="px-6">
+        <div class="mx-auto max-w-[1000px] text-center">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Support</p>
+
+          <h1 class="mt-6 text-4xl md:text-6xl font-semibold tracking-tight">We are here to help</h1>
+
+          <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed">
+            Thoughtful, human support for WaveOS, TapMood, and everything we build. We keep response times low and quality high.
           </p>
-          <p class="mt-2 text-slate-400">Support hours: Monday – Friday, 9am – 6pm PST</p>
-          <div class="mt-6 grid gap-3 text-sm text-slate-300 md:grid-cols-2">
-            <div class="flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-              <span>Priority members receive same-day replies.</span>
+
+          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#contact"
+              class="rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+            >
+              Contact support
+            </a>
+            <a
+              href="#faq"
+              class="rounded-full border border-slate-300 px-8 py-3 text-sm font-medium hover:border-slate-400 transition"
+            >
+              View common questions
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="mt-20 px-6">
+        <div class="mx-auto max-w-[1100px] rounded-3xl border border-slate-200 bg-slate-50/70 p-10">
+          <div class="grid gap-10 lg:grid-cols-2">
+            <div class="space-y-4">
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Contact</p>
+              <h2 class="text-3xl font-semibold">Talk to a human</h2>
+              <p class="text-slate-600 leading-relaxed">
+                Every reply comes from the WayV team. No bots, no scripts—just people who care deeply about your experience.
+              </p>
+              <div class="space-y-3 text-sm text-slate-600">
+                <div class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Email: <a class="font-semibold hover:underline" href="mailto:hello@wayv.studio">hello@wayv.studio</a></div>
+                <div class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Support hours: Monday – Friday, 9am – 6pm PST</div>
+                <div class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Priority members receive same-day responses</div>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-3 text-xs">
+                <span class="rounded-full border border-slate-300 px-4 py-2 text-slate-700">Account setup</span>
+                <span class="rounded-full border border-slate-300 px-4 py-2 text-slate-700">Billing</span>
+                <span class="rounded-full border border-slate-300 px-4 py-2 text-slate-700">Product guidance</span>
+                <span class="rounded-full border border-slate-300 px-4 py-2 text-slate-700">Security</span>
+              </div>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-sky-400"></span>
-              <span>Check our status page for live updates.</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-amber-300"></span>
-              <span>Light and dark themes supported across our apps.</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full bg-pink-400"></span>
-              <span>Human advocates ready to help with onboarding.</span>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 class="text-2xl font-semibold">Send a note</h3>
+              <p class="mt-2 text-sm text-slate-600">We respond quickly and keep things simple.</p>
+              <form class="mt-6 space-y-4">
+                <input type="text" placeholder="Your name" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none" />
+                <input type="email" placeholder="Email" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none" />
+                <textarea rows="4" placeholder="How can we help?" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none"></textarea>
+                <button type="button" class="w-full rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition">Submit</button>
+              </form>
             </div>
           </div>
-          <a href="/" class="hero-button secondary-btn mt-8 inline-block">Back to home</a>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="mt-32 px-6">
+        <div class="mx-auto max-w-[1100px] space-y-14">
+          <div class="text-center max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-semibold">Common questions</h2>
+            <p class="mt-4 text-lg text-slate-600">Quick answers to the essentials. We keep things transparent.</p>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+              <h3 class="text-lg font-semibold">How fast do you respond?</h3>
+              <p class="mt-3 text-slate-600">Most replies arrive within one business day. Priority members hear back in hours.</p>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+              <h3 class="text-lg font-semibold">Where is my data stored?</h3>
+              <p class="mt-3 text-slate-600">WaveOS and TapMood keep as much as possible on-device with clear export controls.</p>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+              <h3 class="text-lg font-semibold">Can I talk to a person?</h3>
+              <p class="mt-3 text-slate-600">Always. Every conversation is handled by a WayV teammate, not a bot.</p>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+              <h3 class="text-lg font-semibold">Do you offer onboarding?</h3>
+              <p class="mt-3 text-slate-600">Yes. We provide guided setup for teams and individuals so you feel confident from day one.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mt-40 px-6 pb-28">
+        <div class="mx-auto max-w-[960px] rounded-3xl border border-slate-200 bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-12 text-white">
+          <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-300">We're listening</p>
+              <h3 class="mt-3 text-3xl font-semibold">Tell us how we can help</h3>
+              <p class="mt-3 text-sm text-slate-200">Your feedback shapes our roadmap and support playbook.</p>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <a
+                href="mailto:hello@wayv.studio"
+                class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition"
+              >
+                Email the team
+              </a>
+              <a
+                href="/company.html"
+                class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
+              >
+                Learn about WayV
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer relative z-10 py-10">
-      <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-sm md:flex-row">
-        <div class="flex items-center space-x-3 text-white">
-          <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-8" />
-          <span class="text-xs text-slate-400">© 2024 WayV. All rights reserved.</span>
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200 px-6 py-12">
+      <div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-6" />
+          <span>© 2025 WayV</span>
         </div>
-        <div class="flex items-center space-x-6">
-          <a class="footer-link" href="/waveos.html">Products</a>
-          <a class="footer-link" href="/company.html">Company</a>
-          <a class="footer-link" href="/support.html">Support</a>
-          <a class="footer-link" href="/support.html">Legal</a>
+        <div class="flex items-center gap-6">
+          <a href="/company.html" class="hover:text-slate-900">Company</a>
+          <a href="/support.html" class="hover:text-slate-900">Support</a>
+          <a href="/support.html" class="hover:text-slate-900">Legal</a>
         </div>
       </div>
     </footer>
-
-    <script src="assets/js/main.js"></script>
   </body>
 </html>
