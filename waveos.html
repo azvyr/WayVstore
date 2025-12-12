@@ -11,54 +11,7 @@
 
   <body class="bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 antialiased overflow-x-hidden">
     <!-- TOP BAR -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur glass-nav">
-      <div class="mx-auto max-w-[1240px] px-6">
-        <div class="flex h-20 items-center gap-4">
-          <!-- Brand -->
-          <a href="/" class="flex items-center gap-3">
-            <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-12 w-auto brand-mark" />
-            <span class="text-[17px] font-semibold tracking-wide">WayV</span>
-          </a>
-
-          <!-- Navigation -->
-          <nav class="hidden md:flex flex-1 items-center justify-center gap-8 text-[13px] font-medium text-slate-500">
-            <a href="/" class="hover:text-slate-900">Home</a>
-            <a href="/waveos.html" class="text-slate-900">WaveOS</a>
-            <a href="/tapmood.html" class="hover:text-slate-900">TapMood</a>
-            <a href="/wavium.html" class="hover:text-slate-900">Wavium Interactive</a>
-            <a href="/news.html" class="hover:text-slate-900">News &amp; Updates</a>
-            <a href="/company.html" class="hover:text-slate-900">Company</a>
-            <a href="/support.html" class="hover:text-slate-900">Support</a>
-          </nav>
-          <button
-            type="button"
-            class="ml-auto menu-toggle inline-flex md:hidden items-center justify-center rounded-full border border-slate-300 p-2 text-slate-700 transition hover:border-slate-400"
-            aria-expanded="false"
-            aria-label="Toggle navigation menu"
-            data-menu-toggle
-          >
-            <span class="sr-only">Toggle navigation menu</span>
-            <span aria-hidden="true" class="menu-toggle__bar"></span>
-            <span aria-hidden="true" class="menu-toggle__bar"></span>
-            <span aria-hidden="true" class="menu-toggle__bar"></span>
-          </button>
-        </div>
-
-        <div class="md:hidden" data-mobile-menu hidden>
-          <div class="border-t border-slate-200 py-4 text-sm font-semibold text-slate-700">
-            <nav class="flex flex-col gap-3">
-              <a href="/" class="hover:text-slate-900">Home</a>
-              <a href="/waveos.html" class="text-slate-900">WaveOS</a>
-              <a href="/tapmood.html" class="hover:text-slate-900">TapMood</a>
-              <a href="/wavium.html" class="hover:text-slate-900">Wavium Interactive</a>
-              <a href="/news.html" class="hover:text-slate-900">News &amp; Updates</a>
-              <a href="/company.html" class="hover:text-slate-900">Company</a>
-              <a href="/support.html" class="hover:text-slate-900">Support</a>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
+    <!--#include virtual="partials/header.html" -->
 
     <main class="pt-32">
       <!-- HERO -->
@@ -218,65 +171,6 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <div class="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start">
-          <div class="space-y-5">
-            <a href="/" class="flex items-center gap-3">
-              <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-10 w-auto" />
-              <div>
-                <p class="text-lg font-semibold text-slate-900">WayV</p>
-                <p class="text-sm text-slate-600">Think faster. Build with intention.</p>
-              </div>
-            </a>
-            <p class="max-w-xl leading-relaxed text-slate-600">
-              Premium software with the calm of hardware launches. Every pixel tuned to feel effortless.
-            </p>
-            <div class="footer-pill">
-              <span class="halo-dot"></span>
-              <span>Weekly drops &amp; craft notes</span>
-              <a href="mailto:hello@wayv.studio" class="premium-underline text-slate-900">hello@wayv.studio</a>
-            </div>
-          </div>
-
-          <div class="footer-grid">
-            <div>
-              <p class="footer-title">Products</p>
-              <div class="flex flex-col gap-3">
-                <a href="/waveos.html" class="footer-link">WaveOS</a>
-                <a href="/tapmood.html" class="footer-link">TapMood</a>
-                <a href="/wavium.html" class="footer-link">Wavium Interactive</a>
-              </div>
-            </div>
-            <div>
-              <p class="footer-title">Company</p>
-              <div class="flex flex-col gap-3">
-                <a href="/company.html" class="footer-link">About WayV</a>
-                <a href="/news.html" class="footer-link">News &amp; Updates</a>
-                <a href="/support.html" class="footer-link">Support</a>
-              </div>
-            </div>
-            <div>
-              <p class="footer-title">More</p>
-              <div class="flex flex-col gap-3">
-                <a href="/" class="footer-link">Home</a>
-                <a href="mailto:hello@wayv.studio" class="footer-link">Email the team</a>
-                <a href="/support.html#faq" class="footer-link">FAQ</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-note">
-          <span>© 2025 WayV. Built with focus. Designed for clarity.</span>
-          <div class="flex flex-wrap items-center gap-4 text-sm">
-            <a href="/news.html" class="footer-link">Latest drops</a>
-            <span class="h-4 w-px bg-slate-300"></span>
-            <a href="/support.html" class="footer-link">Customer care</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <script src="assets/js/navigation.js"></script>
+    <!--#include virtual="partials/footer.html" -->
   </body>
 </html>
