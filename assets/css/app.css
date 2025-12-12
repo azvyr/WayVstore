@@ -97,6 +97,24 @@ button,
   transform: translateY(-7px) rotate(-45deg);
 }
 
+[data-mobile-menu] {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transform-origin: top;
+  transition: max-height 0.3s cubic-bezier(0.37, 0.14, 0.25, 1), opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+[data-mobile-menu].is-active {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 520px;
+  pointer-events: auto;
+}
+
 .brand-mark {
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.16));
 }
