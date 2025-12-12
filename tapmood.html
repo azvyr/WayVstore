@@ -81,7 +81,7 @@
     <main class="pt-32">
       <!-- HERO -->
         <section class="px-6">
-          <div class="mx-auto max-w-[1200px] overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white shadow-[0_30px_70px_-40px_rgba(0,0,0,0.5)]">
+          <div class="mx-auto max-w-[1200px] overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white shadow-[0_30px_70px_-40px_rgba(0,0,0,0.5)] interactive-panel hover-lift">
             <div class="grid gap-12 lg:grid-cols-2 lg:items-center px-8 py-14 md:px-14 fade-up">
               <div class="space-y-6">
                 <div class="flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-slate-300">
@@ -150,7 +150,7 @@
 
   <!-- VISUAL -->
       <section class="mt-16 px-6">
-        <div class="mx-auto max-w-[1100px] rounded-[30px] border border-slate-200 bg-slate-50/90 p-6 md:p-8 fade-up shadow-[0_24px_60px_-45px_rgba(15,23,42,0.35)]">
+        <div class="mx-auto max-w-[1100px] rounded-[30px] border border-slate-200 bg-slate-50/90 p-6 md:p-8 fade-up shadow-[0_24px_60px_-45px_rgba(15,23,42,0.35)] interactive-panel hover-lift">
           <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
             <div class="order-2 space-y-6 lg:order-1 lg:pr-6">
               <div class="flex items-center gap-3 text-sm text-slate-500">
@@ -329,16 +329,62 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-slate-200 px-6 py-12">
-      <div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
-        <div class="flex items-center gap-3">
-          <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-6" />
-          <span>© 2025 WayV</span>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start">
+          <div class="space-y-5">
+            <a href="/" class="flex items-center gap-3">
+              <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-10 w-auto invert" />
+              <div>
+                <p class="text-lg font-semibold text-white">WayV</p>
+                <p class="text-sm text-slate-200/80">Think faster. Build with intention.</p>
+              </div>
+            </a>
+            <p class="max-w-xl leading-relaxed text-slate-200/80">
+              Premium software with the calm of hardware launches. Every pixel tuned to feel effortless.
+            </p>
+            <div class="footer-pill">
+              <span class="halo-dot"></span>
+              <span>Weekly drops &amp; craft notes</span>
+              <a href="mailto:hello@wayv.studio" class="premium-underline text-white">hello@wayv.studio</a>
+            </div>
+          </div>
+
+          <div class="footer-grid">
+            <div>
+              <p class="footer-title">Products</p>
+              <div class="flex flex-col gap-3">
+                <a href="/waveos.html" class="footer-link">WaveOS</a>
+                <a href="/tapmood.html" class="footer-link">TapMood</a>
+                <a href="/wavium.html" class="footer-link">Wavium Interactive</a>
+              </div>
+            </div>
+            <div>
+              <p class="footer-title">Company</p>
+              <div class="flex flex-col gap-3">
+                <a href="/company.html" class="footer-link">About WayV</a>
+                <a href="/news.html" class="footer-link">News &amp; Updates</a>
+                <a href="/support.html" class="footer-link">Support</a>
+              </div>
+            </div>
+            <div>
+              <p class="footer-title">More</p>
+              <div class="flex flex-col gap-3">
+                <a href="/" class="footer-link">Home</a>
+                <a href="mailto:hello@wayv.studio" class="footer-link">Email the team</a>
+                <a href="/support.html#faq" class="footer-link">FAQ</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center gap-6">
-          <a href="/company.html" class="hover:text-slate-900">Company</a>
-          <a href="/support.html" class="hover:text-slate-900">Support</a>
-          <a href="/support.html" class="hover:text-slate-900">Legal</a>
+
+        <div class="footer-note">
+          <span>© 2025 WayV. Built with focus. Designed for clarity.</span>
+          <div class="flex flex-wrap items-center gap-4 text-sm">
+            <a href="/news.html" class="footer-link">Latest drops</a>
+            <span class="h-4 w-px bg-white/15"></span>
+            <a href="/support.html" class="footer-link">Customer care</a>
+          </div>
         </div>
       </div>
     </footer>
