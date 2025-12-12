@@ -1,8 +1,5 @@
 (function () {
   const toggleMenu = (header, button, menu) => {
-    const openIcon = button.querySelector('[data-menu-icon="open"]');
-    const closeIcon = button.querySelector('[data-menu-icon="close"]');
-
     const setState = (isOpen) => {
       if (!menu) return;
       if (isOpen) {
@@ -11,8 +8,7 @@
         menu.setAttribute('hidden', '');
       }
       button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      openIcon?.classList.toggle('hidden', isOpen);
-      closeIcon?.classList.toggle('hidden', !isOpen);
+      button.classList.toggle('is-open', isOpen);
     };
 
     setState(false);

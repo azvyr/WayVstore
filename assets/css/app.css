@@ -63,6 +63,40 @@ button,
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
 }
 
+.menu-toggle {
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.28s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menu-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.28);
+  border-color: rgba(59, 130, 246, 0.45);
+}
+
+.menu-toggle__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: #0f172a;
+  transition: transform 0.32s cubic-bezier(0.4, 0.14, 0.2, 1), opacity 0.2s ease, background 0.2s ease;
+}
+
+.menu-toggle.is-open .menu-toggle__bar:nth-child(2) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.is-open .menu-toggle__bar:nth-child(3) {
+  opacity: 0;
+  transform: scaleX(0.6);
+}
+
+.menu-toggle.is-open .menu-toggle__bar:nth-child(4) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .brand-mark {
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.16));
 }
@@ -268,24 +302,23 @@ button,
 
 .site-footer {
   position: relative;
-  margin-top: 6rem;
-  background: radial-gradient(140% 140% at 0% 0%, rgba(59, 130, 246, 0.22), transparent 30%),
-    radial-gradient(140% 140% at 100% 0%, rgba(168, 85, 247, 0.2), transparent 30%),
-    linear-gradient(180deg, #0b1220 0%, #0b1628 50%, #0d1321 100%);
-  color: #dbeafe;
+  margin-top: 5rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #f5f7fb 45%, #ffffff 100%);
+  color: #0f172a;
   overflow: hidden;
-  border-top: 1px solid rgba(226, 232, 240, 0.12);
-  box-shadow: 0 -20px 80px rgba(2, 6, 23, 0.35);
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 -14px 60px rgba(15, 23, 42, 0.08);
 }
 
 .site-footer::before {
   content: '';
   position: absolute;
-  inset: -20% -10% auto;
-  height: 320px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 45%);
-  filter: blur(25px);
-  opacity: 0.6;
+  inset: -22% -8% auto;
+  height: 260px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 40%),
+    radial-gradient(circle at 65% 30%, rgba(168, 85, 247, 0.1), transparent 45%);
+  filter: blur(36px);
+  opacity: 0.55;
   animation: auroraDrift 22s ease-in-out infinite;
 }
 
@@ -293,7 +326,7 @@ button,
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 35%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent 36%);
   pointer-events: none;
 }
 
@@ -301,7 +334,7 @@ button,
   position: relative;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 80px 24px 60px;
+  padding: 72px 24px 60px;
   z-index: 1;
 }
 
@@ -315,7 +348,7 @@ button,
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(226, 232, 240, 0.65);
+  color: #475569;
   margin-bottom: 14px;
 }
 
@@ -325,7 +358,7 @@ button,
   align-items: center;
   gap: 10px;
   font-weight: 600;
-  color: rgba(241, 245, 249, 0.9);
+  color: #0f172a;
 }
 
 .footer-link::after {
@@ -335,16 +368,16 @@ button,
   bottom: -6px;
   height: 2px;
   width: 100%;
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.7), rgba(168, 85, 247, 0.7));
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.7), rgba(168, 85, 247, 0.6));
   border-radius: 999px;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s ease;
-  opacity: 0.8;
+  transition: transform 0.35s ease;
+  opacity: 0.85;
 }
 
 .footer-link:hover {
-  color: #fff;
+  color: #0b1220;
   transform: translateY(-1px);
 }
 
@@ -357,26 +390,30 @@ button,
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.35);
   border-radius: 999px;
   font-size: 13px;
-  color: #e2e8f0;
+  color: #0f172a;
   backdrop-filter: blur(10px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 .footer-note {
   margin-top: 48px;
   padding-top: 28px;
-  border-top: 1px solid rgba(226, 232, 240, 0.12);
+  border-top: 1px solid rgba(148, 163, 184, 0.28);
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: space-between;
   align-items: flex-start;
   font-size: 14px;
-  color: rgba(226, 232, 240, 0.72);
+  color: #475569;
+}
+
+.site-footer img.invert {
+  filter: none;
 }
 
 @media (min-width: 768px) {

@@ -41,22 +41,18 @@
             <a href="/support.html" class="hover:text-slate-900">Support</a>
           </nav>
 
-          <div class="ml-auto flex items-center gap-3">
-            <button
-              type="button"
-              class="inline-flex items-center justify-center rounded-full border border-slate-300 p-2 text-slate-700 transition hover:border-slate-400 md:hidden"
-              aria-expanded="false"
-              aria-label="Toggle navigation menu"
-              data-menu-toggle
-            >
-              <svg data-menu-icon="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M4 8h16M4 12h16M4 16h16" />
-              </svg>
-              <svg data-menu-icon="close" xmlns="http://www.w3.org/2000/svg" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M6 6l12 12M6 18L18 6" />
-              </svg>
-            </button>
-          </div>
+          <button
+            type="button"
+            class="ml-auto menu-toggle inline-flex md:hidden items-center justify-center rounded-full border border-slate-300 p-2 text-slate-700 transition hover:border-slate-400"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu"
+            data-menu-toggle
+          >
+            <span class="sr-only">Toggle navigation menu</span>
+            <span aria-hidden="true" class="menu-toggle__bar"></span>
+            <span aria-hidden="true" class="menu-toggle__bar"></span>
+            <span aria-hidden="true" class="menu-toggle__bar"></span>
+          </button>
         </div>
 
         <div class="md:hidden" data-mobile-menu hidden>
@@ -129,19 +125,19 @@
         <div class="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start">
           <div class="space-y-5">
             <a href="/" class="flex items-center gap-3">
-              <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-10 w-auto invert" />
+              <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-10 w-auto" />
               <div>
-                <p class="text-lg font-semibold text-white">WayV</p>
-                <p class="text-sm text-slate-200/80">Think faster. Build with intention.</p>
+                <p class="text-lg font-semibold text-slate-900">WayV</p>
+                <p class="text-sm text-slate-600">Think faster. Build with intention.</p>
               </div>
             </a>
-            <p class="max-w-xl leading-relaxed text-slate-200/80">
+            <p class="max-w-xl leading-relaxed text-slate-600">
               Premium software with the calm of hardware launches. Every pixel tuned to feel effortless.
             </p>
             <div class="footer-pill">
               <span class="halo-dot"></span>
               <span>Weekly drops &amp; craft notes</span>
-              <a href="mailto:hello@wayv.studio" class="premium-underline text-white">hello@wayv.studio</a>
+              <a href="mailto:hello@wayv.studio" class="premium-underline text-slate-900">hello@wayv.studio</a>
             </div>
           </div>
 
@@ -177,7 +173,7 @@
           <span>© 2025 WayV. Built with focus. Designed for clarity.</span>
           <div class="flex flex-wrap items-center gap-4 text-sm">
             <a href="/news.html" class="footer-link">Latest drops</a>
-            <span class="h-4 w-px bg-white/15"></span>
+            <span class="h-4 w-px bg-slate-300"></span>
             <a href="/support.html" class="footer-link">Customer care</a>
           </div>
         </div>
