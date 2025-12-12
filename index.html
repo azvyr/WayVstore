@@ -21,17 +21,16 @@
   </head>
 
   <body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+
     <!-- TOP BAR -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-      <div class="mx-auto max-w-[1200px] px-6">
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+      <div class="mx-auto max-w-[1240px] px-6">
         <div class="flex h-14 items-center justify-between">
-          <!-- Brand -->
           <a href="/" class="flex items-center gap-3">
             <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-7 w-auto" />
             <span class="text-[15px] font-semibold tracking-wide">WayV</span>
           </a>
 
-          <!-- Navigation -->
           <nav class="hidden md:flex items-center gap-8 text-[13px] font-medium text-slate-500">
             <a href="/" class="text-slate-900">Home</a>
             <a href="/waveos.html" class="hover:text-slate-900">WaveOS</a>
@@ -39,171 +38,126 @@
             <a href="/company.html" class="hover:text-slate-900">Company</a>
             <a href="/support.html" class="hover:text-slate-900">Support</a>
           </nav>
-
-          <!-- Optional right-side action (kept subtle) -->
-          <div class="hidden md:flex items-center gap-3">
-            <a
-              href="#products"
-              class="rounded-full bg-slate-900 px-4 py-2 text-[13px] font-semibold text-white hover:bg-slate-800 transition"
-            >
-              Explore
-            </a>
-          </div>
         </div>
       </div>
     </header>
 
     <main class="pt-32">
+
       <!-- HERO -->
       <section class="px-6">
-        <div
-          class="mx-auto max-w-[1200px] overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white shadow-[0_30px_70px_-40px_rgba(0,0,0,0.5)]"
-        >
-          <div class="grid gap-12 lg:grid-cols-2 lg:items-center px-8 py-14 md:px-14">
-            <div class="space-y-6">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-slate-300">
-                <span class="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold">New</span>
-                <span>TapMood Beta</span>
-              </div>
-              <h1 class="text-4xl md:text-6xl font-semibold tracking-tight">
-                Feel every moment.<br />TapMood is now open.
-              </h1>
-              <p class="text-lg md:text-xl text-slate-200 leading-relaxed max-w-xl">
-                The calmest way to understand your emotions—built with the care of a flagship launch. Experience a
-                focused, private companion that helps you move through your day with intention.
-              </p>
-              <div class="flex flex-col sm:flex-row items-center gap-4">
-                <a
-                  href="mailto:hello@wayv.studio"
-                  class="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-100"
-                >
-                  Join the beta
-                </a>
-                <a
-                  href="/tapmood.html"
-                  class="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5"
-                >
-                  Explore TapMood
-                </a>
-              </div>
-              <div class="flex flex-wrap gap-3 text-[13px] text-slate-200/80">
-                <span class="rounded-full border border-white/20 px-3 py-1">On-device privacy</span>
-                <span class="rounded-full border border-white/20 px-3 py-1">Guided reflections</span>
-                <span class="rounded-full border border-white/20 px-3 py-1">Adaptive insights</span>
-              </div>
+        <div class="mx-auto max-w-[1240px] grid gap-16 lg:grid-cols-2 lg:items-center">
+
+          <!-- COPY -->
+          <div class="max-w-xl">
+            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
+              TapMood
+            </p>
+
+            <h1 class="mt-4 text-4xl md:text-6xl font-semibold tracking-tight">
+              Feel every moment.
+            </h1>
+
+            <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed">
+              A calm, private way to understand your emotional patterns.
+              Designed to help you slow down, reflect, and move forward with clarity.
+            </p>
+
+            <div class="mt-10 flex flex-col sm:flex-row gap-4">
+              <a
+                href="/tapmood.html"
+                class="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+              >
+                Explore TapMood
+              </a>
+              <a
+                href="mailto:hello@wayv.studio"
+                class="inline-flex items-center justify-center rounded-full border border-slate-300 px-8 py-3 text-sm font-medium hover:border-slate-400 transition"
+              >
+                Join the beta
+              </a>
             </div>
 
-            <div class="relative">
-              <div class="absolute inset-6 rounded-[28px] bg-gradient-to-br from-white/10 via-white/5 to-white/0 blur-3xl"></div>
-              <div class="relative m-auto max-w-[460px] rounded-[28px] border border-white/10 bg-white/5 p-8 shadow-xl">
-                <div class="flex items-center justify-between text-sm text-slate-200/70">
-                  <span>TapMood Journal</span>
-                  <span>Beta 1.2</span>
-                </div>
-                <div class="mt-6 space-y-4">
-                  <div class="rounded-2xl bg-white/10 p-4">
-                    <p class="text-xs uppercase tracking-[0.2em] text-slate-200/70">Today</p>
-                    <p class="mt-2 text-lg font-semibold">“Calm, bright, ready.”</p>
-                    <p class="text-sm text-slate-200/80">Light journaling with gentle breathing guidance.</p>
-                  </div>
-                  <div class="rounded-2xl bg-white/5 p-4 border border-white/10">
-                    <div class="flex items-center justify-between text-sm text-slate-200/70">
-                      <span>Mood arc</span>
-                      <span>Past 7 days</span>
-                    </div>
-                    <div class="mt-3 h-28 rounded-xl bg-gradient-to-r from-white/40 via-white/15 to-white/5"></div>
-                  </div>
-                  <div class="flex items-center gap-3 text-sm text-slate-200/80">
-                    <span class="h-2 w-2 rounded-full bg-emerald-300"></span> Peaceful focus
-                    <span class="h-2 w-2 rounded-full bg-sky-300"></span> Creative lift
-                    <span class="h-2 w-2 rounded-full bg-pink-300"></span> Rest needed
-                  </div>
-                </div>
-              </div>
+            <div class="mt-8 flex flex-wrap gap-3 text-sm text-slate-500">
+              <span class="rounded-full border border-slate-200 px-3 py-1">On-device privacy</span>
+              <span class="rounded-full border border-slate-200 px-3 py-1">Daily reflections</span>
+              <span class="rounded-full border border-slate-200 px-3 py-1">Adaptive insights</span>
             </div>
+          </div>
+
+          <!-- VISUAL -->
+          <div class="relative flex justify-center">
+            <img
+              src="assets/images/tapmood-visual.svg"
+              alt="TapMood on iPhone"
+              class="w-full max-w-[420px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
+            />
           </div>
         </div>
+      </section>
 
-        <!-- CORE VALUES / BETA SNAPSHOT -->
-        <div class="mt-20 mx-auto max-w-[1200px] grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-          <div class="rounded-[28px] border border-slate-200 bg-white/70 p-8 shadow-sm">
-            <div class="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-slate-500">
-              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-              <span>Beta status</span>
-            </div>
-            <h2 class="mt-4 text-3xl font-semibold">TapMood is open to early members</h2>
-            <p class="mt-4 text-slate-600 leading-relaxed">
-              We are inviting a carefully selected group to shape the experience. Expect weekly refinements, direct
-              contact with the team, and features tuned for clarity and calm.
+      <!-- WAYV PHILOSOPHY -->
+      <section class="mt-40 px-6">
+        <div class="mx-auto max-w-[900px] text-center">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
+            WayV
+          </p>
+          <h2 class="mt-4 text-3xl md:text-4xl font-semibold">
+            Technology should feel human.
+          </h2>
+          <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+            We build products the same way great hardware is built.
+            With restraint, precision, and long term trust in mind.
+          </p>
+        </div>
+
+        <div class="mt-20 mx-auto max-w-[1100px] grid gap-14 md:grid-cols-3 text-center">
+          <div>
+            <p class="font-semibold">Calm focus</p>
+            <p class="mt-3 text-sm text-slate-500">
+              Interfaces that never compete for attention.
             </p>
-            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p class="font-semibold">Weekly builds</p>
-                <p class="mt-2 text-slate-600">New polish every Friday with clear release notes.</p>
-              </div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p class="font-semibold">Concierge feedback</p>
-                <p class="mt-2 text-slate-600">Talk directly with designers and engineers.</p>
-              </div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p class="font-semibold">Privacy-first</p>
-                <p class="mt-2 text-slate-600">On-device analysis, transparent controls.</p>
-              </div>
-              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p class="font-semibold">Ready for day one</p>
-                <p class="mt-2 text-slate-600">Beautiful defaults that work out of the box.</p>
-              </div>
-            </div>
-            <div class="mt-6 flex flex-wrap gap-3 text-sm">
-              <span class="rounded-full border border-slate-200 px-3 py-1">iOS &amp; macOS preview</span>
-              <span class="rounded-full border border-slate-200 px-3 py-1">Adaptive haptics</span>
-              <span class="rounded-full border border-slate-200 px-3 py-1">Guided mood palette</span>
-            </div>
           </div>
-
-          <div class="rounded-[28px] border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-8 text-center shadow-sm">
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">WayV</p>
-            <h3 class="mt-3 text-2xl font-semibold">Calm design. Clear storytelling.</h3>
-            <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-              We build like a top-tier hardware launch: intentional lighting, tactile depth, and typography that lets the
-              experience breathe.
+          <div>
+            <p class="font-semibold">Private intelligence</p>
+            <p class="mt-3 text-sm text-slate-500">
+              Insights that stay on your device.
             </p>
-            <div class="mt-6 flex items-center justify-center gap-2 text-sm text-slate-600">
-              <span class="h-2 w-2 rounded-full bg-slate-900"></span> Crafted in California
-            </div>
+          </div>
+          <div>
+            <p class="font-semibold">Thoughtful support</p>
+            <p class="mt-3 text-sm text-slate-500">
+              Real people behind every reply.
+            </p>
           </div>
         </div>
       </section>
 
       <!-- PRODUCTS -->
-      <section id="products" class="mt-48 px-6">
-        <div class="mx-auto max-w-[1200px]">
-          <div class="text-center max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-semibold">Products that disappear</h2>
-            <p class="mt-4 text-lg text-slate-600">
-              Built to reduce noise, not add more of it.
-            </p>
-          </div>
+      <section class="mt-48 px-6">
+        <div class="mx-auto max-w-[1240px]">
+          <h2 class="text-center text-3xl md:text-4xl font-semibold">
+            Built by WayV
+          </h2>
 
           <div class="mt-24 grid gap-20 lg:grid-cols-2">
+
             <!-- WaveOS -->
             <div>
               <div class="h-80 rounded-3xl bg-slate-100 flex items-center justify-center">
                 <img
                   src="assets/images/waveos-logo.svg"
-                  alt="WaveOS logo"
-                  class="h-16 w-auto opacity-90"
+                  alt="WaveOS"
+                  class="h-16 opacity-90"
                 />
               </div>
               <div class="mt-8">
-                <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Operating System</p>
-                <h3 class="mt-2 text-2xl font-semibold">WaveOS</h3>
+                <h3 class="text-2xl font-semibold">WaveOS</h3>
                 <p class="mt-4 text-slate-600 leading-relaxed">
-                  A modern operating system designed around motion, clarity, and local intelligence.
-                  Adapts to your workflow without interrupting it.
+                  A modern operating system designed around clarity, motion, and local intelligence.
                 </p>
                 <a href="/waveos.html" class="inline-block mt-6 text-sm font-semibold hover:underline">
-                  Discover WaveOS →
+                  Learn more →
                 </a>
               </div>
             </div>
@@ -213,105 +167,21 @@
               <div class="h-80 rounded-3xl bg-slate-100 flex items-center justify-center">
                 <img
                   src="assets/images/tapmood-logo.svg"
-                  alt="TapMood logo"
-                  class="h-16 w-auto opacity-90"
+                  alt="TapMood"
+                  class="h-16 opacity-90"
                 />
               </div>
               <div class="mt-8">
-                <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Emotional Analytics</p>
-                <h3 class="mt-2 text-2xl font-semibold">TapMood</h3>
+                <h3 class="text-2xl font-semibold">TapMood</h3>
                 <p class="mt-4 text-slate-600 leading-relaxed">
-                  A private, beautifully simple way to understand emotional patterns.
-                  Designed for clarity without surveillance.
+                  Emotional clarity designed to feel calm, private, and human.
                 </p>
                 <a href="/tapmood.html" class="inline-block mt-6 text-sm font-semibold hover:underline">
-                  Discover TapMood →
+                  Learn more →
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- LATEST / NEWS CAROUSEL -->
-      <section class="mt-56 px-6">
-        <div class="mx-auto max-w-[1200px]">
-          <div class="flex items-end justify-between gap-6">
-            <div>
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Latest</p>
-              <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Updates from WayV</h2>
-            </div>
-            <a href="/news.html" class="text-sm font-medium text-slate-500 hover:text-slate-900">
-              View all
-            </a>
-          </div>
-
-          <div class="mt-12 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory">
-            <!-- Card 1 -->
-            <article class="min-w-[320px] sm:min-w-[380px] snap-start rounded-3xl border border-slate-200 bg-white p-7">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Product</p>
-              <h3 class="mt-3 text-lg font-semibold">WaveOS preview</h3>
-              <p class="mt-2 text-sm text-slate-600">
-                A first look at a calm, modern system built around clarity and motion.
-              </p>
-              <a href="/waveos.html" class="inline-block mt-5 text-sm font-semibold hover:underline">
-                Learn more →
-              </a>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="min-w-[320px] sm:min-w-[380px] snap-start rounded-3xl border border-slate-200 bg-white p-7">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">App</p>
-              <h3 class="mt-3 text-lg font-semibold">TapMood updates</h3>
-              <p class="mt-2 text-sm text-slate-600">
-                Better clarity, better flow, and the same privacy first philosophy.
-              </p>
-              <a href="/tapmood.html" class="inline-block mt-5 text-sm font-semibold hover:underline">
-                Learn more →
-              </a>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="min-w-[320px] sm:min-w-[380px] snap-start rounded-3xl border border-slate-200 bg-white p-7">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Company</p>
-              <h3 class="mt-3 text-lg font-semibold">Why privacy matters</h3>
-              <p class="mt-2 text-sm text-slate-600">
-                Trust is not a feature. It is the foundation of every product we build.
-              </p>
-              <a href="/company.html" class="inline-block mt-5 text-sm font-semibold hover:underline">
-                Learn more →
-              </a>
-            </article>
-          </div>
-
-          <p class="mt-4 text-xs text-slate-400">
-            Tip: Add a /news.html page later to match this layout.
-          </p>
-        </div>
-      </section>
-
-      <!-- VISION -->
-      <section class="mt-56 px-6">
-        <div class="mx-auto max-w-[900px] text-center">
-          <h2 class="text-3xl md:text-4xl font-semibold">Technology should feel effortless</h2>
-          <p class="mt-6 text-lg text-slate-600 leading-relaxed">
-            The best technology stays out of the way.
-            Built with restraint, precision, and long term trust in mind.
-          </p>
-        </div>
-
-        <div class="mt-20 mx-auto max-w-[1100px] grid gap-14 md:grid-cols-3 text-center">
-          <div>
-            <p class="font-semibold">Calm focus</p>
-            <p class="mt-3 text-sm text-slate-500">Interfaces that never compete for attention.</p>
-          </div>
-          <div>
-            <p class="font-semibold">Local intelligence</p>
-            <p class="mt-3 text-sm text-slate-500">Intelligence that lives on your device.</p>
-          </div>
-          <div>
-            <p class="font-semibold">Human support</p>
-            <p class="mt-3 text-sm text-slate-500">Real people behind every reply.</p>
           </div>
         </div>
       </section>
@@ -319,7 +189,7 @@
 
     <!-- FOOTER -->
     <footer class="mt-56 border-t border-slate-200 px-6 py-12">
-      <div class="mx-auto max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
+      <div class="mx-auto max-w-[1240px] flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-slate-500">
         <div class="flex items-center gap-3">
           <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-6" />
           <span>© 2025 WayV</span>
@@ -331,5 +201,6 @@
         </div>
       </div>
     </footer>
+
   </body>
 </html>
