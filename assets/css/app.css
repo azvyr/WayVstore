@@ -13,10 +13,8 @@ body {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.07);
+  background: #f5f5f7;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .nav-inner {
@@ -29,8 +27,8 @@ body {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 20px;
-  height: 82px;
+  gap: 16px;
+  height: 64px;
 }
 
 .brand {
@@ -41,10 +39,21 @@ body {
   color: inherit;
 }
 
+.brand-compact {
+  gap: 10px;
+}
+
 .brand-mark {
-  height: 52px;
+  height: 40px;
   width: auto;
   filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.16));
+}
+
+.brand-wordmark {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  font-size: 16px;
+  color: #0f172a;
 }
 
 .brand-title {
@@ -64,33 +73,25 @@ body {
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  gap: 18px;
 }
 
 .nav-links .nav-link {
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 13px;
+  padding: 8px 0;
+  font-size: 14px;
   font-weight: 600;
-  color: #475569;
-  transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  color: #1f2937;
+  transition: color 0.2s ease;
 }
 
 .nav-links .nav-link:hover {
-  color: #0f172a;
-  background: rgba(255, 255, 255, 0.8);
-  transform: translateY(-1px);
+  color: #111827;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   justify-content: flex-end;
 }
 
@@ -98,18 +99,21 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 11px 16px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #f8fafc;
-  font-weight: 700;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-weight: 600;
   font-size: 13px;
-  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.22);
 }
 
-.nav-cta:hover {
-  background: linear-gradient(135deg, #111827, #0f172a);
+.nav-cta--ghost {
+  background: transparent;
+  color: #0f172a;
+  border: 1px solid #d1d5db;
+}
+
+.nav-cta--ghost:hover {
+  background: #e5e7eb;
 }
 
 .menu-toggle {
@@ -118,9 +122,9 @@ body {
   justify-content: center;
   width: 46px;
   height: 46px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: #ffffff;
 }
 
 .menu-toggle__bar {
@@ -145,11 +149,11 @@ body {
 }
 
 .nav-drawer__panel {
-  background: rgba(255, 255, 255, 0.95);
+  background: #f8fafc;
   border: 1px solid rgba(148, 163, 184, 0.35);
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.14);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
 }
 
 .nav-drawer__links {
@@ -161,7 +165,7 @@ body {
 .nav-drawer__link {
   padding: 12px 14px;
   border-radius: 12px;
-  background: rgba(248, 250, 252, 0.9);
+  background: #ffffff;
   border: 1px solid rgba(226, 232, 240, 0.9);
 }
 
@@ -244,8 +248,9 @@ body {
 
 .site-footer {
   margin-top: 64px;
-  background: #0f172a;
-  color: #e2e8f0;
+  background: #0b0b0f;
+  color: #d4d4d8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .site-footer__inner {
@@ -272,7 +277,7 @@ body {
 }
 
 .site-footer__lede {
-  color: #cbd5e1;
+  color: #a1a1aa;
   font-size: 15px;
   line-height: 1.6;
 }
@@ -301,7 +306,7 @@ body {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   font-size: 12px;
-  color: #cbd5e1;
+  color: #d4d4d8;
   margin-bottom: 12px;
 }
 
@@ -311,12 +316,12 @@ body {
 }
 
 .footer-link {
-  color: #e2e8f0;
+  color: #e4e4e7;
   font-weight: 600;
 }
 
 .footer-link:hover {
-  color: white;
+  color: #ffffff;
 }
 
 .footer-note {
@@ -325,7 +330,7 @@ body {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  color: #94a3b8;
+  color: #a1a1aa;
   font-size: 13px;
 }
 
