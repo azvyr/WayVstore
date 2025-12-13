@@ -1,20 +1,29 @@
 <!--#include placeholder: footer -->
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start">
-      <div class="space-y-5">
-        <a href="/" class="flex items-center gap-3">
-          <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-10 w-auto" />
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href="/" class="brand">
+          <img src="assets/images/wayv-logo.svg" alt="WayV" class="brand-mark" />
           <div>
-            <p class="text-lg font-semibold text-slate-900">WayV</p>
-            <p class="text-sm text-slate-600">Think faster.</p>
+            <p class="brand-title">WayV</p>
+            <p class="brand-subtitle">Think faster.</p>
           </div>
         </a>
+        <p class="site-footer__lede">
+          Crafted in Quebec for people who obsess over calm, premium tools.
+          Every interaction is tuned like a flagship launch.
+        </p>
+        <div class="site-footer__cta">
+          <a href="mailto:wayvsoftware@gmail.com" class="nav-cta">Talk to the team</a>
+          <span class="badge">New updates weekly</span>
+        </div>
+      </div>
 
       <div class="footer-grid">
         <div>
           <p class="footer-title">Products</p>
-          <div class="flex flex-col gap-3">
+          <div class="footer-links">
             <a href="/waveos.html" class="footer-link">WaveOS</a>
             <a href="/tapmood.html" class="footer-link">TapMood</a>
             <a href="/wavium.html" class="footer-link">Wavium Interactive</a>
@@ -22,7 +31,7 @@
         </div>
         <div>
           <p class="footer-title">Company</p>
-          <div class="flex flex-col gap-3">
+          <div class="footer-links">
             <a href="/company.html" class="footer-link">About WayV</a>
             <a href="/news.html" class="footer-link">News &amp; Updates</a>
             <a href="/support.html" class="footer-link">Support</a>
@@ -30,7 +39,7 @@
         </div>
         <div>
           <p class="footer-title">More</p>
-          <div class="flex flex-col gap-3">
+          <div class="footer-links">
             <a href="/" class="footer-link">Home</a>
             <a href="mailto:wayvsoftware@gmail.com" class="footer-link">Email the team</a>
             <a href="/support.html#faq" class="footer-link">FAQ</a>
@@ -41,6 +50,8 @@
 
     <div class="footer-note">
       <span>© 2025 WayV | Think Faster.</span>
+      <span class="footer-divider" aria-hidden="true"></span>
+      <span>Privacy-first, human-speed design.</span>
     </div>
   </div>
 </footer>

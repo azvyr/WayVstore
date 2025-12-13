@@ -34,72 +34,65 @@
     <!-- TOP BAR -->
     <div data-include="partials/header.html"></div>
 
-    <main class="pt-32">
-      <!-- HERO -->
-      <section class="px-6">
-        <div class="mx-auto max-w-[1000px] text-center fade-up interactive-panel hover-lift">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Operating System</p>
-
-          <h1 class="mt-6 text-4xl md:text-6xl font-semibold tracking-tight">WaveOS</h1>
-
-          <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed">
-            A calm, motion-rich operating system that keeps your focus high, adapts to your rhythm, and respects your privacy.
-          </p>
-
-          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#demo"
-              class="rounded-full bg-slate-900 px-8 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
-            >
-              See the preview
-            </a>
-            <a
-              href="/support.html"
-              class="rounded-full border border-slate-300 px-8 py-3 text-sm font-medium hover:border-slate-400 transition"
-            >
-              Join the waitlist
-            </a>
+    <main class="pt-32 pb-14">
+      <section class="site-section">
+        <div class="section-shell">
+          <div class="halo-card interactive-panel hover-lift text-center">
+            <div class="halo-card__content space-y-5">
+              <span class="badge">Operating System</span>
+              <h1 class="text-4xl md:text-6xl font-semibold tracking-tight">WaveOS</h1>
+              <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+                A calm, motion-rich operating system that keeps your focus high, adapts to your rhythm, and respects your privacy.
+              </p>
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#demo" class="nav-cta">See the preview</a>
+                <a
+                  href="/support.html"
+                  class="inline-flex items-center justify-center rounded-full border border-slate-300 px-8 py-3 text-sm font-medium hover:border-slate-400 transition"
+                >
+                  Join the waitlist
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- PREVIEW CARD -->
-      <section id="demo" class="mt-20 px-6">
-        <div class="mx-auto max-w-[1100px] rounded-3xl border border-slate-200 bg-slate-50/70 p-10 fade-up interactive-panel hover-lift">
-          <div class="flex flex-col items-center gap-8 lg:flex-row lg:items-start">
-            <div class="lg:w-1/2">
-              <div class="rounded-2xl bg-white p-6 shadow-sm">
+      <section id="demo" class="site-section">
+        <div class="section-shell">
+          <div class="halo-card interactive-panel hover-lift">
+            <div class="halo-card__content grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-center">
+              <div class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200">
                 <img src="assets/images/waveos-mock.svg" alt="WaveOS preview" class="w-full h-full object-contain" />
               </div>
-            </div>
-            <div class="lg:w-1/2 space-y-6">
-              <div class="flex items-center gap-3 text-sm text-slate-500">
-                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                <span>Private by default</span>
-                <span class="h-2 w-2 rounded-full bg-sky-400"></span>
-                <span>Motion that guides, never distracts</span>
-              </div>
-              <h2 class="text-3xl font-semibold">Built for people who think in motion</h2>
-              <p class="text-slate-600 leading-relaxed">
-                WaveOS pairs gentle animations with tactile controls so every action feels intentional.
-                Workspaces flow between focus and discovery without jarring transitions or noisy alerts.
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Local intelligence</p>
-                  <p class="mt-2 text-slate-600">Keeps suggestions on-device to protect what matters.</p>
+              <div class="space-y-5">
+                <div class="flex flex-wrap items-center gap-3 text-sm text-slate-500">
+                  <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                  <span>Private by default</span>
+                  <span class="h-2 w-2 rounded-full bg-sky-400"></span>
+                  <span>Motion that guides, never distracts</span>
                 </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Precision controls</p>
-                  <p class="mt-2 text-slate-600">Trackpad-first gestures, keyboard driven for speed.</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Quiet notifications</p>
-                  <p class="mt-2 text-slate-600">Signals arrive softly and summarize what changed.</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Beautiful defaults</p>
-                  <p class="mt-2 text-slate-600">Carefully tuned typography, spacing, and color system.</p>
+                <h2 class="text-3xl font-semibold">Built for people who think in motion</h2>
+                <p class="text-slate-600 leading-relaxed">
+                  WaveOS pairs gentle animations with tactile controls so every action feels intentional. Workspaces flow between focus and discovery without jarring transitions or noisy alerts.
+                </p>
+                <div class="grid-lux two text-sm">
+                  <div class="soft-tile">
+                    <p class="font-semibold">Local intelligence</p>
+                    <p class="mt-2 text-slate-600">Keeps suggestions on-device to protect what matters.</p>
+                  </div>
+                  <div class="soft-tile">
+                    <p class="font-semibold">Precision controls</p>
+                    <p class="mt-2 text-slate-600">Trackpad-first gestures, keyboard driven for speed.</p>
+                  </div>
+                  <div class="soft-tile">
+                    <p class="font-semibold">Quiet notifications</p>
+                    <p class="mt-2 text-slate-600">Signals arrive softly and summarize what changed.</p>
+                  </div>
+                  <div class="soft-tile">
+                    <p class="font-semibold">Beautiful defaults</p>
+                    <p class="mt-2 text-slate-600">Carefully tuned typography, spacing, and color system.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,26 +100,26 @@
         </div>
       </section>
 
-      <!-- FEATURE GRID -->
-      <section id="features" class="mt-32 px-6">
-        <div class="mx-auto max-w-[1100px] space-y-14 fade-up">
+      <section id="features" class="site-section">
+        <div class="section-shell space-y-12">
           <div class="text-center max-w-3xl mx-auto">
+            <p class="badge">Experience</p>
             <h2 class="text-3xl md:text-4xl font-semibold">Everything is designed to disappear</h2>
             <p class="mt-4 text-lg text-slate-600">WaveOS focuses on less UI, more clarity.</p>
           </div>
 
-          <div class="grid gap-8 md:grid-cols-3">
-            <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+          <div class="grid-lux three">
+            <div class="soft-tile">
               <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Flow</p>
               <h3 class="mt-3 text-xl font-semibold">Adaptive layouts</h3>
               <p class="mt-3 text-slate-600">Windows arrange themselves with elegant physics so focus never breaks.</p>
             </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+            <div class="soft-tile">
               <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Calm</p>
               <h3 class="mt-3 text-xl font-semibold">Ambient presence</h3>
               <p class="mt-3 text-slate-600">System status lives subtly in the background. Nothing blinks for attention.</p>
             </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+            <div class="soft-tile">
               <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Trust</p>
               <h3 class="mt-3 text-xl font-semibold">On-device security</h3>
               <p class="mt-3 text-slate-600">Encryption, privacy-safe analytics, and a transparent permissions model.</p>
@@ -134,57 +127,54 @@
           </div>
 
           <div class="grid gap-8 lg:grid-cols-2">
-            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-              <h3 class="text-2xl font-semibold">Designed with restraint</h3>
-              <p class="mt-4 text-slate-600 leading-relaxed">
-                Every control is placed for reach and purpose. We reduced noise, removed chrome, and left only what helps you
-                move faster.
-              </p>
-              <ul class="mt-6 space-y-3 text-slate-600">
-                <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Consistent rhythm and spacing system</li>
-                <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Unified iconography and typography set</li>
-                <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Accessible contrast and motion preferences</li>
-              </ul>
+            <div class="halo-card">
+              <div class="halo-card__content">
+                <h3 class="text-2xl font-semibold">Designed with restraint</h3>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                  Every control is placed for reach and purpose. We reduced noise, removed chrome, and left only what helps you move faster.
+                </p>
+                <ul class="mt-6 space-y-3 text-slate-600">
+                  <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Consistent rhythm and spacing system</li>
+                  <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Unified iconography and typography set</li>
+                  <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Accessible contrast and motion preferences</li>
+                </ul>
+              </div>
             </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8">
-              <h3 class="text-2xl font-semibold">Moments that feel alive</h3>
-              <p class="mt-4 text-slate-600 leading-relaxed">
-                Micro-interactions are tuned to feel human—gentle haptics, smooth transitions, and lighting that responds to
-                context.
-              </p>
-              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600">
-                <div class="rounded-2xl border border-slate-200 p-4">Fluid multitasking</div>
-                <div class="rounded-2xl border border-slate-200 p-4">Instant search everywhere</div>
-                <div class="rounded-2xl border border-slate-200 p-4">Live widgets on the desktop</div>
-                <div class="rounded-2xl border border-slate-200 p-4">Hand-off between devices</div>
+            <div class="halo-card">
+              <div class="halo-card__content">
+                <h3 class="text-2xl font-semibold">Moments that feel alive</h3>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                  Micro-interactions are tuned to feel human—gentle haptics, smooth transitions, and lighting that responds to context.
+                </p>
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600">
+                  <div class="soft-tile">Fluid multitasking</div>
+                  <div class="soft-tile">Instant search everywhere</div>
+                  <div class="soft-tile">Live widgets on the desktop</div>
+                  <div class="soft-tile">Hand-off between devices</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CTA -->
-      <section class="mt-40 px-6 pb-28">
-        <div class="mx-auto max-w-[960px] rounded-3xl border border-slate-200 bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-12 text-white fade-up">
-          <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-300">Early access</p>
-              <h3 class="mt-3 text-3xl font-semibold">Get notified when WaveOS ships</h3>
-              <p class="mt-3 text-sm text-slate-200">No spam. Just thoughtful updates from the team.</p>
-            </div>
-            <div class="flex flex-col gap-3 sm:flex-row">
-              <a
-                href="mailto:wayvsoftware@gmail.com"
-                class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition"
-              >
-                Email the team
-              </a>
-              <a
-                href="/tapmood.html"
-                class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
-              >
-                Explore TapMood
-              </a>
+      <section class="site-section pb-10">
+        <div class="section-shell">
+          <div class="halo-card bg-gradient-to-r from-slate-900 to-slate-800 text-white">
+            <div class="halo-card__content flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-[0.25em] text-slate-300">Early access</p>
+                <h3 class="mt-3 text-3xl font-semibold">Get notified when WaveOS ships</h3>
+                <p class="mt-3 text-sm text-slate-200">No spam. Just thoughtful updates from the team.</p>
+              </div>
+              <div class="flex flex-col gap-3 sm:flex-row">
+                <a href="mailto:wayvsoftware@gmail.com" class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition">
+                  Email the team
+                </a>
+                <a href="/tapmood.html" class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition">
+                  Explore TapMood
+                </a>
+              </div>
             </div>
           </div>
         </div>

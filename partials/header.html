@@ -1,52 +1,55 @@
 <!--#include placeholder: header -->
-<header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur glass-nav">
-  <div class="mx-auto max-w-[1240px] px-6">
-    <div class="flex h-20 items-center gap-4">
-      <a href="/" class="flex items-center gap-3">
-        <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-12 w-auto brand-mark" />
-        <span class="text-[17px] font-semibold tracking-wide">WayV</span>
+<header class="nav-shell">
+  <div class="nav-inner">
+    <div class="nav-bar">
+      <a href="/" class="brand">
+        <img src="assets/images/wayv-logo.svg" alt="WayV" class="brand-mark" />
+        <div>
+          <p class="brand-title">WayV</p>
+          <p class="brand-subtitle">Think faster.</p>
+        </div>
       </a>
 
-      <nav
-        class="hidden md:flex flex-1 items-center justify-center gap-8 text-[13px] font-medium text-slate-500"
-        data-desktop-nav
-      >
-        <a href="/" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-500">Home</a>
-        <a href="/waveos.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-500">WaveOS</a>
-        <a href="/tapmood.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-500">TapMood</a>
-        <a href="/wavium.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-500"
-          >Wavium Interactive</a
-        >
-        <a href="/news.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-500">News &amp; Updates</a>
-        <a href="/company.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-500">Company</a>
-        <a href="/support.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-500">Support</a>
+      <nav class="nav-links" data-desktop-nav>
+        <a href="/" class="nav-link" data-nav-link data-base-color="text-slate-500">Home</a>
+        <a href="/waveos.html" class="nav-link" data-nav-link data-base-color="text-slate-500">WaveOS</a>
+        <a href="/tapmood.html" class="nav-link" data-nav-link data-base-color="text-slate-500">TapMood</a>
+        <a href="/wavium.html" class="nav-link" data-nav-link data-base-color="text-slate-500">Wavium Interactive</a>
+        <a href="/news.html" class="nav-link" data-nav-link data-base-color="text-slate-500">News &amp; Updates</a>
+        <a href="/company.html" class="nav-link" data-nav-link data-base-color="text-slate-500">Company</a>
+        <a href="/support.html" class="nav-link" data-nav-link data-base-color="text-slate-500">Support</a>
       </nav>
 
-      <button
-        type="button"
-        class="ml-auto menu-toggle inline-flex md:hidden items-center justify-center rounded-full border border-slate-300 p-2 text-slate-700 transition hover:border-slate-400"
-        aria-expanded="false"
-        aria-label="Toggle navigation menu"
-        data-menu-toggle
-      >
-        <span class="sr-only">Toggle navigation menu</span>
-        <span aria-hidden="true" class="menu-toggle__bar"></span>
-        <span aria-hidden="true" class="menu-toggle__bar"></span>
-        <span aria-hidden="true" class="menu-toggle__bar"></span>
-      </button>
+      <div class="nav-actions">
+        <a href="https://testflight.apple.com/join/CjqYMZ4J" class="nav-cta">Join TapMood beta</a>
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+          data-menu-toggle
+        >
+          <span class="sr-only">Toggle navigation menu</span>
+          <span aria-hidden="true" class="menu-toggle__bar"></span>
+          <span aria-hidden="true" class="menu-toggle__bar"></span>
+          <span aria-hidden="true" class="menu-toggle__bar"></span>
+        </button>
+      </div>
     </div>
 
-    <div class="md:hidden" data-mobile-menu hidden>
-      <div class="border-t border-slate-200 py-4 text-sm font-semibold text-slate-700">
-        <nav class="flex flex-col gap-3">
-          <a href="/" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-700">Home</a>
-          <a href="/waveos.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-700">WaveOS</a>
-          <a href="/tapmood.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-700">TapMood</a>
-          <a href="/wavium.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-700">Wavium Interactive</a>
-          <a href="/news.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-700">News &amp; Updates</a>
-          <a href="/company.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-700">Company</a>
-          <a href="/support.html" class="hover:text-slate-900" data-nav-link data-base-color="text-slate-700">Support</a>
+    <div class="nav-drawer" data-mobile-menu hidden>
+      <div class="nav-drawer__panel">
+        <nav class="nav-drawer__links">
+          <a href="/" class="nav-drawer__link" data-nav-link data-base-color="text-slate-700">Home</a>
+          <a href="/waveos.html" class="nav-drawer__link" data-nav-link data-base-color="text-slate-700">WaveOS</a>
+          <a href="/tapmood.html" class="nav-drawer__link" data-nav-link data-base-color="text-slate-700">TapMood</a>
+          <a href="/wavium.html" class="nav-drawer__link" data-nav-link data-base-color="text-slate-700">Wavium Interactive</a>
+          <a href="/news.html" class="nav-drawer__link" data-nav-link data-base-color="text-slate-700">News &amp; Updates</a>
+          <a href="/company.html" class="nav-drawer__link" data-nav-link data-base-color="text-slate-700">Company</a>
+          <a href="/support.html" class="nav-drawer__link" data-nav-link data-base-color="text-slate-700">Support</a>
         </nav>
+
+        <a href="https://testflight.apple.com/join/CjqYMZ4J" class="nav-drawer__cta">Join TapMood beta</a>
       </div>
     </div>
   </div>
