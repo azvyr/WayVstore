@@ -91,7 +91,7 @@
     });
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const initNavigation = () => {
     const normalizePath = (path) => {
       if (!path) return '/';
       return path.replace(/\/$/, '/').replace(/\/index\.html$/, '/');
@@ -118,5 +118,11 @@
         toggleMenu(header, button, menu);
       }
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavigation);
+  } else {
+    initNavigation();
+  }
 })();
