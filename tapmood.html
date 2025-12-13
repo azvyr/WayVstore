@@ -28,27 +28,26 @@
     <meta name="twitter:image" content="https://wayvstore.com/assets/images/tapmood-visual.svg" />
 
     <link rel="stylesheet" href="assets/css/app.css" />
+
     <style>
       @media (orientation: landscape) and (max-width: 1100px) {
-        .tapmood-hero {
-          padding: 2.5rem 1.75rem;
+        .tapmood-hero-pad {
+          padding: 2.5rem 1.5rem;
         }
-
         .tapmood-hero-grid {
-          align-items: center;
-          gap: 1.75rem;
+          gap: 2rem;
           grid-template-columns: 1.05fr 0.95fr;
+          align-items: center;
         }
-
         .tapmood-hero-visual {
-          margin-inline: auto;
           max-width: 420px;
+          margin-inline: auto;
         }
       }
 
       @media (min-width: 1280px) {
         .tapmood-hero-grid {
-          gap: 3.5rem;
+          gap: 3.75rem;
         }
       }
     </style>
@@ -60,66 +59,71 @@
 
     <main class="pt-32">
       <!-- HERO -->
-        <section class="px-6">
-          <div class="mx-auto max-w-[1200px] overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white shadow-[0_30px_70px_-40px_rgba(0,0,0,0.5)] interactive-panel hover-lift tapmood-hero">
-            <div class="grid gap-10 md:gap-12 lg:grid-cols-2 lg:items-center px-8 py-14 md:px-14 fade-up tapmood-hero-grid">
-              <div class="space-y-6">
-                <div class="flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-slate-300">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold">Beta</span>
-                  <span>TapMood for early members</span>
-                </div>
-                <h1 class="text-4xl md:text-6xl font-semibold tracking-tight">
-                  Feel better. Move lighter.
-                </h1>
-                <p class="text-lg md:text-xl text-slate-200 leading-relaxed max-w-xl">
-                  TapMood is our flagship emotional companion. Crafted like a premium hardware launch and tuned for privacy
-                  from the first tap.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                  <a
-                    href="mailto:wayvsoftware@gmail.com"
-                    class="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-100"
-                  >
-                    Join the beta
-                  </a>
-                  <a
-                    href="#insights"
-                    class="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-3 text-sm font-semibold text-white transition hover:border-white/60 hover:bg-white/5"
-                  >
-                    Watch the experience
-                  </a>
-                </div>
-                <div class="flex flex-wrap gap-3 text-[13px] text-slate-200/80">
-                  <span class="rounded-full border border-white/20 px-3 py-1">On-device analysis</span>
-                  <span class="rounded-full border border-white/20 px-3 py-1">Weekly releases</span>
-                  <span class="rounded-full border border-white/20 px-3 py-1">Designed with therapists</span>
-                </div>
-              </div>
+      <section class="px-6">
+        <div class="mx-auto max-w-[1200px]">
+          <div
+            class="overflow-hidden rounded-[36px] border border-slate-200 bg-white/70 backdrop-blur shadow-[0_40px_90px_-70px_rgba(15,23,42,0.45)] interactive-panel hover-lift tapmood-hero-pad"
+          >
+            <div class="relative px-8 py-14 md:px-14">
+              <!-- soft background accents -->
+              <div class="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-slate-200/40 blur-3xl"></div>
+              <div class="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-slate-200/40 blur-3xl"></div>
 
-              <div class="relative tapmood-hero-visual">
-                <div class="absolute inset-6 rounded-[28px] bg-gradient-to-br from-white/10 via-white/5 to-white/0 blur-3xl"></div>
-                <div class="relative m-auto max-w-[460px] rounded-[28px] border border-white/10 bg-white/5 p-8 shadow-xl">
-                  <div class="flex items-center justify-between text-sm text-slate-200/70">
-                    <span>TapMood Journal</span>
-                    <span>Beta 1.2</span>
+              <div class="relative grid gap-10 lg:grid-cols-2 tapmood-hero-grid">
+                <div class="space-y-6 fade-up">
+                  <div class="flex items-center gap-3">
+                    <span class="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-700">
+                      Beta
+                    </span>
+                    <span class="text-xs uppercase tracking-[0.35em] text-slate-500">TapMood</span>
                   </div>
-                  <div class="mt-6 space-y-4">
-                    <div class="rounded-2xl bg-white/10 p-4">
-                      <p class="text-xs uppercase tracking-[0.2em] text-slate-200/70">This morning</p>
-                      <p class="mt-2 text-lg font-semibold">“Centered, curious, present.”</p>
-                      <p class="text-sm text-slate-200/80">Guided breathing, soft haptics, nothing noisy.</p>
+
+                  <h1 class="text-4xl md:text-6xl font-semibold tracking-tight">
+                    A calm place to check in.
+                  </h1>
+
+                  <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl">
+                    TapMood is a private mood companion built for everyday clarity. Gentle journaling, quiet haptics, and insights designed
+                    to stay on your device.
+                  </p>
+
+                  <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+                    <a
+                      href="mailto:wayvsoftware@gmail.com?subject=TapMood%20Beta%20Access"
+                      class="inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-sm font-semibold text-white hover:bg-slate-800 transition"
+                    >
+                      Request beta access
+                    </a>
+                    <a
+                      href="#highlights"
+                      class="inline-flex w-full sm:w-auto items-center justify-center rounded-full border border-slate-300 bg-white px-7 py-3 text-sm font-semibold text-slate-900 hover:border-slate-400 transition"
+                    >
+                      See what it does
+                    </a>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2 pt-2 text-xs text-slate-600">
+                    <span class="rounded-full border border-slate-200 bg-white px-3 py-1.5">Quick check-ins</span>
+                    <span class="rounded-full border border-slate-200 bg-white px-3 py-1.5">Guided journaling</span>
+                    <span class="rounded-full border border-slate-200 bg-white px-3 py-1.5">On-device insights</span>
+                  </div>
+                </div>
+
+                <div class="relative fade-up tapmood-hero-visual">
+                  <div class="pointer-events-none absolute inset-0 rounded-[32px] bg-gradient-to-br from-slate-200/60 via-white/0 to-slate-200/40 blur-2xl"></div>
+
+                  <div class="relative mx-auto max-w-[520px] rounded-[32px] border border-slate-200 bg-white p-5 md:p-6 shadow-[0_30px_80px_-60px_rgba(15,23,42,0.55)]">
+                    <div class="rounded-[26px] border border-slate-200 bg-slate-50 p-4 md:p-5">
+                      <img
+                        src="assets/images/tapmood-visual.svg"
+                        alt="TapMood preview"
+                        class="w-full h-full object-contain"
+                      />
                     </div>
-                    <div class="rounded-2xl bg-white/5 p-4 border border-white/10">
-                      <div class="flex items-center justify-between text-sm text-slate-200/70">
-                        <span>Highlights</span>
-                        <span>7 days</span>
-                      </div>
-                      <div class="mt-3 h-28 rounded-xl bg-gradient-to-r from-white/40 via-white/15 to-white/5"></div>
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-slate-200/80">
-                      <span class="h-2 w-2 rounded-full bg-emerald-300"></span> Deep rest
-                      <span class="h-2 w-2 rounded-full bg-sky-300"></span> Creative lift
-                      <span class="h-2 w-2 rounded-full bg-pink-300"></span> Care moments
+
+                    <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+                      <span>TapMood</span>
+                      <span>Designed by WayV</span>
                     </div>
                   </div>
                 </div>
@@ -127,183 +131,204 @@
             </div>
           </div>
 
-
-  <!-- VISUAL -->
-      <section class="mt-16 px-6">
-        <div class="mx-auto max-w-[1100px] rounded-[30px] border border-slate-200 bg-slate-50/90 p-6 md:p-8 fade-up shadow-[0_24px_60px_-45px_rgba(15,23,42,0.35)] interactive-panel hover-lift">
-          <div class="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
-            <div class="order-2 space-y-6 lg:order-1 lg:pr-6">
-              <div class="flex items-center gap-3 text-sm text-slate-500">
-                <span class="h-2 w-2 rounded-full bg-pink-400"></span>
-                <span>Private logging</span>
-                <span class="h-2 w-2 rounded-full bg-sky-400"></span>
-                <span>Thoughtful summaries</span>
-              </div>
-              <h2 class="text-3xl font-semibold">Quietly powerful mood tracking</h2>
-              <p class="text-slate-600 leading-relaxed">
-                TapMood blends gentle prompts with meaningful visualizations, helping you notice patterns without
-                surveillance. Your data stays on your device and is always exportable.
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Daily reflections</p>
-                  <p class="mt-2 text-slate-600">Two-minute check-ins tuned to your routines.</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Guided tags</p>
-                  <p class="mt-2 text-slate-600">A vocabulary that grows with your emotions.</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Calm insights</p>
-                  <p class="mt-2 text-slate-600">Weekly stories instead of noisy charts.</p>
-                </div>
-                <div class="rounded-2xl border border-slate-200 bg-white p-5">
-                  <p class="font-semibold">Share with care</p>
-                  <p class="mt-2 text-slate-600">Send highlights to friends or therapists when you choose.</p>
-                </div>
-              </div>
-            </div>
-            <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div class="rounded-2xl bg-white p-4 shadow-sm border border-slate-200/80 max-w-[260px] w-full">
-                <img
-                  src="assets/images/tapmood-visual.svg"
-                  alt="TapMood preview"
-                  class="w-full h-full object-contain drop-shadow-sm"
-                />
+          <!-- slim product sub-nav (Apple-ish) -->
+          <div class="mt-6 mx-auto max-w-[1200px]">
+            <div class="rounded-full border border-slate-200 bg-white/70 backdrop-blur px-4 py-2 shadow-sm">
+              <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+                <a class="text-slate-600 hover:text-slate-900 transition" href="#highlights">Highlights</a>
+                <a class="text-slate-600 hover:text-slate-900 transition" href="#how">How it works</a>
+                <a class="text-slate-600 hover:text-slate-900 transition" href="#privacy">Privacy</a>
+                <a class="text-slate-600 hover:text-slate-900 transition" href="#beta">Beta</a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- INSIGHTS -->
-      <section id="insights" class="mt-32 px-6">
-        <div class="mx-auto max-w-[1100px] space-y-14 fade-up">
+      <!-- HIGHLIGHTS -->
+      <section id="highlights" class="mt-20 px-6">
+        <div class="mx-auto max-w-[1100px] fade-up">
           <div class="text-center max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-semibold">Designed to feel like a companion</h2>
-            <p class="mt-4 text-lg text-slate-600">TapMood keeps you grounded with simple, respectful design.</p>
+            <p class="text-xs uppercase tracking-[0.35em] text-slate-500">Highlights</p>
+            <h2 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">Simple by design.</h2>
+            <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+              TapMood is built to feel effortless. You do not need to learn a system. You just check in, and it meets you where you are.
+            </p>
           </div>
 
-          <div class="grid gap-8 md:grid-cols-3">
+          <div class="mt-12 grid gap-6 md:grid-cols-3">
             <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Presence</p>
-              <h3 class="mt-3 text-xl font-semibold">Mindful prompts</h3>
-              <p class="mt-3 text-slate-600">Short nudges with helpful context so you never feel interrupted.</p>
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Check-in</p>
+              <h3 class="mt-3 text-lg font-semibold">Two minutes or less</h3>
+              <p class="mt-3 text-slate-600 leading-relaxed">
+                A fast mood tap and a short prompt. Enough to capture the moment, without turning it into homework.
+              </p>
             </div>
+
             <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Clarity</p>
-              <h3 class="mt-3 text-xl font-semibold">Pattern stories</h3>
-              <p class="mt-3 text-slate-600">Weekly summaries highlight correlations between habits and moods.</p>
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Journal</p>
+              <h3 class="mt-3 text-lg font-semibold">Guided when you want it</h3>
+              <p class="mt-3 text-slate-600 leading-relaxed">
+                Gentle prompts that keep things moving. Skip, keep it short, or go deeper when it feels right.
+              </p>
             </div>
+
             <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Care</p>
-              <h3 class="mt-3 text-xl font-semibold">Boundaries first</h3>
-              <p class="mt-3 text-slate-600">You decide what to share. Everything else stays local and encrypted.</p>
+              <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Feel</p>
+              <h3 class="mt-3 text-lg font-semibold">Quiet haptics</h3>
+              <p class="mt-3 text-slate-600 leading-relaxed">
+                Subtle feedback designed to calm, not distract. A small signal that you are taking care of yourself.
+              </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div class="grid gap-8 lg:grid-cols-2">
-            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-8">
-              <h3 class="text-2xl font-semibold">A visual language for feelings</h3>
+      <!-- HOW IT WORKS -->
+      <section id="how" class="mt-28 px-6">
+        <div class="mx-auto max-w-[1100px] fade-up">
+          <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div class="rounded-[32px] border border-slate-200 bg-slate-50/80 p-8 md:p-10 shadow-[0_28px_70px_-55px_rgba(15,23,42,0.45)]">
+              <p class="text-xs uppercase tracking-[0.35em] text-slate-500">How it works</p>
+              <h2 class="mt-4 text-3xl font-semibold tracking-tight">From tap to clarity.</h2>
               <p class="mt-4 text-slate-600 leading-relaxed">
-                We designed TapMood to feel tactile and calm. Colors are soft, typography is clean, and the layout breathes
-                like a journal you want to return to every day.
+                TapMood keeps the flow simple. Check in. Add context. Then get a calm reflection that helps you notice patterns over time.
               </p>
-              <ul class="mt-6 space-y-3 text-slate-600">
-                <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Subtle gradients inspired by daylight</li>
-                <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Readable typography with generous spacing</li>
-                <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-slate-900"></span>Adaptive layout that works on every screen</li>
-              </ul>
+
+              <div class="mt-8 space-y-4">
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <p class="text-sm font-semibold text-slate-900">1. Log the moment</p>
+                    <span class="text-xs text-slate-500">Tap</span>
+                  </div>
+                  <p class="mt-2 text-sm text-slate-600">
+                    A mood tap and a short note. Enough to remember what mattered.
+                  </p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <p class="text-sm font-semibold text-slate-900">2. Add a little context</p>
+                    <span class="text-xs text-slate-500">Optional</span>
+                  </div>
+                  <p class="mt-2 text-sm text-slate-600">
+                    Tags, quick prompts, or a longer entry when you want it.
+                  </p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="flex items-start justify-between gap-4">
+                    <p class="text-sm font-semibold text-slate-900">3. See the week clearly</p>
+                    <span class="text-xs text-slate-500">Reflect</span>
+                  </div>
+                  <p class="mt-2 text-sm text-slate-600">
+                    Calm summaries that help you spot shifts without noisy dashboards.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8">
-              <h3 class="text-2xl font-semibold">Built with trust at the center</h3>
-              <p class="mt-4 text-slate-600 leading-relaxed">
-                Privacy isn’t a toggle—it is the default. TapMood keeps your logs encrypted and on-device with clear
-                transparency around how everything works.
-              </p>
-              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600">
-                <div class="rounded-2xl border border-slate-200 p-4">On-device analysis</div>
-                <div class="rounded-2xl border border-slate-200 p-4">Clear export controls</div>
-                <div class="rounded-2xl border border-slate-200 p-4">Calm reminders</div>
-                <div class="rounded-2xl border border-slate-200 p-4">Human support</div>
+
+            <div class="space-y-6">
+              <div class="rounded-[32px] border border-slate-200 bg-white p-8 md:p-10 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.35em] text-slate-500">Insights</p>
+                <h3 class="mt-4 text-2xl font-semibold tracking-tight">Useful, not intrusive.</h3>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                  TapMood is built to feel human. The goal is not to measure you. The goal is to help you understand yourself.
+                </p>
+
+                <div class="mt-6 grid gap-4 sm:grid-cols-2 text-sm text-slate-700">
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">Weekly reflections</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">Pattern summaries</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">Gentle reminders</div>
+                  <div class="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">Export when you choose</div>
+                </div>
+              </div>
+
+              <div class="rounded-[32px] border border-slate-200 bg-white p-8 md:p-10 shadow-sm">
+                <p class="text-xs uppercase tracking-[0.35em] text-slate-500">Design</p>
+                <h3 class="mt-4 text-2xl font-semibold tracking-tight">A visual language for emotions.</h3>
+                <p class="mt-4 text-slate-600 leading-relaxed">
+                  Clean typography. Soft spacing. Calm color. TapMood is designed to feel like a place you want to return to.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- BETA JOURNEY -->
-      <section class="mt-32 px-6">
-        <div class="mx-auto max-w-[1200px] overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-slate-100 p-10 shadow-[0_40px_90px_-60px_rgba(0,0,0,0.4)]">
-          <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-            <div class="max-w-xl space-y-4">
-              <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Beta Path</p>
-              <h3 class="text-3xl font-semibold">Shaped like a keynote, improved every week</h3>
-              <p class="text-lg text-slate-600 leading-relaxed">
-                TapMood Beta follows a deliberate cadence—each build is precise, purposeful, and guided by the people using
-                it. Expect transparent notes, thoughtful animations, and the quiet confidence of a flagship reveal.
-              </p>
-              <div class="flex flex-wrap gap-3 text-sm text-slate-600">
-                <span class="rounded-full border border-slate-200 px-3 py-1">Beta 1.2 now live</span>
-                <span class="rounded-full border border-slate-200 px-3 py-1">Mac + iPhone pairing</span>
-                <span class="rounded-full border border-slate-200 px-3 py-1">Feedback loops with the team</span>
+      <!-- PRIVACY -->
+      <section id="privacy" class="mt-28 px-6">
+        <div class="mx-auto max-w-[1100px] fade-up">
+          <div class="rounded-[36px] border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-white p-8 md:p-12 shadow-[0_40px_90px_-70px_rgba(15,23,42,0.45)]">
+            <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+              <div>
+                <p class="text-xs uppercase tracking-[0.35em] text-slate-500">Privacy</p>
+                <h2 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">Built around trust.</h2>
+                <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                  TapMood is designed with privacy as the default. The experience is meant to feel safe, calm, and under your control.
+                </p>
               </div>
-            </div>
 
-            <div class="grid w-full max-w-xl gap-4 text-sm text-slate-700">
-              <div class="rounded-3xl border border-slate-200 bg-white/80 p-5 shadow-sm">
-                <div class="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-slate-500">
-                  <span>Week 1</span>
-                  <span>Shipped</span>
+              <div class="grid gap-4">
+                <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <p class="text-sm font-semibold text-slate-900">On-device first</p>
+                  <p class="mt-2 text-sm text-slate-600">
+                    Insights are designed to happen on your device whenever possible.
+                  </p>
                 </div>
-                <p class="mt-3 text-lg font-semibold text-slate-900">Calm journaling, tactile haptics</p>
-                <p class="mt-2 text-slate-600">The foundation: smooth logging, gentle prompts, and private sync.</p>
-              </div>
-              <div class="rounded-3xl border border-slate-200 bg-white/80 p-5 shadow-sm">
-                <div class="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-slate-500">
-                  <span>Week 3</span>
-                  <span>Now</span>
+
+                <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <p class="text-sm font-semibold text-slate-900">Clear controls</p>
+                  <p class="mt-2 text-sm text-slate-600">
+                    Export, review, and manage your entries with simple options.
+                  </p>
                 </div>
-                <p class="mt-3 text-lg font-semibold text-slate-900">Mood arcs with cinematic gradients</p>
-                <p class="mt-2 text-slate-600">A new visual language inspired by sunrise and night mode clarity.</p>
-              </div>
-              <div class="rounded-3xl border border-slate-200 bg-white/80 p-5 shadow-sm">
-                <div class="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-slate-500">
-                  <span>Week 5</span>
-                  <span>Next</span>
+
+                <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <p class="text-sm font-semibold text-slate-900">Respectful by design</p>
+                  <p class="mt-2 text-sm text-slate-600">
+                    No noisy feed. No social pressure. Just a private space for you.
+                  </p>
                 </div>
-                <p class="mt-3 text-lg font-semibold text-slate-900">Shared moments, on your terms</p>
-                <p class="mt-2 text-slate-600">Invite trusted friends or therapists with granular controls and expiring links.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- CTA -->
-      <section class="mt-40 px-6 pb-28">
-        <div class="mx-auto max-w-[960px] rounded-3xl border border-slate-200 bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-12 text-white">
-          <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p class="text-xs uppercase tracking-[0.25em] text-slate-300">Beta program</p>
-              <h3 class="mt-3 text-3xl font-semibold">Help shape TapMood</h3>
-              <p class="mt-3 text-sm text-slate-200">We are inviting a small group to guide the product.</p>
-            </div>
-            <div class="flex flex-col gap-3 sm:flex-row">
-              <a
-                href="mailto:wayvsoftware@gmail.com"
-                class="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition"
-              >
-                Email the team
-              </a>
-              <a
-                href="/waveos.html"
-                class="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
-              >
-                View WaveOS
-              </a>
+      <!-- BETA -->
+      <section id="beta" class="mt-28 px-6 pb-28">
+        <div class="mx-auto max-w-[1100px] fade-up">
+          <div class="rounded-[36px] border border-slate-200 bg-slate-900 px-8 py-12 md:px-12 text-white shadow-[0_40px_90px_-65px_rgba(0,0,0,0.55)]">
+            <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+              <div class="max-w-xl">
+                <p class="text-xs uppercase tracking-[0.35em] text-slate-300">TapMood Beta</p>
+                <h3 class="mt-4 text-3xl font-semibold tracking-tight">Help shape what ships.</h3>
+                <p class="mt-3 text-sm md:text-base text-slate-200 leading-relaxed">
+                  We are keeping the beta small and intentional. If you want in, email us and tell us how you would like to use TapMood.
+                </p>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="mailto:wayvsoftware@gmail.com?subject=TapMood%20Beta%20Access"
+                  class="rounded-full bg-white px-7 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 transition"
+                >
+                  Request access
+                </a>
+                <a
+                  href="/support.html"
+                  class="rounded-full border border-white/30 px-7 py-3 text-sm font-semibold text-white hover:border-white/50 hover:bg-white/10 transition"
+                >
+                  Support
+                </a>
+              </div>
             </div>
           </div>
+
+          <p class="mt-8 text-center text-sm text-slate-500">
+            TapMood is evolving quickly. Your feedback directly shapes what we build next.
+          </p>
         </div>
       </section>
     </main>
