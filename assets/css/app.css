@@ -244,9 +244,7 @@ body {
 
 .site-footer {
   margin-top: 64px;
-  background: radial-gradient(circle at 20% 10%, rgba(99, 102, 241, 0.08), transparent 35%),
-    radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.12), transparent 45%),
-    #0f172a;
+  background: #0f172a;
   color: #e2e8f0;
 }
 
