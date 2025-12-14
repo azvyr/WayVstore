@@ -372,3 +372,107 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #d4d4d8;
 }
+
+/* Final footer styling: enforce solid dark background */
+.site-footer {
+  position: relative;
+  margin-top: 5rem;
+  background: #0b0b0f;
+  color: #e4e4e7;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -14px 60px rgba(0, 0, 0, 0.6);
+}
+
+.site-footer__inner {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 72px 24px 60px;
+  z-index: 1;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 22px 32px;
+}
+
+.footer-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #c7c7d1;
+  margin-bottom: 14px;
+}
+
+.footer-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #f4f4f5;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.7), rgba(167, 139, 250, 0.6));
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  opacity: 0.9;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
+}
+
+.footer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  font-size: 13px;
+  color: #f4f4f5;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.footer-note {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+  color: #d4d4d8;
+}
+
+.site-footer img.invert {
+  filter: invert(1) brightness(1.1);
+}
+
+@media (min-width: 768px) {
+  .footer-note {
+    flex-direction: row;
+    align-items: center;
+  }
+}

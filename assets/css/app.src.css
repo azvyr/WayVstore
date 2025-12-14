@@ -715,11 +715,11 @@ body {
 .site-footer {
   position: relative;
   margin-top: 5rem;
-  background: linear-gradient(180deg, #f8fafc 0%, #f5f7fb 45%, #ffffff 100%);
-  color: #0f172a;
+  background: #0b0b0f;
+  color: #e4e4e7;
   overflow: hidden;
-  border-top: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: 0 -14px 60px rgba(15, 23, 42, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -14px 60px rgba(0, 0, 0, 0.6);
 }
 
 .site-footer__inner {
@@ -740,7 +740,7 @@ body {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #475569;
+  color: #c7c7d1;
   margin-bottom: 14px;
 }
 
@@ -750,7 +750,7 @@ body {
   align-items: center;
   gap: 10px;
   font-weight: 600;
-  color: #0f172a;
+  color: #f4f4f5;
 }
 
 .footer-link::after {
@@ -760,16 +760,16 @@ body {
   bottom: -6px;
   height: 2px;
   width: 100%;
-  background: linear-gradient(90deg, rgba(59, 130, 246, 0.7), rgba(168, 85, 247, 0.6));
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.7), rgba(167, 139, 250, 0.6));
   border-radius: 999px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s ease;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .footer-link:hover {
-  color: #0b1220;
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
@@ -782,30 +782,30 @@ body {
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   font-size: 13px;
-  color: #0f172a;
+  color: #f4f4f5;
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .footer-note {
   margin-top: 48px;
   padding-top: 28px;
-  border-top: 1px solid rgba(148, 163, 184, 0.28);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: space-between;
   align-items: flex-start;
   font-size: 14px;
-  color: #475569;
+  color: #d4d4d8;
 }
 
 .site-footer img.invert {
-  filter: none;
+  filter: invert(1) brightness(1.1);
 }
 
 @media (min-width: 768px) {
