@@ -341,3 +341,34 @@ body {
   border-radius: 50%;
   background: rgba(148, 163, 184, 0.6);
 }
+
+/* Footer overrides for solid dark theme */
+.site-footer {
+  background: #0b0b0f;
+  color: #e4e4e7;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -14px 60px rgba(0, 0, 0, 0.6);
+}
+
+.footer-title {
+  color: #c7c7d1;
+}
+
+.footer-link {
+  color: #f4f4f5;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f4f4f5;
+}
+
+.footer-note {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d4d4d8;
+}
