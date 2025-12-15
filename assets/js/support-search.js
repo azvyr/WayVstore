@@ -1,72 +1,124 @@
+// Data Source: Early Access & Beta Knowledge Base
 const supportArticles = [
+  // --- Beta Access & Account ---
   {
-    title: 'Get started with WayV',
-    description: 'Set up your workspace, invite your team, and connect your WayV products for the first time.',
-    link: 'index.html#products',
-    tags: ['setup', 'onboarding', 'team'],
+    title: 'How to join the Private Beta',
+    description: 'WayV is currently invite-only. Learn how to join the waitlist or request an access code for your team.',
+    link: 'index.html#beta',
+    tags: ['beta', 'invite', 'access', 'waitlist'],
   },
   {
-    title: 'WaveOS device requirements',
-    description: 'Check the compatibility matrix before installing WaveOS and learn how to keep your devices updated.',
-    link: 'waveos.html',
-    tags: ['waveos', 'devices', 'updates'],
+    title: 'Reporting bugs and feedback',
+    description: 'Found a glitch? Use the in-app "Feedback" tool to send logs directly to our engineering team.',
+    link: 'support.html#bugs',
+    tags: ['bugs', 'glitch', 'feedback', 'report'],
   },
   {
-    title: 'Build your first automation with Wave Engine',
-    description: 'Create, test, and deploy automations using the Wave Engine visual tools and APIs.',
-    link: 'wave-engine.html',
-    tags: ['automation', 'workflow', 'apis'],
+    title: 'Data persistence during Beta',
+    description: 'Understanding how we handle your data during alpha/beta transitions and potential resets.',
+    link: 'privacy.html#data-retention',
+    tags: ['data', 'backup', 'reset', 'policy'],
   },
   {
-    title: 'Manage notifications with Wavium',
-    description: 'Customize notification preferences and routing rules for your team and customers.',
-    link: 'wavium.html',
-    tags: ['notifications', 'routing', 'preferences'],
+    title: 'Pricing for early adopters',
+    description: 'Details on the "Founder" pricing plan available exclusively to users who join during the Beta phase.',
+    link: 'company.html#pricing',
+    tags: ['pricing', 'cost', 'founder', 'free'],
+  },
+
+  // --- WaveOS (Preview) ---
+  {
+    title: 'WaveOS compatibility (Alpha)',
+    description: 'Current hardware support list. Note: Legacy ARM devices are not yet supported in this build.',
+    link: 'waveos.html#compatibility',
+    tags: ['waveos', 'hardware', 'alpha', 'limitations'],
   },
   {
-    title: 'Tapmood kiosk setup',
-    description: 'Mount Tapmood, connect it to Wi‑Fi, and customize the feedback prompts for visitors.',
-    link: 'tapmood.html',
-    tags: ['tapmood', 'hardware', 'wifi'],
+    title: 'Flashing WaveOS to devices',
+    description: 'Step-by-step guide to unlocking the bootloader and flashing the WaveOS developer preview.',
+    link: 'waveos.html#install',
+    tags: ['install', 'flash', 'bootloader', 'firmware'],
   },
   {
-    title: 'Security and privacy controls',
-    description: 'Review how WayV protects data, configure access controls, and download compliance documents.',
+    title: 'Known issues in Build v0.9',
+    description: 'A live list of known bugs in the current WaveOS release, including Wi-Fi reconnection issues.',
+    link: 'waveos.html#changelog',
+    tags: ['bugs', 'issues', 'wifi', 'changelog'],
+  },
+
+  // --- Wavium (Beta) ---
+  {
+    title: 'Wavium notification delays',
+    description: 'Why you might experience slight delays in push notifications during high-traffic beta testing.',
+    link: 'wavium.html#status',
+    tags: ['notifications', 'delay', 'latency', 'performance'],
+  },
+  {
+    title: 'Requesting new integrations',
+    description: 'Wavium currently supports Slack and Email. Vote on the roadmap for Teams or Discord support.',
+    link: 'wavium.html#roadmap',
+    tags: ['roadmap', 'features', 'request', 'integration'],
+  },
+
+  // --- TapMood (Pilot) ---
+  {
+    title: 'TapMood Pilot Program guide',
+    description: 'Instructions for retail partners deploying TapMood kiosks as part of the Q3 pilot program.',
+    link: 'tapmood.html#pilot',
+    tags: ['tapmood', 'pilot', 'retail', 'setup'],
+  },
+  {
+    title: 'Why is my Kiosk offline?',
+    description: 'Troubleshooting connectivity issues common in the early hardware prototypes.',
+    link: 'tapmood.html#connectivity',
+    tags: ['offline', 'wifi', 'error', 'hardware'],
+  },
+
+  // --- Wave Engine (Dev Preview) ---
+  {
+    title: 'Wave Engine API token limits',
+    description: 'During the preview, API calls are rate-limited to 1,000 requests per hour to ensure stability.',
+    link: 'wave-engine.html#limits',
+    tags: ['api', 'limits', 'quota', 'dev'],
+  },
+  {
+    title: 'Accessing the Developer Discord',
+    description: 'Join our private Discord community to chat directly with WayV engineers and other builders.',
+    link: 'community.html#discord',
+    tags: ['community', 'discord', 'chat', 'help'],
+  },
+  {
+    title: 'Security and encryption',
+    description: 'Even in beta, security is priority #1. Read our whitepaper on end-to-end encryption.',
     link: 'privacy.html',
-    tags: ['security', 'privacy', 'compliance'],
+    tags: ['security', 'encryption', 'compliance', 'safety'],
   },
   {
-    title: 'Account billing and invoices',
-    description: 'Update billing contacts, download invoices, and manage payment methods for your organization.',
-    link: 'company.html#billing',
-    tags: ['billing', 'invoices', 'payments'],
-  },
-  {
-    title: 'Status and incident history',
-    description: 'Check availability, scheduled maintenance, and historical incident reports for WayV services.',
-    link: 'news.html#status',
-    tags: ['uptime', 'maintenance', 'status'],
-  },
-  {
-    title: 'Contact support',
-    description: 'Email the support team for urgent questions or to follow up on an open ticket.',
+    title: 'Contact the founders',
+    description: 'For enterprise inquiries or investor relations, email the founding team directly.',
     link: 'mailto:wayvsoftware@gmail.com',
-    tags: ['support', 'contact', 'email'],
+    tags: ['contact', 'founders', 'email', 'investors'],
   },
 ];
 
+// DOM Elements
 const supportSearchInput = document.getElementById('supportSearchInput');
 const resultsContainer = document.getElementById('supportSearchResults');
 const emptyState = document.getElementById('supportSearchEmpty');
 const statusBadge = document.getElementById('supportSearchStatus');
 const clearButton = document.getElementById('supportSearchClear');
 
+// Show fewer results by default to keep it clean
 const defaultResults = supportArticles.slice(0, 6);
 
 function normalize(text) {
   return text.toLowerCase();
 }
 
+/**
+ * Ranks articles based on keyword matching in title, description, and tags.
+ * Title matches are weighted higher (2x) than body matches (1x).
+ */
 function rankArticles(query) {
   const terms = normalize(query)
     .split(/\s+/)
@@ -80,16 +132,17 @@ function rankArticles(query) {
   const results = supportArticles
     .map((article) => {
       const haystack = normalize(`${article.title} ${article.description} ${article.tags.join(' ')}`);
+      
       const score = terms.reduce((total, term) => {
         let termScore = 0;
-        if (haystack.includes(term)) {
-          termScore += 1;
-        }
-        if (normalize(article.title).includes(term)) {
-          termScore += 2;
-        }
+        
+        if (haystack.includes(term)) termScore += 1;
+        if (normalize(article.title).includes(term)) termScore += 10;
+        if (article.tags.includes(term)) termScore += 5;
+
         return total + termScore;
       }, 0);
+
       return { ...article, score };
     })
     .filter((article) => article.score > 0)
@@ -112,22 +165,27 @@ function renderResults(items) {
   items.forEach((article) => {
     const card = document.createElement('a');
     card.href = article.link;
+    // Updated styling for "Beta" look - slightly more compact
     card.className =
-      'block bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group';
+      'block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-teal-200 transition-all hover:-translate-y-0.5 group h-full flex flex-col';
 
     const title = document.createElement('h3');
-    title.className = 'text-xl font-semibold text-slate-900 mb-2 group-hover:text-teal-700 transition-colors';
+    title.className = 'text-lg font-bold text-slate-900 mb-2 group-hover:text-teal-700 transition-colors';
     title.textContent = article.title;
 
     const description = document.createElement('p');
-    description.className = 'text-slate-600 text-sm leading-relaxed';
+    description.className = 'text-slate-600 text-sm leading-relaxed mb-4 flex-grow';
     description.textContent = article.description;
 
     const tagsRow = document.createElement('div');
-    tagsRow.className = 'flex flex-wrap gap-2 mt-4';
-    article.tags.forEach((tag) => {
+    tagsRow.className = 'flex flex-wrap gap-2 mt-auto';
+    article.tags.slice(0, 3).forEach((tag) => {
       const badge = document.createElement('span');
-      badge.className = 'bg-teal-50 text-teal-700 px-3 py-1 text-xs font-semibold rounded-full';
+      // Added a "Beta" tag style if the tag is 'beta' or 'alpha'
+      const isBetaTag = ['beta', 'alpha', 'pilot'].includes(tag);
+      const bgClass = isBetaTag ? 'bg-orange-50 text-orange-600' : 'bg-slate-100 text-slate-600';
+      
+      badge.className = `${bgClass} px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded-full group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors`;
       badge.textContent = tag;
       tagsRow.appendChild(badge);
     });
@@ -143,6 +201,9 @@ function renderResults(items) {
 function updateStatus(message, hasQuery) {
   if (statusBadge) {
     statusBadge.textContent = message;
+    statusBadge.className = hasQuery 
+        ? 'text-xs font-bold text-teal-600 uppercase tracking-widest' 
+        : 'text-xs font-bold text-slate-400 uppercase tracking-widest';
   }
   if (clearButton) {
     clearButton.classList.toggle('hidden', !hasQuery);
@@ -156,9 +217,9 @@ function handleSearch() {
   const results = rankArticles(query);
 
   if (results.length === 0) {
-    updateStatus('No matches yet', !!query);
+    updateStatus('No matches found', !!query);
   } else if (!query) {
-    updateStatus('Showing top results', false);
+    updateStatus('Common Questions', false);
   } else {
     const label = results.length === 1 ? 'result' : 'results';
     updateStatus(`${results.length} ${label} for "${query}"`, true);
@@ -171,6 +232,7 @@ function initSupportSearch() {
   if (!supportSearchInput || !resultsContainer) return;
 
   supportSearchInput.addEventListener('input', handleSearch);
+  
   clearButton?.addEventListener('click', () => {
     supportSearchInput.value = '';
     supportSearchInput.focus();
@@ -178,6 +240,7 @@ function initSupportSearch() {
   });
 
   renderResults(defaultResults);
+  updateStatus('Common Questions', false);
 }
 
 window.addEventListener('load', initSupportSearch);
