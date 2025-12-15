@@ -30,26 +30,24 @@ body {
   transition: background 0.4s ease, background-position 2s ease;
 }
 
-.page-shell {
+.page-fade {
   opacity: 0;
   transform: translateY(16px);
   filter: blur(12px);
   transition:
     opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 1100ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 1000ms cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.4s ease,
-    background-position 2s ease;
+    filter 1000ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html.page-ready .page-shell {
+html.page-ready .page-fade {
   opacity: 1;
   transform: none;
   filter: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .page-shell {
+  .page-fade {
     opacity: 1;
     transform: none;
     filter: none;
