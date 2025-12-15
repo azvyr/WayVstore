@@ -30,6 +30,33 @@ body {
   transition: background 0.4s ease, background-position 2s ease;
 }
 
+.page-shell {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(12px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1000ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s ease,
+    background-position 2s ease;
+}
+
+html.page-ready .page-shell {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shell {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+}
+
 /* =========================================
    ANIMATION & UTILS
    ========================================= */
@@ -43,10 +70,19 @@ a, button, .interactive-panel, .soft-card, .product-panel {
   box-shadow: 0 28px 80px rgba(15, 23, 42, 0.18);
 }
 
-.fade-up { opacity: 0; transform: translateY(28px); animation: fadeUp 1s ease forwards; }
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeUp 1s ease forwards;
+  animation-play-state: paused;
+}
 .fade-up.delay-1 { animation-delay: 0.12s; }
 .fade-up.delay-2 { animation-delay: 0.24s; }
 .fade-up.delay-3 { animation-delay: 0.36s; }
+
+html.page-ready .fade-up {
+  animation-play-state: running;
+}
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(28px); }
