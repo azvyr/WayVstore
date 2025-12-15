@@ -121,9 +121,11 @@
     document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
       const header = button.closest('header');
       const menu = header?.querySelector('[data-mobile-menu]');
-      if (header && menu) {
-        toggleMenu(header, button, menu);
-      }
+
+      if (!header || !menu || header.dataset.navReady === 'true') return;
+
+      toggleMenu(header, button, menu);
+      header.dataset.navReady = 'true';
     });
   };
 
@@ -133,4 +135,6 @@
   } else {
     initNavigation();
   }
+
+  document.addEventListener('partials:loaded', initNavigation);
 })();

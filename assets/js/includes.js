@@ -37,8 +37,12 @@
   };
 
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-include]').forEach((placeholder) => {
-      loadPartial(placeholder);
-    });
+    const placeholders = [...document.querySelectorAll('[data-include]')];
+
+    Promise.all(placeholders.map((placeholder) => loadPartial(placeholder)))
+      .catch((error) => console.error('Failed to load one or more partials', error))
+      .finally(() => {
+        document.dispatchEvent(new Event('partials:loaded'));
+      });
   });
 })();
