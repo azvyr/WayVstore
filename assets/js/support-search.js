@@ -1,9 +1,9 @@
 // Data Source: Early Access & Beta Knowledge Base
 const supportArticles = [
-  // --- Beta Access & Account ---
+  // --- General Access & Account ---
   {
-    title: 'How to join the Private Beta',
-    description: 'WayV is currently invite-only. Learn how to join the waitlist or request an access code for your team.',
+    title: 'WaveOS Beta Program',
+    description: 'WaveOS is currently invite-only. Learn how to join the waitlist or request an access code for your team.',
     link: 'index.html#beta',
     tags: ['beta', 'invite', 'access', 'waitlist'],
   },
@@ -19,79 +19,17 @@ const supportArticles = [
     link: 'privacy.html#data-retention',
     tags: ['data', 'backup', 'reset', 'policy'],
   },
-  {
-    title: 'Pricing for early adopters',
-    description: 'Details on the "Founder" pricing plan available exclusively to users who join during the Beta phase.',
-    link: 'company.html#pricing',
-    tags: ['pricing', 'cost', 'founder', 'free'],
-  },
 
-  // --- WaveOS (Preview) ---
-  {
-    title: 'WaveOS compatibility (Alpha)',
-    description: 'Current hardware support list. Note: Legacy ARM devices are not yet supported in this build.',
-    link: 'waveos.html#compatibility',
-    tags: ['waveos', 'hardware', 'alpha', 'limitations'],
-  },
-  {
-    title: 'Flashing WaveOS to devices',
-    description: 'Step-by-step guide to unlocking the bootloader and flashing the WaveOS developer preview.',
-    link: 'waveos.html#install',
-    tags: ['install', 'flash', 'bootloader', 'firmware'],
-  },
-  {
-    title: 'Known issues in Build v0.9',
-    description: 'A live list of known bugs in the current WaveOS release, including Wi-Fi reconnection issues.',
-    link: 'waveos.html#changelog',
-    tags: ['bugs', 'issues', 'wifi', 'changelog'],
-  },
+  // --- Wavium ---
 
-  // --- Wavium (Beta) ---
-  {
-    title: 'Wavium notification delays',
-    description: 'Why you might experience slight delays in push notifications during high-traffic beta testing.',
-    link: 'wavium.html#status',
-    tags: ['notifications', 'delay', 'latency', 'performance'],
-  },
-  {
-    title: 'Requesting new integrations',
-    description: 'Wavium currently supports Slack and Email. Vote on the roadmap for Teams or Discord support.',
-    link: 'wavium.html#roadmap',
-    tags: ['roadmap', 'features', 'request', 'integration'],
-  },
+  // --- TapMood ---
 
-  // --- TapMood (Pilot) ---
-  {
-    title: 'TapMood Pilot Program guide',
-    description: 'Instructions for retail partners deploying TapMood kiosks as part of the Q3 pilot program.',
-    link: 'tapmood.html#pilot',
-    tags: ['tapmood', 'pilot', 'retail', 'setup'],
-  },
-  {
-    title: 'Why is my Kiosk offline?',
-    description: 'Troubleshooting connectivity issues common in the early hardware prototypes.',
-    link: 'tapmood.html#connectivity',
-    tags: ['offline', 'wifi', 'error', 'hardware'],
-  },
-
-  // --- Wave Engine (Dev Preview) ---
-  {
-    title: 'Wave Engine API token limits',
-    description: 'During the preview, API calls are rate-limited to 1,000 requests per hour to ensure stability.',
-    link: 'wave-engine.html#limits',
-    tags: ['api', 'limits', 'quota', 'dev'],
-  },
+  // --- Community & Contact ---
   {
     title: 'Accessing the Developer Discord',
     description: 'Join our private Discord community to chat directly with WayV engineers and other builders.',
-    link: 'community.html#discord',
+    link: 'https://discord.gg/RukYZ3vegt',
     tags: ['community', 'discord', 'chat', 'help'],
-  },
-  {
-    title: 'Security and encryption',
-    description: 'Even in beta, security is priority #1. Read our whitepaper on end-to-end encryption.',
-    link: 'privacy.html',
-    tags: ['security', 'encryption', 'compliance', 'safety'],
   },
   {
     title: 'Contact the founders',
@@ -165,7 +103,12 @@ function renderResults(items) {
   items.forEach((article) => {
     const card = document.createElement('a');
     card.href = article.link;
-    // Updated styling for "Beta" look - slightly more compact
+    // Check if external link (Discord) to open in new tab
+    if (article.link.startsWith('http')) {
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+    }
+
     card.className =
       'block bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-teal-200 transition-all hover:-translate-y-0.5 group h-full flex flex-col';
 
