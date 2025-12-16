@@ -815,6 +815,125 @@ body {
   }
 }
 
+.founder-popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  z-index: 1000;
+}
+
+.founder-popup.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.founder-popup__backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.founder-popup__dialog {
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  padding: 28px;
+  max-width: 520px;
+  width: min(520px, 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transform: translateY(12px);
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.founder-popup.is-visible .founder-popup__dialog {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.founder-popup__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.founder-popup__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6366f1;
+  margin: 0;
+  font-weight: 700;
+}
+
+.founder-popup__title {
+  flex: 1;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.founder-popup__close {
+  background: #f1f5f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 22px;
+  color: #0f172a;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.founder-popup__close:hover {
+  background: #e2e8f0;
+  transform: scale(1.03);
+}
+
+.founder-popup__content {
+  margin-top: 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.founder-popup__message {
+  padding: 12px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid rgba(99, 102, 241, 0.08);
+}
+
+.founder-popup__name {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.founder-popup__text {
+  margin: 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .founder-popup__dialog {
+    padding: 22px;
+  }
+
+  .founder-popup__title {
+    font-size: 19px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   body {
     animation: none;
