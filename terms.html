@@ -16,54 +16,14 @@
       <section class="max-w-[900px] mx-auto mb-16">
         <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-6">Terms of Service</h1>
         <p class="text-lg text-slate-500 font-medium leading-relaxed">
-          These Terms of Service govern your use of WayV products, applications, and websites. By accessing any of our services, you agree to these terms.
+          Review our official Terms of Service below. The contents are loaded directly from our authoritative terms file.
         </p>
-        <p class="text-sm text-slate-400 mt-4">Last updated: January 2025</p>
+        <p class="text-sm text-slate-400 mt-4">Source: <code>legal/terms.txt</code></p>
       </section>
 
-      <section class="max-w-[900px] mx-auto space-y-10">
+      <section class="max-w-[900px] mx-auto">
         <article class="p-8 bg-slate-50 rounded-3xl">
-          <h2 class="text-2xl font-semibold mb-3">Use of services</h2>
-          <p class="text-slate-600 leading-relaxed">
-            You may use WayV services only in compliance with applicable laws and these terms. You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account.
-          </p>
-        </article>
-
-        <article class="p-8 bg-slate-50 rounded-3xl">
-          <h2 class="text-2xl font-semibold mb-3">Beta programs</h2>
-          <p class="text-slate-600 leading-relaxed">
-            Access to pre-release software, including TestFlight builds, may include additional requirements. Features may change, and beta software is provided "as is" for evaluation purposes.
-          </p>
-        </article>
-
-        <article class="p-8 bg-slate-50 rounded-3xl">
-          <h2 class="text-2xl font-semibold mb-3">Intellectual property</h2>
-          <p class="text-slate-600 leading-relaxed">
-            All content, trademarks, and software associated with WayV remain the property of WayV Software Inc. or its licensors. These terms do not grant you ownership of our services or the content you access.
-          </p>
-        </article>
-
-        <article class="p-8 bg-slate-50 rounded-3xl">
-          <h2 class="text-2xl font-semibold mb-3">Acceptable use</h2>
-          <ul class="list-disc list-inside text-slate-600 space-y-2">
-            <li>Do not attempt to reverse engineer, decompile, or misuse our software.</li>
-            <li>Do not use our services to distribute malicious code or to infringe on others' rights.</li>
-            <li>Respect applicable laws and the privacy of other users.</li>
-          </ul>
-        </article>
-
-        <article class="p-8 bg-slate-50 rounded-3xl">
-          <h2 class="text-2xl font-semibold mb-3">Disclaimers and limitation of liability</h2>
-          <p class="text-slate-600 leading-relaxed">
-            To the fullest extent permitted by law, WayV provides services "as is" without warranties of any kind and is not liable for any indirect, incidental, or consequential damages arising from your use of our services.
-          </p>
-        </article>
-
-        <article class="p-8 bg-slate-50 rounded-3xl">
-          <h2 class="text-2xl font-semibold mb-3">Contact</h2>
-          <p class="text-slate-600 leading-relaxed">
-            For questions about these terms, contact <a href="mailto:legal@wayvsoftware.com" class="text-blue-600 font-semibold">legal@wayvsoftware.com</a>.
-          </p>
+          <div id="terms-content" class="text-slate-700 leading-relaxed whitespace-pre-wrap font-medium"></div>
         </article>
       </section>
     </main>
@@ -72,5 +32,22 @@
     <script src="assets/js/page-animations.js" defer></script>
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/navigation.js" defer></script>
+    <script>
+      fetch("legal/terms.txt")
+        .then((response) => {
+          if (!response.ok) throw new Error("Failed to load terms of service");
+          return response.text();
+        })
+        .then((text) => {
+          const container = document.getElementById("terms-content");
+          container.textContent = text.trim();
+        })
+        .catch((error) => {
+          const container = document.getElementById("terms-content");
+          container.innerHTML =
+            '<p class="text-red-600 font-semibold">Unable to load terms of service at this time.</p>';
+          console.error(error);
+        });
+    </script>
   </body>
 </html>
