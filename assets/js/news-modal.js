@@ -1,5 +1,36 @@
 (function () {
+  const tapMoodLaunchDate = new Date();
+  tapMoodLaunchDate.setDate(tapMoodLaunchDate.getDate() + 10);
+  tapMoodLaunchDate.setHours(9, 0, 0, 0);
+
   const newsData = {
+    "tapmood-countdown": {
+      tag: "Launch Countdown",
+      tagColor: "bg-blue-50 text-blue-600",
+      date: "Launch Update",
+      title: "Only 10 days left until the TapMood public release.",
+      gradient: "bg-gradient-to-r from-blue-50 to-indigo-50",
+      body: `
+        <p class="mb-4">We are officially on the countdown to TapMood's public launch.</p>
+        <p class="mb-4"><strong>Countdown:</strong> <span class="text-blue-600 font-semibold" data-countdown="tapmood-launch">10 days</span> left until release.</p>
+        <p class="mb-4">We are polishing the last details before launch. TapMood is almost ready for everyone.</p>
+        <p>Thank you for the support as we close out the final days before launch.</p>
+      `,
+      launchDate: tapMoodLaunchDate
+    },
+    "developer-program": {
+      tag: "Community",
+      tagColor: "bg-emerald-50 text-emerald-600",
+      date: "Coming Soon",
+      title: "WayV Developer Program Discord is launching shortly.",
+      gradient: "bg-gradient-to-r from-emerald-50 to-teal-50",
+      body: `
+        <p class="mb-4">We are opening the <strong>WayV Developer Program</strong> Discord channel soon.</p>
+        <p class="mb-4">This space is for developers of any project, big or small, to ask questions and get answers from our team or other developers in the community.</p>
+        <p class="mb-4">We will also support creators building on Roblox, future Wave Engine projects, and other creative initiatives.</p>
+        <p>More details will be shared as we get closer to launch.</p>
+      `
+    },
     tapmood: {
       tag: "Beta 6",
       tagColor: "bg-blue-50 text-blue-600",
@@ -95,6 +126,7 @@
 
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+      updateCountdowns();
     };
 
     const closeNews = () => {
@@ -111,6 +143,33 @@
       }
     });
   };
+
+  const formatCountdown = (timeRemainingMs) => {
+    if (timeRemainingMs <= 0) {
+      return "Released";
+    }
+
+    const totalSeconds = Math.floor(timeRemainingMs / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+  };
+
+  const updateCountdowns = () => {
+    const countdownElements = document.querySelectorAll('[data-countdown="tapmood-launch"]');
+    const timeRemaining = tapMoodLaunchDate.getTime() - Date.now();
+    const formatted = formatCountdown(timeRemaining);
+
+    countdownElements.forEach((element) => {
+      element.textContent = formatted;
+    });
+  };
+
+  updateCountdowns();
+  setInterval(updateCountdowns, 1000);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initModal);
