@@ -27,8 +27,8 @@ const supportArticles = [
   // --- Community & Contact ---
   {
     title: 'Accessing the Developer Discord',
-    description: 'Join our private Discord community to chat directly with WayV engineers and other builders.',
-    link: 'https://discord.gg/RukYZ3vegt',
+    description: 'Learn about the WayV Developer Program and the upcoming Discord community launch.',
+    link: 'developer-discord.html',
     tags: ['community', 'discord', 'chat', 'help'],
   },
   {
