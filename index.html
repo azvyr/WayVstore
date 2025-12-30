@@ -33,7 +33,7 @@
                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
              </span>
-             <h2 class="text-xs font-bold text-orange-600 uppercase tracking-widest">TapMood Launching Soon</h2>
+             <h2 class="text-xs font-bold text-orange-600 uppercase tracking-widest">TapMood Pending Approval</h2>
           </div>
 
           <h1 class="text-4xl md:text-7xl font-semibold tracking-tighter mb-3 text-[#1D1D1F] leading-tight px-4 fade-in-up" style="animation-delay: 0.2s;">
@@ -41,30 +41,8 @@
           </h1>
           
           <p class="text-lg md:text-2xl font-medium text-slate-500 mb-8 tracking-tight max-w-lg mx-auto px-6 fade-in-up" style="animation-delay: 0.3s;">
-            Private mood tracking with on-device insights.
+            Private mood tracking with on-device insights. Apple pending approval.
           </p>
-
-          <div id="hero-countdown" class="flex items-center justify-center gap-4 md:gap-8 mb-8 fade-in-up" style="animation-delay: 0.4s;">
-             <div class="flex flex-col items-center">
-                <span id="d" class="text-2xl md:text-3xl font-bold tabular-nums text-slate-800">00</span>
-                <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Days</span>
-             </div>
-             <div class="h-8 w-px bg-slate-200"></div>
-             <div class="flex flex-col items-center">
-                <span id="h" class="text-2xl md:text-3xl font-bold tabular-nums text-slate-800">00</span>
-                <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Hrs</span>
-             </div>
-             <div class="h-8 w-px bg-slate-200"></div>
-             <div class="flex flex-col items-center">
-                <span id="m" class="text-2xl md:text-3xl font-bold tabular-nums text-slate-800">00</span>
-                <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Mins</span>
-             </div>
-             <div class="h-8 w-px bg-slate-200"></div>
-             <div class="flex flex-col items-center">
-                <span id="s" class="text-2xl md:text-3xl font-bold tabular-nums text-transparent bg-clip-text bg-gradient-to-br from-orange-500 to-red-500">00</span>
-                <span class="text-[10px] font-bold uppercase text-orange-400 tracking-wider">Secs</span>
-             </div>
-          </div>
           
           <div class="flex gap-4 z-10 relative fade-in-up" style="animation-delay: 0.5s;">
             <a href="/tapmood.html" class="bg-[#1D1D1F] text-white px-8 py-3 rounded-full font-medium text-sm hover:bg-slate-800 transition shadow-lg shadow-slate-200/50">Learn more</a>
@@ -169,34 +147,5 @@
     <script src="assets/js/page-animations.js" defer></script>
     <script src="assets/js/includes.js"></script>
     <script src="assets/js/navigation.js" defer></script>
-    <script>
-      const launch = new Date('2026-01-01T00:00:00Z');
-      const pad = (num) => String(num).padStart(2, '0');
-      
-      const updateHeroCountdown = () => {
-        const now = new Date();
-        const diff = launch - now;
-        
-        const dEl = document.getElementById('d');
-        const hEl = document.getElementById('h');
-        const mEl = document.getElementById('m');
-        const sEl = document.getElementById('s');
-
-        if (!dEl) return; // Guard in case element isn't found
-
-        if (diff <= 0) {
-          document.getElementById('hero-countdown').style.display = 'none';
-          return;
-        }
-
-        dEl.textContent = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
-        hEl.textContent = pad(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-        mEl.textContent = pad(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
-        sEl.textContent = pad(Math.floor((diff % (1000 * 60)) / 1000));
-      };
-
-      setInterval(updateHeroCountdown, 1000);
-      updateHeroCountdown();
-    </script>
   </body>
 </html>

@@ -1,22 +1,16 @@
 (function () {
-  const tapMoodLaunchDate = new Date();
-  tapMoodLaunchDate.setDate(tapMoodLaunchDate.getDate() + 10);
-  tapMoodLaunchDate.setHours(9, 0, 0, 0);
-
   const newsData = {
-    "tapmood-countdown": {
-      tag: "Launch Countdown",
+    "tapmood-approval": {
+      tag: "App Store Status",
       tagColor: "bg-blue-50 text-blue-600",
-      date: "Launch Update",
-      title: "Only 10 days left until the TapMood public release.",
+      date: "App Review",
+      title: "TapMood is pending Apple approval.",
       gradient: "bg-gradient-to-r from-blue-50 to-indigo-50",
       body: `
-        <p class="mb-4">We are officially on the countdown to TapMood's public launch.</p>
-        <p class="mb-4"><strong>Countdown:</strong> <span class="text-blue-600 font-semibold" data-countdown="tapmood-launch">10 days</span> left until release.</p>
-        <p class="mb-4">We are polishing the last details before launch. TapMood is almost ready for everyone.</p>
-        <p>Thank you for the support as we close out the final days before launch.</p>
-      `,
-      launchDate: tapMoodLaunchDate
+        <p class="mb-4">We have submitted TapMood for App Store review.</p>
+        <p class="mb-4">The team is awaiting Apple's approval before the public release goes live.</p>
+        <p>Thanks for your patience while we finish the approval process.</p>
+      `
     },
     "developer-program": {
       tag: "Community",
@@ -143,33 +137,6 @@
       }
     });
   };
-
-  const formatCountdown = (timeRemainingMs) => {
-    if (timeRemainingMs <= 0) {
-      return "Released";
-    }
-
-    const totalSeconds = Math.floor(timeRemainingMs / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    return `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
-  };
-
-  const updateCountdowns = () => {
-    const countdownElements = document.querySelectorAll('[data-countdown="tapmood-launch"]');
-    const timeRemaining = tapMoodLaunchDate.getTime() - Date.now();
-    const formatted = formatCountdown(timeRemaining);
-
-    countdownElements.forEach((element) => {
-      element.textContent = formatted;
-    });
-  };
-
-  updateCountdowns();
-  setInterval(updateCountdowns, 1000);
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initModal);
