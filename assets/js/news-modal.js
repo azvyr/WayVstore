@@ -4,12 +4,24 @@
       tag: "App Store Status",
       tagColor: "bg-blue-50 text-blue-600",
       date: "App Review",
-      title: "TapMood is pending Apple approval.",
+      title: "TapMood release is delayed during review.",
       gradient: "bg-gradient-to-r from-blue-50 to-indigo-50",
       body: `
         <p class="mb-4">We have submitted TapMood for App Store review.</p>
-        <p class="mb-4">The team is awaiting Apple's approval before the public release goes live.</p>
-        <p>Thanks for your patience while we finish the approval process.</p>
+        <p class="mb-4">Apple's review is taking longer than expected, so our public release is delayed.</p>
+        <p>Thank you for your patience while we complete the approval process.</p>
+      `
+    },
+    "tapmood-delay": {
+      tag: "Release Update",
+      tagColor: "bg-amber-50 text-amber-700",
+      date: "Today",
+      title: "TapMood has been delayed.",
+      gradient: "bg-gradient-to-r from-amber-50 to-orange-50",
+      body: `
+        <p class="mb-4">We are sorry for the delay.</p>
+        <p class="mb-4">We are working through the remaining App Store steps and will release TapMood as soon as we can.</p>
+        <p>Thank you for sticking with us while we finish up.</p>
       `
     },
     "developer-program": {
