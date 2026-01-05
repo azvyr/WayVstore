@@ -1,13 +1,10 @@
 const config = window.tapmoodConfig || {};
-const supabaseAnonKeyStorageKey = 'tapmood_supabase_anon_key';
-const storedAnonKey = localStorage.getItem(supabaseAnonKeyStorageKey);
 const supabaseUrl = config.supabaseUrl || 'https://lxylwexfjhtzvepwvjal.supabase.co';
-let supabaseAnonKey = storedAnonKey || config.supabaseAnonKey || '';
+const supabaseAnonKey = config.supabaseAnonKey || '';
 
 const elements = {
   configCard: document.getElementById('config-card'),
-  configForm: document.getElementById('config-form'),
-  anonKeyInput: document.getElementById('anon-key-input'),
+  configStatus: document.getElementById('config-status'),
   connectionStatus: document.getElementById('connection-status'),
   authCard: document.getElementById('auth-card'),
   authForm: document.getElementById('auth-form'),
@@ -42,7 +39,13 @@ const state = {
 
 function setConnectionStatus(text, tone = 'text-slate-400') {
   elements.connectionStatus.textContent = text;
-  elements.connectionStatus.className = `text-xs font-semibold uppercase tracking-widest ${tone}`;
+  elements.connectionStatus.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
+}
+
+function setConfigStatus(text, tone = 'text-emerald-700', background = 'bg-emerald-100') {
+  if (!elements.configStatus) return;
+  elements.configStatus.textContent = text;
+  elements.configStatus.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${background} ${tone}`;
 }
 
 function setAuthMessage(text, tone = 'text-slate-500') {
@@ -408,31 +411,23 @@ function attachListeners() {
   elements.signOut.addEventListener('click', handleSignOut);
   elements.refreshDashboard.addEventListener('click', handleRefresh);
   elements.conversationList.addEventListener('click', handleConversationClick);
-  elements.configForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const key = elements.anonKeyInput.value.trim();
-    if (!key) return;
-    localStorage.setItem(supabaseAnonKeyStorageKey, key);
-    supabaseAnonKey = key;
-    initializeSupabase();
-  });
 }
 
 async function initializeSupabase() {
   if (!supabaseAnonKey) {
-    elements.configCard.classList.remove('hidden');
-    setConnectionStatus('Needs key', 'text-amber-500');
+    setConfigStatus('Missing key', 'text-amber-700', 'bg-amber-100');
+    setConnectionStatus('Needs key', 'text-amber-700 bg-amber-100');
     resetDashboard();
     return;
   }
 
-  elements.configCard.classList.add('hidden');
+  setConfigStatus('Ready', 'text-emerald-700', 'bg-emerald-100');
 
   if (!state.supabase) {
     state.supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
   }
 
-  setConnectionStatus('Connected', 'text-emerald-600');
+  setConnectionStatus('Connected', 'text-emerald-700 bg-emerald-100');
 
   const { data } = await state.supabase.auth.getSession();
   state.session = data.session;
