@@ -920,9 +920,16 @@ async function handleMessageSubmit(event) {
 async function sendFriendRequest(profile) {
   if (!state.session?.user || !state.profile || !profile) return;
 
-  const { data: userData, error: userError } = await state.supabase.auth.getUser();
+  const [{ data: userData, error: userError }, { data: sessionData, error: sessionError }] = await Promise.all([
+    state.supabase.auth.getUser(),
+    state.supabase.auth.getSession(),
+  ]);
   if (userError || !userData?.user) {
     setStatusMessage(elements.friendStatus, 'Unable to verify your session. Please sign in again.', 'text-rose-600');
+    return;
+  }
+  if (sessionError || !sessionData?.session?.access_token) {
+    setStatusMessage(elements.friendStatus, 'Unable to authenticate your request. Please sign in again.', 'text-rose-600');
     return;
   }
 
@@ -944,14 +951,23 @@ async function sendFriendRequest(profile) {
     return;
   }
 
-  const { error: insertError } = await state.supabase.from('friendships').insert({
-    requester: requesterId,
-    addressee: profile.id,
-    status: 'pending',
-  });
-
-  if (insertError) {
-    setStatusMessage(elements.friendStatus, insertError.message, 'text-rose-600');
+  try {
+    const response = await fetch(`${supabaseUrl}/functions/v1/create-friend-request`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${sessionData.session.access_token}`,
+      },
+      body: JSON.stringify({ addressee: profile.id }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const errorMessage = result?.error || result?.message || 'Unable to send friend request.';
+      setStatusMessage(elements.friendStatus, errorMessage, 'text-rose-600');
+      return;
+    }
+  } catch (error) {
+    setStatusMessage(elements.friendStatus, error.message || 'Unable to send friend request.', 'text-rose-600');
     return;
   }
 
