@@ -920,6 +920,13 @@ async function handleMessageSubmit(event) {
 async function sendFriendRequest(profile) {
   if (!state.session?.user || !state.profile || !profile) return;
 
+  const { data: userData, error: userError } = await state.supabase.auth.getUser();
+  if (userError || !userData?.user) {
+    setStatusMessage(elements.friendStatus, 'Unable to verify your session. Please sign in again.', 'text-rose-600');
+    return;
+  }
+
+  const requesterId = userData.user.id;
   if (profile.username === state.profile.username) {
     setStatusMessage(elements.friendStatus, 'You cannot add yourself.', 'text-amber-600');
     return;
@@ -929,7 +936,7 @@ async function sendFriendRequest(profile) {
   const { data: existing } = await state.supabase
     .from('friendships')
     .select('id, status')
-    .or(`and(requester.eq.${state.session.user.id},addressee.eq.${profile.id}),and(requester.eq.${profile.id},addressee.eq.${state.session.user.id})`)
+    .or(`and(requester.eq.${requesterId},addressee.eq.${profile.id}),and(requester.eq.${profile.id},addressee.eq.${requesterId})`)
     .maybeSingle();
 
   if (existing) {
@@ -938,7 +945,7 @@ async function sendFriendRequest(profile) {
   }
 
   const { error: insertError } = await state.supabase.from('friendships').insert({
-    requester: state.session.user.id,
+    requester: requesterId,
     addressee: profile.id,
     status: 'pending',
   });
