@@ -940,21 +940,39 @@ async function handleProfileUpdate(event) {
 }
 
 async function sendFriendRequest(person) {
-  if (!state.session?.user) return;
-  
-  const { error } = await state.supabase.from('friendships').insert({
-    requester: state.session.user.id,
-    addressee: person.id,
-    status: 'pending'
-  });
+  if (!state.session?.access_token) {
+    console.error('No active session found.');
+    return;
+  }
 
-  if (!error) {
+  setStatusMessage(elements.friendStatus, 'Sending request...', 'text-slate-500');
+
+  try {
+    const response = await fetch(`${supabaseUrl}/functions/v1/create-friend-request`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // The 'anon' key is for the API gateway, the 'Bearer' token is for the user
+        'apikey': supabaseAnonKey, 
+        'Authorization': `Bearer ${state.session.access_token}`
+      },
+      body: JSON.stringify({
+        receiver_id: person.id 
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to send request');
+    }
+
+    setStatusMessage(elements.friendStatus, 'Request sent!', 'text-emerald-600');
     await loadDashboard();
-  } else {
-    console.error('Error sending request:', error);
+  } catch (error) {
+    console.error('Friend request error:', error);
+    setStatusMessage(elements.friendStatus, error.message, 'text-rose-600');
   }
 }
-
 async function acceptFriendRequest(requestId) {
   if (!state.session?.user) return;
   
