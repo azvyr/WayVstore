@@ -21,6 +21,7 @@ const elements = {
   notificationsToggle: document.getElementById('notifications-toggle'),
   notificationsPanel: document.getElementById('notifications-panel'),
   notificationsList: document.getElementById('notifications-list'),
+  notificationsFriends: document.getElementById('notifications-friends'),
   notificationsBadge: document.getElementById('notifications-badge'),
   refreshDashboard: document.getElementById('refresh-dashboard'),
   friendsCount: document.getElementById('friends-count'),
@@ -56,6 +57,7 @@ const elements = {
   navMessagesCount: document.getElementById('nav-messages-count'),
   navFriendsCount: document.getElementById('nav-friends-count'),
   navButtons: Array.from(document.querySelectorAll('.tapmood-nav-item')),
+  topNavButtons: Array.from(document.querySelectorAll('.tapmood-top-nav')),
   pageToggleButtons: Array.from(document.querySelectorAll('[data-page-target]')),
   pageSections: Array.from(document.querySelectorAll('[data-page]')),
 };
@@ -68,6 +70,7 @@ const state = {
   activePage: 'home',
   notifications: [],
   notificationChannel: null,
+  friends: [],
 };
 
 function setConnectionStatus(text, tone = 'text-slate-400 bg-slate-100') {
@@ -143,6 +146,13 @@ function setActivePage(page) {
     button.className = isActive
       ? 'tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-900 px-4 py-3 text-left text-sm font-semibold text-white'
       : 'tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-100';
+  });
+
+  elements.topNavButtons.forEach((button) => {
+    const isActive = button.dataset.pageTarget === page;
+    button.className = isActive
+      ? 'tapmood-top-nav rounded-full border border-slate-200 bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-800'
+      : 'tapmood-top-nav rounded-full border border-slate-200 bg-white px-4 py-2 text-slate-600 transition hover:bg-slate-50';
   });
 }
 
@@ -249,6 +259,40 @@ function renderNotifications(notifications) {
 
   elements.notificationsBadge.textContent = notifications.length;
   elements.notificationsBadge.classList.toggle('hidden', notifications.length === 0);
+}
+
+function renderNotificationFriends(friends) {
+  if (!elements.notificationsFriends) return;
+  elements.notificationsFriends.innerHTML = '';
+  if (!friends.length) {
+    elements.notificationsFriends.innerHTML = '<p class="text-sm text-slate-500">No friends yet. Add some to see them here.</p>';
+    return;
+  }
+
+  friends.slice(0, 5).forEach((friend) => {
+    const avatar = friend.avatar_url
+      ? `<img src="${friend.avatar_url}" alt="${friend.name}" class="h-8 w-8 rounded-full object-cover" />`
+      : `<div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 text-[10px] font-semibold text-slate-500">${friend.name.slice(0, 2).toUpperCase()}</div>`;
+    const item = document.createElement('div');
+    item.className = 'flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2';
+    item.innerHTML = `
+      <div class="flex items-center gap-3">
+        ${avatar}
+        <div>
+          <p class="text-sm font-semibold text-slate-700">${friend.name}</p>
+          <p class="text-xs text-slate-400">${friend.statusLabel}</p>
+        </div>
+      </div>
+      <button type="button" class="rounded-full border border-slate-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-slate-500" data-friend-name="${friend.name}">Message</button>
+    `;
+    item.querySelector('button')?.addEventListener('click', () => {
+      setActivePage('messages');
+      if (elements.messageRecipient) {
+        elements.messageRecipient.value = friend.username || friend.name;
+      }
+    });
+    elements.notificationsFriends.appendChild(item);
+  });
 }
 
 function renderMessages(messages) {
@@ -497,6 +541,7 @@ async function loadFriends(userId) {
     return {
       id: row.id,
       name: friendProfile?.display_name || friendProfile?.username || 'Friend',
+      username: friendProfile?.username || '',
       avatar_url: friendProfile?.avatar_url || '',
       statusLabel: row.status === 'accepted' ? 'Connected' : row.status,
     };
@@ -697,12 +742,14 @@ async function loadDashboard() {
   ]);
 
   renderFriends(friends);
+  state.friends = friends;
   renderEmotions(emotions);
   renderMessages(messages);
   renderMessageInbox(messages, profile?.username);
   renderActivityFeed({ friends, emotions, messages });
   renderFriendRequests(requests);
   renderDiscoverPeople(suggestedPeople);
+  renderNotificationFriends(friends);
   if (profile?.username) {
     renderFriendSearchResults([]);
     await loadNotifications({ userId: user.id, username: profile.username });
@@ -786,6 +833,7 @@ function resetDashboard() {
   renderFriendRequests([]);
   renderFriendSearchResults([]);
   renderNotifications([]);
+  renderNotificationFriends([]);
   renderProfile(null, null);
   setStatusMessage(elements.moodStatus, '');
   setStatusMessage(elements.messageStatus, '');
