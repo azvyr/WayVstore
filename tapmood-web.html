@@ -10,162 +10,330 @@
   </head>
 
   <body class="bg-[#F5F5F7] text-[#1D1D1F] font-sans antialiased selection:bg-teal-100 selection:text-teal-900">
-    <div data-include="partials/header.html" class="sticky top-0 z-50 bg-white/80 backdrop-blur-md transition-all duration-300"></div>
+    <main class="page-fade relative min-h-screen overflow-hidden">
+      <section id="guest-view" class="relative flex min-h-screen items-center justify-center px-6 pb-20 pt-24">
+        <div class="emoji-sky pointer-events-none absolute inset-0">
+          <span class="emoji-float" style="--x: 6%; --y: 10%; --size: 3.6rem; --delay: -1s;">✨</span>
+          <span class="emoji-float" style="--x: 20%; --y: 40%; --size: 2.8rem; --delay: -6s;">😄</span>
+          <span class="emoji-float" style="--x: 32%; --y: 70%; --size: 2.4rem; --delay: -3s;">🌈</span>
+          <span class="emoji-float" style="--x: 44%; --y: 25%; --size: 3rem; --delay: -9s;">💫</span>
+          <span class="emoji-float" style="--x: 58%; --y: 60%; --size: 3.4rem; --delay: -4s;">🥳</span>
+          <span class="emoji-float" style="--x: 70%; --y: 18%; --size: 2.2rem; --delay: -8s;">💙</span>
+          <span class="emoji-float" style="--x: 82%; --y: 50%; --size: 3.2rem; --delay: -12s;">🎉</span>
+          <span class="emoji-float" style="--x: 92%; --y: 78%; --size: 2.6rem; --delay: -5s;">🌟</span>
+          <span class="emoji-float" style="--x: 14%; --y: 82%; --size: 2.1rem; --delay: -7s;">😌</span>
+        </div>
 
-    <main class="page-fade relative overflow-hidden px-6 pb-20 pt-28">
-      <div class="pointer-events-none absolute inset-x-0 -top-24 mx-auto h-96 max-w-5xl rounded-full bg-gradient-to-r from-teal-200 via-sky-100 to-indigo-200 opacity-60 blur-[120px]"></div>
-      <section class="relative mx-auto max-w-6xl">
-        <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <span class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-teal-600 shadow-sm">
-              TapMood Web
+        <div class="relative z-10 mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[1.2fr_1fr]">
+          <div class="space-y-6">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-teal-600 shadow-sm">
+              TapMood Social
               <span class="h-1.5 w-1.5 rounded-full bg-teal-400"></span>
             </span>
-            <h1 class="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">Your TapMood, now on the web.</h1>
-            <p class="mt-4 max-w-2xl text-lg text-slate-500">
-              Sign in to access your friends, emotions, conversations, and everything else from TapMood.
+            <h1 class="text-4xl font-semibold tracking-tight md:text-6xl">
+              Your emotional social network, now built for the web.
+            </h1>
+            <p class="max-w-2xl text-lg text-slate-600">
+              Tap into your mood, share with friends, and build a feed that feels like you. Log in to explore your conversations, emotion streaks, and community highlights.
             </p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Social Feed</p>
+                <p class="mt-3 text-sm text-slate-600">A vibrant feed for mood check-ins, reactions, and trending vibes across the TapMood community.</p>
+              </div>
+              <div class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Smart Messages</p>
+                <p class="mt-3 text-sm text-slate-600">Catch up with close friends, join group conversations, and keep everything in sync.</p>
+              </div>
+              <div class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Mood Insights</p>
+                <p class="mt-3 text-sm text-slate-600">Track emotions, intensity, and moments that matter with simple visual insights.</p>
+              </div>
+              <div class="rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Community</p>
+                <p class="mt-3 text-sm text-slate-600">Discover shared moods, new friends, and curated spaces that match your vibe.</p>
+              </div>
+            </div>
           </div>
-          <div class="flex flex-wrap gap-3">
-            <a href="/tapmood.html" class="rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">TapMood iOS</a>
-            <a href="/" class="rounded-full bg-[#1D1D1F] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-200/50 transition hover:bg-slate-800">WayV Home</a>
+
+          <div id="auth-card" class="rounded-[32px] border border-white/80 bg-white/90 p-7 shadow-[0_24px_80px_rgba(15,23,42,0.2)] backdrop-blur">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal-500">Account Access</p>
+                <h2 class="mt-2 text-2xl font-semibold text-slate-800">Welcome back</h2>
+              </div>
+              <span id="connection-status" class="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Disconnected</span>
+            </div>
+            <div class="mt-5 flex gap-2">
+              <button id="auth-signin" class="flex-1 rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white">Sign In</button>
+              <button id="auth-signup" class="flex-1 rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-slate-500">Sign Up</button>
+            </div>
+            <form id="auth-form" class="mt-6 space-y-4">
+              <div id="auth-username-field" class="hidden">
+                <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Username</label>
+                <input id="auth-username" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200" placeholder="yourname" />
+              </div>
+              <div>
+                <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Email</label>
+                <input id="auth-email" type="email" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200" placeholder="you@tapmood.com" />
+              </div>
+              <div>
+                <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Password</label>
+                <input id="auth-password" type="password" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200" placeholder="At least 8 characters" />
+              </div>
+              <button id="auth-submit" type="submit" class="w-full rounded-full bg-[#1D1D1F] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-200/50 transition hover:bg-slate-800">Sign In</button>
+              <p id="auth-helper" class="text-xs text-slate-400">Use the same TapMood credentials you already have on mobile.</p>
+              <p id="auth-message" class="text-sm text-slate-500"></p>
+            </form>
+            <div class="mt-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white p-4 text-xs text-slate-500">
+              <p class="font-semibold uppercase tracking-widest text-slate-400">New here?</p>
+              <p class="mt-2">Create a TapMood identity with a unique username and keep your vibe consistent everywhere.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="relative mx-auto mt-12 max-w-6xl">
-        <div class="grid gap-6 lg:grid-cols-[1.1fr_1.9fr]">
-          <div class="space-y-6">
-            <div id="config-card" class="rounded-[28px] border border-emerald-100 bg-white/80 p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] backdrop-blur">
-              <div class="flex items-start justify-between gap-4">
-                <div>
-                  <p class="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-500">TapMood Cloud</p>
-                  <h2 class="mt-2 text-lg font-semibold">Secure connection is preloaded.</h2>
-                  <p class="mt-2 text-sm text-slate-500">Your TapMood web session is wired to the official cloud, so you can jump straight to signing in.</p>
-                </div>
-                <span id="config-status" class="rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-emerald-700">Ready</span>
-              </div>
-              <div class="mt-5 grid gap-3 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-4 text-xs text-emerald-700">
-                <div class="flex items-center justify-between">
-                  <span class="font-semibold uppercase tracking-widest">Status</span>
-                  <span class="font-semibold">Automatic key enabled</span>
-                </div>
-                <div class="flex items-center justify-between">
-                  <span class="font-semibold uppercase tracking-widest">Security</span>
-                  <span class="font-semibold">Encrypted via Supabase</span>
-                </div>
+      <section id="app-view" class="hidden">
+        <div class="sticky top-0 z-30 border-b border-white/60 bg-white/80 backdrop-blur">
+          <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+            <div class="flex items-center gap-3">
+              <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-10 w-10 rounded-2xl bg-white p-2 shadow" />
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal-500">TapMood Social</p>
+                <p class="text-lg font-semibold text-slate-800">TapMood</p>
               </div>
             </div>
-
-            <div id="auth-card" class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <div class="flex items-center justify-between">
-                <h2 class="text-lg font-semibold">Account Access</h2>
-                <span id="connection-status" class="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Disconnected</span>
-              </div>
-              <div class="mt-4 flex gap-2">
-                <button id="auth-signin" class="flex-1 rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white">Sign In</button>
-                <button id="auth-signup" class="flex-1 rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-slate-500">Sign Up</button>
-              </div>
-              <form id="auth-form" class="mt-5 space-y-4">
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Email</label>
-                  <input id="auth-email" type="email" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200" placeholder="you@tapmood.com" />
-                </div>
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Password</label>
-                  <input id="auth-password" type="password" required class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200" placeholder="At least 8 characters" />
-                </div>
-                <button id="auth-submit" type="submit" class="w-full rounded-full bg-[#1D1D1F] px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-200/50 transition hover:bg-slate-800">Sign In</button>
-                <p id="auth-message" class="text-sm text-slate-500"></p>
-              </form>
-              <div class="mt-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white p-4 text-xs text-slate-500">
-                <p class="font-semibold uppercase tracking-widest text-slate-400">Need access?</p>
-                <p class="mt-2">Use the same TapMood credentials you already have on mobile.</p>
-              </div>
+            <div class="hidden flex-1 items-center justify-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-500 shadow-sm md:flex">
+              <span>🔍</span>
+              <span>Search moods, friends, and communities</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <button class="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-widest text-slate-500 shadow-sm">Create Post</button>
+              <span id="connection-status-app" class="rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-emerald-700">Connected</span>
             </div>
           </div>
+        </div>
+
+        <div class="mx-auto grid max-w-6xl gap-6 px-6 pb-20 pt-8 lg:grid-cols-[220px_1.6fr_0.9fr]">
+          <aside class="hidden lg:block">
+            <nav id="page-nav" class="space-y-2">
+              <button data-page="feed" class="page-tab active flex w-full items-center gap-3 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white">
+                <span>🏠</span>
+                <span>Home Feed</span>
+              </button>
+              <button data-page="friends" class="page-tab flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-600">
+                <span>🤝</span>
+                <span>Friends</span>
+              </button>
+              <button data-page="messages" class="page-tab flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-600">
+                <span>💬</span>
+                <span>Messages</span>
+              </button>
+              <button data-page="explore" class="page-tab flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-600">
+                <span>✨</span>
+                <span>Explore</span>
+              </button>
+              <button data-page="notifications" class="page-tab flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-600">
+                <span>🔔</span>
+                <span>Notifications</span>
+              </button>
+              <button data-page="profile" class="page-tab flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-600">
+                <span>👤</span>
+                <span>Profile</span>
+              </button>
+            </nav>
+          </aside>
 
           <div class="space-y-6">
-            <div class="grid gap-4 md:grid-cols-4">
-              <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
-                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Friends</p>
-                <p id="friends-count" class="mt-2 text-3xl font-semibold">0</p>
-              </div>
-              <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
-                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Conversations</p>
-                <p id="conversations-count" class="mt-2 text-3xl font-semibold">0</p>
-              </div>
-              <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
-                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Messages</p>
-                <p id="messages-count" class="mt-2 text-3xl font-semibold">0</p>
-              </div>
-              <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
-                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Emotions</p>
-                <p id="emotions-count" class="mt-2 text-3xl font-semibold">0</p>
-              </div>
-            </div>
-
-            <div class="grid gap-6 lg:grid-cols-[1.1fr_1.9fr]">
-              <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-                <div class="flex items-center justify-between">
-                  <h2 class="text-lg font-semibold">Friends</h2>
-                  <button id="refresh-dashboard" class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-500 transition hover:bg-slate-100">Refresh</button>
+            <section data-page-panel="feed" class="space-y-6">
+              <div class="grid gap-4 md:grid-cols-4">
+                <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Friends</p>
+                  <p id="friends-count" class="mt-2 text-3xl font-semibold">0</p>
                 </div>
-                <ul id="friends-list" class="mt-4 space-y-3 text-sm text-slate-500">
-                  <li>Sign in to view friends.</li>
-                </ul>
+                <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Conversations</p>
+                  <p id="conversations-count" class="mt-2 text-3xl font-semibold">0</p>
+                </div>
+                <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Messages</p>
+                  <p id="messages-count" class="mt-2 text-3xl font-semibold">0</p>
+                </div>
+                <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.08)]">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Emotions</p>
+                  <p id="emotions-count" class="mt-2 text-3xl font-semibold">0</p>
+                </div>
               </div>
 
-              <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-                <h2 class="text-lg font-semibold">Conversations</h2>
-                <div class="mt-4 grid gap-4 md:grid-cols-[1fr_2fr]">
-                  <div>
-                    <ul id="conversation-list" class="space-y-2 text-sm text-slate-500">
-                      <li>Sign in to view conversations.</li>
+              <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+                <div class="space-y-6">
+                  <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <h2 class="text-lg font-semibold">Community Feed</h2>
+                        <p class="text-sm text-slate-500">Share a mood update to let friends know how you feel.</p>
+                      </div>
+                      <button id="refresh-dashboard" class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-500 transition hover:bg-slate-100">Refresh</button>
+                    </div>
+                    <div class="mt-4 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                      <p class="text-sm font-semibold text-slate-700">What’s your vibe today?</p>
+                      <div class="mt-3 flex flex-wrap gap-2">
+                        <button class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">😊 Happy</button>
+                        <button class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">😌 Calm</button>
+                        <button class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">🚀 Motivated</button>
+                        <button class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">🌧️ Low energy</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                    <h2 class="text-lg font-semibold">Recent Emotions</h2>
+                    <div id="emotions-list" class="mt-4 grid gap-4 md:grid-cols-3 text-sm text-slate-500">
+                      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent emotions.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-6">
+                  <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                    <h2 class="text-lg font-semibold">Active Friends</h2>
+                    <ul id="friends-preview" class="mt-4 space-y-3 text-sm text-slate-500">
+                      <li>Sign in to view friends.</li>
                     </ul>
                   </div>
-                    <div class="rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-white p-4">
-                      <div class="flex items-center justify-between">
-                        <h3 id="conversation-title" class="text-sm font-semibold text-slate-700">Messages</h3>
-                        <span id="conversation-subtitle" class="text-xs text-slate-400">No conversation selected</span>
+                  <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                    <h2 class="text-lg font-semibold">Trending Spaces</h2>
+                    <div class="mt-4 space-y-3 text-sm text-slate-500">
+                      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                        <p class="font-semibold text-slate-700">🌊 Calm Club</p>
+                        <p class="text-xs text-slate-400">1.2k members • Gentle check-ins</p>
                       </div>
-                    <div id="messages-list" class="mt-4 space-y-3 text-sm text-slate-500">
-                      <p>Messages will appear here once you select a conversation.</p>
+                      <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                        <p class="font-semibold text-slate-700">💡 Creative Burst</p>
+                        <p class="text-xs text-slate-400">940 members • Motivation boosts</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <h2 class="text-lg font-semibold">Recent Emotions</h2>
-              <div id="emotions-list" class="mt-4 grid gap-4 md:grid-cols-3 text-sm text-slate-500">
-                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent emotions.</div>
+            <section data-page-panel="friends" class="hidden space-y-6">
+              <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                <h2 class="text-lg font-semibold">Your Friends</h2>
+                <ul id="friends-list" class="mt-4 space-y-3 text-sm text-slate-500">
+                  <li>Sign in to view friends.</li>
+                </ul>
               </div>
-            </div>
-
-            <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <div class="flex items-center justify-between">
-                <div>
-                  <h2 class="text-lg font-semibold">Your Profile</h2>
-                  <p class="text-sm text-slate-500">Make sure your TapMood profile is up to date.</p>
-                </div>
-                <button id="sign-out" class="hidden rounded-full bg-slate-100 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-slate-600 transition hover:bg-slate-200">Sign Out</button>
-              </div>
-              <div id="profile-card" class="mt-4 flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500">
-                <div class="h-12 w-12 rounded-full bg-slate-200"></div>
-                <div>
-                  <p class="font-semibold">Not signed in</p>
-                  <p>Sign in to load your profile.</p>
+              <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                <h2 class="text-lg font-semibold">Suggested Connections</h2>
+                <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p class="font-semibold text-slate-700">Samira V.</p>
+                    <p class="text-xs text-slate-400">Mood twin • 4 mutual friends</p>
+                  </div>
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p class="font-semibold text-slate-700">Miles G.</p>
+                    <p class="text-xs text-slate-400">Music lover • 3 mutual friends</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
+
+            <section data-page-panel="messages" class="hidden">
+              <div class="grid gap-6 lg:grid-cols-[1fr_1.6fr]">
+                <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <h2 class="text-lg font-semibold">Conversations</h2>
+                  <ul id="conversation-list" class="mt-4 space-y-2 text-sm text-slate-500">
+                    <li>Sign in to view conversations.</li>
+                  </ul>
+                </div>
+                <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <div class="flex items-center justify-between">
+                    <h3 id="conversation-title" class="text-sm font-semibold text-slate-700">Messages</h3>
+                    <span id="conversation-subtitle" class="text-xs text-slate-400">No conversation selected</span>
+                  </div>
+                  <div id="messages-list" class="mt-4 space-y-3 text-sm text-slate-500">
+                    <p>Messages will appear here once you select a conversation.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section data-page-panel="explore" class="hidden space-y-6">
+              <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                <h2 class="text-lg font-semibold">Explore moods</h2>
+                <div class="mt-4 grid gap-4 md:grid-cols-3">
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p class="text-xl">🎨</p>
+                    <p class="mt-2 font-semibold text-slate-700">Creative sparks</p>
+                    <p class="text-xs text-slate-400">Discover the most shared creative boosts.</p>
+                  </div>
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p class="text-xl">🏃‍♀️</p>
+                    <p class="mt-2 font-semibold text-slate-700">Energy rush</p>
+                    <p class="text-xs text-slate-400">High-energy check-ins from the community.</p>
+                  </div>
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p class="text-xl">🧘</p>
+                    <p class="mt-2 font-semibold text-slate-700">Peaceful flow</p>
+                    <p class="text-xs text-slate-400">Slow down with calm moments.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section data-page-panel="notifications" class="hidden space-y-6">
+              <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                <h2 class="text-lg font-semibold">Notifications</h2>
+                <div class="mt-4 space-y-3 text-sm text-slate-500">
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">💬 Jamie replied to your mood check-in.</div>
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">🤝 You have 3 new friend requests.</div>
+                  <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">✨ Calm Club shared a new group prompt.</div>
+                </div>
+              </div>
+            </section>
+
+            <section data-page-panel="profile" class="hidden space-y-6">
+              <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2 class="text-lg font-semibold">Your Profile</h2>
+                    <p class="text-sm text-slate-500">Make sure your TapMood profile is up to date.</p>
+                  </div>
+                  <button id="sign-out" class="rounded-full bg-slate-100 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-slate-600 transition hover:bg-slate-200">Sign Out</button>
+                </div>
+                <div id="profile-card" class="mt-4 flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500">
+                  <div class="h-12 w-12 rounded-full bg-slate-200"></div>
+                  <div>
+                    <p class="font-semibold">Not signed in</p>
+                    <p>Sign in to load your profile.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
+
+          <aside class="hidden xl:block space-y-6">
+            <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+              <h2 class="text-lg font-semibold">Live Mood Pulse</h2>
+              <div class="mt-4 space-y-3 text-sm text-slate-500">
+                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">😊 42% feeling upbeat</div>
+                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">😌 28% calm & grounded</div>
+                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">🔥 15% motivated</div>
+              </div>
+            </div>
+            <div class="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+              <h2 class="text-lg font-semibold">Quick Actions</h2>
+              <div class="mt-4 space-y-3 text-sm text-slate-500">
+                <button class="w-full rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white">Start a group</button>
+                <button class="w-full rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-slate-500">Share mood</button>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
     </main>
-
-    <div data-include="partials/footer.html"></div>
 
     <script>
       window.tapmoodConfig = {

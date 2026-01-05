@@ -94,6 +94,40 @@ html.page-ready .fade-up {
 }
 
 /* =========================================
+   TAPMOOD SOCIAL ANIMATION
+   ========================================= */
+
+.emoji-sky {
+  background: radial-gradient(circle at 10% 20%, rgba(45, 212, 191, 0.18), transparent 45%),
+    radial-gradient(circle at 90% 10%, rgba(129, 140, 248, 0.2), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(253, 186, 116, 0.18), transparent 45%);
+}
+
+.emoji-float {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  font-size: var(--size, 2.4rem);
+  filter: drop-shadow(0 15px 35px rgba(15, 23, 42, 0.2));
+  opacity: 0.85;
+  animation: floatEmoji 16s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes floatEmoji {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate3d(0, -30px, 0) rotate(8deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-4deg);
+  }
+}
+
+/* =========================================
    NAVIGATION (UPDATED FOR PERFECT SWITCH)
    ========================================= */
 

@@ -3,13 +3,19 @@ const supabaseUrl = config.supabaseUrl || 'https://lxylwexfjhtzvepwvjal.supabase
 const supabaseAnonKey = config.supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4eWx3ZXhmamh0enZlcHd2amFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwNTY3ODEsImV4cCI6MjA4MjYzMjc4MX0.78Jc7gu59eU5XOgZiVpkn4dq1GrX3uKCEsV_ffXCU3E';
 
 const elements = {
+  guestView: document.getElementById('guest-view'),
+  appView: document.getElementById('app-view'),
   configCard: document.getElementById('config-card'),
   configStatus: document.getElementById('config-status'),
   connectionStatus: document.getElementById('connection-status'),
+  connectionStatusApp: document.getElementById('connection-status-app'),
   authCard: document.getElementById('auth-card'),
   authForm: document.getElementById('auth-form'),
+  authUsernameField: document.getElementById('auth-username-field'),
+  authUsername: document.getElementById('auth-username'),
   authEmail: document.getElementById('auth-email'),
   authPassword: document.getElementById('auth-password'),
+  authHelper: document.getElementById('auth-helper'),
   authMessage: document.getElementById('auth-message'),
   authSubmit: document.getElementById('auth-submit'),
   authSignin: document.getElementById('auth-signin'),
@@ -19,6 +25,7 @@ const elements = {
   messagesCount: document.getElementById('messages-count'),
   emotionsCount: document.getElementById('emotions-count'),
   friendsList: document.getElementById('friends-list'),
+  friendsPreview: document.getElementById('friends-preview'),
   conversationList: document.getElementById('conversation-list'),
   messagesList: document.getElementById('messages-list'),
   conversationTitle: document.getElementById('conversation-title'),
@@ -27,6 +34,8 @@ const elements = {
   profileCard: document.getElementById('profile-card'),
   signOut: document.getElementById('sign-out'),
   refreshDashboard: document.getElementById('refresh-dashboard'),
+  pageTabs: document.querySelectorAll('[data-page]'),
+  pagePanels: document.querySelectorAll('[data-page-panel]'),
 };
 
 const state = {
@@ -38,8 +47,14 @@ const state = {
 };
 
 function setConnectionStatus(text, tone = 'text-slate-400') {
-  elements.connectionStatus.textContent = text;
-  elements.connectionStatus.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
+  if (elements.connectionStatus) {
+    elements.connectionStatus.textContent = text;
+    elements.connectionStatus.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
+  }
+  if (elements.connectionStatusApp) {
+    elements.connectionStatusApp.textContent = text;
+    elements.connectionStatusApp.className = `rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-widest ${tone}`;
+  }
 }
 
 function setConfigStatus(text, tone = 'text-emerald-700', background = 'bg-emerald-100') {
@@ -61,13 +76,51 @@ function setAuthMode(mode) {
     elements.authSignup.classList.remove('bg-slate-900', 'text-white');
     elements.authSignup.classList.add('border', 'border-slate-200', 'text-slate-500');
     elements.authSubmit.textContent = 'Sign In';
+    elements.authUsernameField.classList.add('hidden');
+    elements.authHelper.textContent = 'Use the same TapMood credentials you already have on mobile.';
   } else {
     elements.authSignup.classList.add('bg-slate-900', 'text-white');
     elements.authSignup.classList.remove('border', 'border-slate-200', 'text-slate-500');
     elements.authSignin.classList.remove('bg-slate-900', 'text-white');
     elements.authSignin.classList.add('border', 'border-slate-200', 'text-slate-500');
     elements.authSubmit.textContent = 'Sign Up';
+    elements.authUsernameField.classList.remove('hidden');
+    elements.authHelper.textContent = 'Pick a unique username so friends can find you fast.';
   }
+}
+
+function showGuestView() {
+  if (elements.guestView) {
+    elements.guestView.classList.remove('hidden');
+  }
+  if (elements.appView) {
+    elements.appView.classList.add('hidden');
+  }
+}
+
+function showAppView() {
+  if (elements.guestView) {
+    elements.guestView.classList.add('hidden');
+  }
+  if (elements.appView) {
+    elements.appView.classList.remove('hidden');
+  }
+}
+
+function setActivePage(page) {
+  elements.pageTabs.forEach((tab) => {
+    const isActive = tab.dataset.page === page;
+    tab.classList.toggle('bg-slate-900', isActive);
+    tab.classList.toggle('text-white', isActive);
+    tab.classList.toggle('border', !isActive);
+    tab.classList.toggle('border-slate-200', !isActive);
+    tab.classList.toggle('text-slate-600', !isActive);
+    tab.classList.toggle('bg-white', !isActive);
+  });
+
+  elements.pagePanels.forEach((panel) => {
+    panel.classList.toggle('hidden', panel.dataset.pagePanel !== page);
+  });
 }
 
 function renderProfile(profile, user) {
@@ -98,26 +151,34 @@ function renderProfile(profile, user) {
 }
 
 function renderFriends(friends) {
-  elements.friendsList.innerHTML = '';
-  if (!friends.length) {
-    elements.friendsList.innerHTML = '<li>No friends found yet.</li>';
-    return;
-  }
+  const lists = [
+    { element: elements.friendsList, empty: 'No friends found yet.' },
+    { element: elements.friendsPreview, empty: 'No friends online yet.' },
+  ];
 
-  friends.forEach((friend) => {
-    const avatar = friend.avatar_url
-      ? `<img src="${friend.avatar_url}" alt="${friend.name}" class="h-8 w-8 rounded-full object-cover" />`
-      : `<div class="h-8 w-8 rounded-full bg-slate-200"></div>`;
-    const item = document.createElement('li');
-    item.className = 'flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2';
-    item.innerHTML = `
-      ${avatar}
-      <div>
-        <p class="font-semibold text-slate-700">${friend.name}</p>
-        <p class="text-xs text-slate-400">${friend.statusLabel}</p>
-      </div>
-    `;
-    elements.friendsList.appendChild(item);
+  lists.forEach(({ element, empty }) => {
+    if (!element) return;
+    element.innerHTML = '';
+    if (!friends.length) {
+      element.innerHTML = `<li>${empty}</li>`;
+      return;
+    }
+
+    friends.forEach((friend) => {
+      const avatar = friend.avatar_url
+        ? `<img src="${friend.avatar_url}" alt="${friend.name}" class="h-8 w-8 rounded-full object-cover" />`
+        : `<div class="h-8 w-8 rounded-full bg-slate-200"></div>`;
+      const item = document.createElement('li');
+      item.className = 'flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2';
+      item.innerHTML = `
+        ${avatar}
+        <div>
+          <p class="font-semibold text-slate-700">${friend.name}</p>
+          <p class="text-xs text-slate-400">${friend.statusLabel}</p>
+        </div>
+      `;
+      element.appendChild(item);
+    });
   });
 }
 
@@ -304,7 +365,9 @@ async function loadDashboard() {
   renderConversations(conversations);
   renderEmotions(emotions);
 
-  elements.signOut.classList.remove('hidden');
+  if (elements.signOut) {
+    elements.signOut.classList.remove('hidden');
+  }
 
   let messagesCount = 0;
   if (conversations.length) {
@@ -356,6 +419,7 @@ async function handleAuthSubmit(event) {
   event.preventDefault();
   if (!state.supabase) return;
 
+  const username = elements.authUsername?.value.trim();
   const email = elements.authEmail.value.trim();
   const password = elements.authPassword.value;
 
@@ -364,19 +428,31 @@ async function handleAuthSubmit(event) {
     return;
   }
 
+  if (state.authMode === 'signup' && !username) {
+    setAuthMessage('Please choose a username for your profile.', 'text-amber-600');
+    return;
+  }
+
   setAuthMessage('Working...', 'text-slate-500');
 
   const action = state.authMode === 'signin'
     ? state.supabase.auth.signInWithPassword({ email, password })
-    : state.supabase.auth.signUp({ email, password });
+    : state.supabase.auth.signUp({ email, password, options: { data: { username } } });
 
-  const { error } = await action;
+  const { data, error } = await action;
   if (error) {
     setAuthMessage(error.message, 'text-rose-600');
     return;
   }
 
   if (state.authMode === 'signup') {
+    if (data?.user && username) {
+      await state.supabase.from('profiles').upsert({
+        id: data.user.id,
+        username,
+        display_name: username,
+      });
+    }
     setAuthMessage('Account created! Check your email to confirm your sign up.', 'text-emerald-600');
   }
 }
@@ -389,14 +465,21 @@ async function handleSignOut() {
 
 function resetDashboard() {
   setCounts({});
-  elements.friendsList.innerHTML = '<li>Sign in to view friends.</li>';
+  if (elements.friendsList) {
+    elements.friendsList.innerHTML = '<li>Sign in to view friends.</li>';
+  }
+  if (elements.friendsPreview) {
+    elements.friendsPreview.innerHTML = '<li>Sign in to view friends.</li>';
+  }
   elements.conversationList.innerHTML = '<li>Sign in to view conversations.</li>';
   elements.messagesList.innerHTML = '<p>Messages will appear here once you select a conversation.</p>';
   elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent emotions.</div>';
   elements.conversationTitle.textContent = 'Messages';
   elements.conversationSubtitle.textContent = 'No conversation selected';
   renderProfile(null, null);
-  elements.signOut.classList.add('hidden');
+  if (elements.signOut) {
+    elements.signOut.classList.add('hidden');
+  }
 }
 
 async function handleRefresh() {
@@ -408,9 +491,18 @@ function attachListeners() {
   elements.authSignin.addEventListener('click', () => setAuthMode('signin'));
   elements.authSignup.addEventListener('click', () => setAuthMode('signup'));
   elements.authForm.addEventListener('submit', handleAuthSubmit);
-  elements.signOut.addEventListener('click', handleSignOut);
-  elements.refreshDashboard.addEventListener('click', handleRefresh);
-  elements.conversationList.addEventListener('click', handleConversationClick);
+  if (elements.signOut) {
+    elements.signOut.addEventListener('click', handleSignOut);
+  }
+  if (elements.refreshDashboard) {
+    elements.refreshDashboard.addEventListener('click', handleRefresh);
+  }
+  if (elements.conversationList) {
+    elements.conversationList.addEventListener('click', handleConversationClick);
+  }
+  elements.pageTabs.forEach((tab) => {
+    tab.addEventListener('click', () => setActivePage(tab.dataset.page));
+  });
 }
 
 async function initializeSupabase() {
@@ -418,6 +510,7 @@ async function initializeSupabase() {
     setConfigStatus('Missing key', 'text-amber-700', 'bg-amber-100');
     setConnectionStatus('Needs key', 'text-amber-700 bg-amber-100');
     resetDashboard();
+    showGuestView();
     return;
   }
 
@@ -434,22 +527,27 @@ async function initializeSupabase() {
 
   if (state.session?.user) {
     setAuthMessage(`Welcome back, ${state.session.user.email}`, 'text-emerald-600');
+    showAppView();
     await loadDashboard();
   } else {
     setAuthMessage('Sign in to view your TapMood data.', 'text-slate-500');
     resetDashboard();
+    showGuestView();
   }
 
   state.supabase.auth.onAuthStateChange(async (_event, session) => {
     state.session = session;
     if (session?.user) {
+      showAppView();
       await loadDashboard();
     } else {
       resetDashboard();
+      showGuestView();
     }
   });
 }
 
 setAuthMode('signin');
+setActivePage('feed');
 attachListeners();
 initializeSupabase();
