@@ -34,10 +34,12 @@ const elements = {
   messageText: document.getElementById('message-text'),
   messageStatus: document.getElementById('message-status'),
   messagesList: document.getElementById('messages-list'),
+  messagesInbox: document.getElementById('messages-inbox'),
   friendsList: document.getElementById('friends-list'),
   friendForm: document.getElementById('friend-form'),
   friendUsername: document.getElementById('friend-username'),
   friendStatus: document.getElementById('friend-status'),
+  friendSuggestions: document.getElementById('friend-suggestions'),
   profileCard: document.getElementById('profile-card'),
   profileForm: document.getElementById('profile-form'),
   profileDisplayName: document.getElementById('profile-display-name'),
@@ -45,6 +47,12 @@ const elements = {
   profileAvatar: document.getElementById('profile-avatar'),
   profileBio: document.getElementById('profile-bio'),
   profileStatus: document.getElementById('profile-status'),
+  activityFeed: document.getElementById('activity-feed'),
+  navMessagesCount: document.getElementById('nav-messages-count'),
+  navFriendsCount: document.getElementById('nav-friends-count'),
+  navButtons: Array.from(document.querySelectorAll('.tapmood-nav-item')),
+  pageToggleButtons: Array.from(document.querySelectorAll('[data-page-target]')),
+  pageSections: Array.from(document.querySelectorAll('[data-page]')),
 };
 
 const state = {
@@ -52,6 +60,7 @@ const state = {
   authMode: 'signin',
   session: null,
   profile: null,
+  activePage: 'home',
 };
 
 function setConnectionStatus(text, tone = 'text-slate-400 bg-slate-100') {
@@ -112,6 +121,22 @@ function setCounts({ friends = 0, messages = 0, emotions = 0 }) {
   if (elements.friendsCount) elements.friendsCount.textContent = friends;
   if (elements.messagesCount) elements.messagesCount.textContent = messages;
   if (elements.emotionsCount) elements.emotionsCount.textContent = emotions;
+  if (elements.navFriendsCount) elements.navFriendsCount.textContent = friends;
+  if (elements.navMessagesCount) elements.navMessagesCount.textContent = messages;
+}
+
+function setActivePage(page) {
+  state.activePage = page;
+  elements.pageSections.forEach((section) => {
+    section.classList.toggle('hidden', section.dataset.page !== page);
+  });
+
+  elements.navButtons.forEach((button) => {
+    const isActive = button.dataset.pageTarget === page;
+    button.className = isActive
+      ? 'tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-900 px-4 py-3 text-left text-sm font-semibold text-white'
+      : 'tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-100';
+  });
 }
 
 function renderProfile(profile, user) {
@@ -186,6 +211,49 @@ function renderMessages(messages) {
   });
 }
 
+function renderMessageInbox(messages, username) {
+  if (!elements.messagesInbox) return;
+  elements.messagesInbox.innerHTML = '';
+  if (!messages.length) {
+    elements.messagesInbox.innerHTML = '<p>No conversations yet.</p>';
+    return;
+  }
+
+  const threads = {};
+  messages.forEach((message) => {
+    const sender = message.sender_code || '';
+    const recipient = message.recipient_code || '';
+    const otherUser = sender === username ? recipient : sender || recipient;
+    if (!otherUser) return;
+    if (!threads[otherUser] || new Date(message.timestamp) > new Date(threads[otherUser].timestamp)) {
+      threads[otherUser] = message;
+    }
+  });
+
+  Object.entries(threads)
+    .sort(([, a], [, b]) => new Date(b.timestamp) - new Date(a.timestamp))
+    .forEach(([otherUser, message]) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'flex w-full flex-col rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2 text-left transition hover:border-slate-200 hover:bg-white';
+      button.innerHTML = `
+        <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-slate-400">
+          <span>${otherUser}</span>
+          <span>${new Date(message.timestamp).toLocaleDateString()}</span>
+        </div>
+        <p class="mt-1 text-sm font-semibold text-slate-700">${message.text || 'New message'}</p>
+      `;
+      button.addEventListener('click', async () => {
+        if (elements.messageRecipient) {
+          elements.messageRecipient.value = otherUser;
+        }
+        const threadMessages = await loadMessages(username, otherUser);
+        renderMessages(threadMessages);
+      });
+      elements.messagesInbox.appendChild(button);
+    });
+}
+
 function renderEmotions(emotions) {
   elements.emotionsList.innerHTML = '';
   if (!emotions.length) {
@@ -204,6 +272,82 @@ function renderEmotions(emotions) {
     `;
     elements.emotionsList.appendChild(card);
   });
+}
+
+function renderActivityFeed({ friends = [], emotions = [], messages = [] }) {
+  if (!elements.activityFeed) return;
+  elements.activityFeed.innerHTML = '';
+  const items = [];
+
+  emotions.slice(0, 3).forEach((emotion) => {
+    items.push({
+      type: 'mood',
+      title: `${emotion.label || 'Mood update'} • ${emotion.emoji || '✨'}`,
+      subtitle: emotion.note || 'Shared a mood update.',
+      timestamp: emotion.created_at,
+    });
+  });
+
+  messages.slice(0, 3).forEach((message) => {
+    items.push({
+      type: 'message',
+      title: `Message to @${message.recipient_code || 'friend'}`,
+      subtitle: message.text || 'Sent a new message.',
+      timestamp: message.timestamp,
+    });
+  });
+
+  friends.slice(0, 2).forEach((friend) => {
+    items.push({
+      type: 'friend',
+      title: `Connected with ${friend.name}`,
+      subtitle: 'Say hello and share a mood.',
+      timestamp: new Date().toISOString(),
+    });
+  });
+
+  if (!items.length) {
+    elements.activityFeed.innerHTML = '<p>No activity yet. Share a mood or send a message to get started.</p>';
+    return;
+  }
+
+  items
+    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+    .forEach((item) => {
+      const row = document.createElement('div');
+      row.className = 'rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3';
+      row.innerHTML = `
+        <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">${item.type}</p>
+        <p class="mt-1 text-sm font-semibold text-slate-700">${item.title}</p>
+        <p class="text-xs text-slate-500">${item.subtitle}</p>
+      `;
+      elements.activityFeed.appendChild(row);
+    });
+}
+
+function renderFriendSuggestions(profileUsername) {
+  if (!elements.friendSuggestions) return;
+  const suggestions = [
+    { name: 'Avery Moon', username: 'averym', mood: 'Late-night journaling' },
+    { name: 'Jordan Reed', username: 'jordr', mood: 'Sunny day walks' },
+    { name: 'Harper Singh', username: 'harpers', mood: 'Focus sprints' },
+    { name: 'Maya Chen', username: 'mayac', mood: 'Cozy tea chats' },
+  ];
+
+  elements.friendSuggestions.innerHTML = '';
+  suggestions
+    .filter((suggestion) => suggestion.username !== profileUsername)
+    .forEach((suggestion) => {
+      const card = document.createElement('div');
+      card.className = 'rounded-2xl border border-slate-100 bg-slate-50 p-4';
+      card.innerHTML = `
+        <p class="text-sm font-semibold text-slate-700">${suggestion.name}</p>
+        <p class="text-xs text-slate-400">@${suggestion.username}</p>
+        <p class="mt-2 text-xs text-slate-500">${suggestion.mood}</p>
+        <button type="button" class="mt-3 rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Connect</button>
+      `;
+      elements.friendSuggestions.appendChild(card);
+    });
 }
 
 async function ensureProfile(user) {
@@ -328,6 +472,9 @@ async function loadDashboard() {
   renderFriends(friends);
   renderEmotions(emotions);
   renderMessages(messages);
+  renderMessageInbox(messages, profile?.username);
+  renderActivityFeed({ friends, emotions, messages });
+  renderFriendSuggestions(profile?.username);
 
   setCounts({
     friends: friends.length,
@@ -394,9 +541,16 @@ function resetDashboard() {
   if (elements.messagesList) {
     elements.messagesList.innerHTML = '<p>Sign in to view messages.</p>';
   }
+  if (elements.messagesInbox) {
+    elements.messagesInbox.innerHTML = '<p>Sign in to view messages.</p>';
+  }
   if (elements.emotionsList) {
     elements.emotionsList.innerHTML = '<div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent moods.</div>';
   }
+  if (elements.activityFeed) {
+    elements.activityFeed.innerHTML = '<p>Sign in to see your live activity feed.</p>';
+  }
+  renderFriendSuggestions();
   renderProfile(null, null);
   setStatusMessage(elements.moodStatus, '');
   setStatusMessage(elements.messageStatus, '');
@@ -472,6 +626,7 @@ async function handleMessageSubmit(event) {
   setStatusMessage(elements.messageStatus, 'Message sent.', 'text-emerald-600');
   const messages = await loadMessages(state.profile.username, recipient);
   renderMessages(messages);
+  renderMessageInbox(messages, state.profile.username);
   setCounts({
     friends: Number(elements.friendsCount.textContent) || 0,
     messages: messages.length,
@@ -573,6 +728,14 @@ function attachListeners() {
   if (elements.profileForm) {
     elements.profileForm.addEventListener('submit', handleProfileSubmit);
   }
+  elements.pageToggleButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const pageTarget = button.dataset.pageTarget;
+      if (pageTarget) {
+        setActivePage(pageTarget);
+      }
+    });
+  });
 }
 
 async function initializeSupabase() {
@@ -595,6 +758,7 @@ async function initializeSupabase() {
   if (state.session?.user) {
     setAuthMessage(`Welcome back, ${state.session.user.email}`, 'text-emerald-600');
     showAppView();
+    setActivePage(state.activePage);
     await loadDashboard();
   } else {
     setAuthMessage('Sign in to view your TapMood data.', 'text-slate-500');
@@ -606,6 +770,7 @@ async function initializeSupabase() {
     state.session = session;
     if (session?.user) {
       showAppView();
+      setActivePage(state.activePage);
       await loadDashboard();
     } else {
       resetDashboard();
@@ -615,5 +780,7 @@ async function initializeSupabase() {
 }
 
 setAuthMode('signin');
+setActivePage(state.activePage);
+renderFriendSuggestions();
 attachListeners();
 initializeSupabase();

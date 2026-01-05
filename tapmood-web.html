@@ -81,132 +81,200 @@
           </div>
         </header>
 
-        <div class="mx-auto grid max-w-6xl gap-6 px-6 pb-20 pt-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div class="space-y-6">
-            <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <div class="flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <h2 class="text-lg font-semibold">Your TapMood snapshot</h2>
-                  <p class="text-sm text-slate-500">Everything you need in one simple dashboard.</p>
-                </div>
-                <button id="refresh-dashboard" class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-500 transition hover:bg-slate-100">Refresh</button>
+        <div class="mx-auto max-w-6xl px-6 pb-20 pt-8">
+          <div class="grid gap-6 lg:grid-cols-[240px_1fr]">
+            <aside class="h-fit rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Navigation</p>
+              <nav class="mt-4 space-y-2">
+                <button data-page-target="home" class="tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-slate-900 px-4 py-3 text-left text-sm font-semibold text-white">
+                  Home
+                  <span class="rounded-full bg-white/10 px-2 py-0.5 text-xs font-semibold tracking-widest text-white">Live</span>
+                </button>
+                <button data-page-target="messages" class="tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-100">
+                  Messages
+                  <span id="nav-messages-count" class="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-500">0</span>
+                </button>
+                <button data-page-target="friends" class="tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-100">
+                  Friends
+                  <span id="nav-friends-count" class="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-500">0</span>
+                </button>
+                <button data-page-target="profile" class="tapmood-nav-item flex w-full items-center justify-between rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-100">
+                  Profile
+                </button>
+              </nav>
+              <div class="mt-6 rounded-2xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500">
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Quick actions</p>
+                <button data-page-target="home" class="mt-3 w-full rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">New mood</button>
+                <button data-page-target="messages" class="mt-2 w-full rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-slate-500">New message</button>
               </div>
-              <div class="mt-4 grid gap-4 sm:grid-cols-3">
-                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Friends</p>
-                  <p id="friends-count" class="mt-2 text-3xl font-semibold">0</p>
-                </div>
-                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Messages</p>
-                  <p id="messages-count" class="mt-2 text-3xl font-semibold">0</p>
-                </div>
-                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Moods</p>
-                  <p id="emotions-count" class="mt-2 text-3xl font-semibold">0</p>
-                </div>
-              </div>
-            </section>
+            </aside>
 
-            <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <h2 class="text-lg font-semibold">Send a mood update</h2>
-              <p class="text-sm text-slate-500">Share how you are feeling right now.</p>
-              <form id="mood-form" class="mt-4 grid gap-3 sm:grid-cols-2">
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Emoji</label>
-                  <input id="mood-emoji" type="text" maxlength="8" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="😊" />
-                </div>
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Mood label</label>
-                  <input id="mood-label" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="Happy, calm, focused..." />
-                </div>
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Intensity (1-5)</label>
-                  <input id="mood-intensity" type="number" min="1" max="5" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="3" />
-                </div>
-                <div class="sm:col-span-2">
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Note</label>
-                  <textarea id="mood-note" rows="3" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="Anything you want friends to know?"></textarea>
-                </div>
-                <div class="sm:col-span-2 flex flex-wrap items-center justify-between gap-3">
-                  <p id="mood-status" class="text-sm text-slate-500"></p>
-                  <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Send Mood</button>
-                </div>
-              </form>
-              <div id="emotions-list" class="mt-6 grid gap-4 md:grid-cols-3 text-sm text-slate-500">
-                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent moods.</div>
-              </div>
-            </section>
+            <div class="space-y-6">
+              <section id="page-home" data-page="home" class="tapmood-page space-y-6">
+                <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                      <h2 class="text-lg font-semibold">Your TapMood snapshot</h2>
+                      <p class="text-sm text-slate-500">Everything you need in one simple dashboard.</p>
+                    </div>
+                    <button id="refresh-dashboard" class="rounded-full border border-slate-200 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-500 transition hover:bg-slate-100">Refresh</button>
+                  </div>
+                  <div class="mt-4 grid gap-4 sm:grid-cols-3">
+                    <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Friends</p>
+                      <p id="friends-count" class="mt-2 text-3xl font-semibold">0</p>
+                    </div>
+                    <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Messages</p>
+                      <p id="messages-count" class="mt-2 text-3xl font-semibold">0</p>
+                    </div>
+                    <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Moods</p>
+                      <p id="emotions-count" class="mt-2 text-3xl font-semibold">0</p>
+                    </div>
+                  </div>
+                </section>
 
-            <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <h2 class="text-lg font-semibold">Messages</h2>
-              <p class="text-sm text-slate-500">Send a direct note to a friend by their username.</p>
-              <form id="message-form" class="mt-4 grid gap-3 sm:grid-cols-2">
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Recipient username</label>
-                  <input id="message-recipient" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="friendname" />
-                </div>
-                <div class="sm:col-span-2">
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Message</label>
-                  <textarea id="message-text" rows="3" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="Say hello 👋"></textarea>
-                </div>
-                <div class="sm:col-span-2 flex flex-wrap items-center justify-between gap-3">
-                  <p id="message-status" class="text-sm text-slate-500"></p>
-                  <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Send Message</button>
-                </div>
-              </form>
-              <div id="messages-list" class="mt-6 space-y-3 text-sm text-slate-500">
-                <p>Sign in to view messages.</p>
-              </div>
-            </section>
-          </div>
+                <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <h2 class="text-lg font-semibold">Send a mood update</h2>
+                  <p class="text-sm text-slate-500">Share how you are feeling right now.</p>
+                  <form id="mood-form" class="mt-4 grid gap-3 sm:grid-cols-2">
+                    <div>
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Emoji</label>
+                      <input id="mood-emoji" type="text" maxlength="8" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="😊" />
+                    </div>
+                    <div>
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Mood label</label>
+                      <input id="mood-label" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="Happy, calm, focused..." />
+                    </div>
+                    <div>
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Intensity (1-5)</label>
+                      <input id="mood-intensity" type="number" min="1" max="5" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="3" />
+                    </div>
+                    <div class="sm:col-span-2">
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Note</label>
+                      <textarea id="mood-note" rows="3" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="Anything you want friends to know?"></textarea>
+                    </div>
+                    <div class="sm:col-span-2 flex flex-wrap items-center justify-between gap-3">
+                      <p id="mood-status" class="text-sm text-slate-500"></p>
+                      <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Send Mood</button>
+                    </div>
+                  </form>
+                  <div id="emotions-list" class="mt-6 grid gap-4 md:grid-cols-3 text-sm text-slate-500">
+                    <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">Sign in to view recent moods.</div>
+                  </div>
+                </section>
 
-          <div class="space-y-6">
-            <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <h2 class="text-lg font-semibold">Your profile</h2>
-              <p class="text-sm text-slate-500">Keep your public details fresh.</p>
-              <div id="profile-card" class="mt-4 flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500">
-                <div class="h-12 w-12 rounded-full bg-slate-200"></div>
-                <div>
-                  <p class="font-semibold">Not signed in</p>
-                  <p>Sign in to load your profile.</p>
-                </div>
-              </div>
-              <form id="profile-form" class="mt-4 space-y-3">
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Display name</label>
-                  <input id="profile-display-name" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
-                </div>
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Username</label>
-                  <input id="profile-username" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
-                </div>
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Avatar URL</label>
-                  <input id="profile-avatar" type="url" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
-                </div>
-                <div>
-                  <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Bio</label>
-                  <textarea id="profile-bio" rows="3" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm"></textarea>
-                </div>
+                <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <h2 class="text-lg font-semibold">Activity feed</h2>
+                  <p class="text-sm text-slate-500">Latest updates from your TapMood circle.</p>
+                  <div id="activity-feed" class="mt-4 space-y-3 text-sm text-slate-500">
+                    <p>Sign in to see your live activity feed.</p>
+                  </div>
+                </section>
+              </section>
+
+              <section id="page-messages" data-page="messages" class="tapmood-page hidden space-y-6">
                 <div class="flex flex-wrap items-center justify-between gap-3">
-                  <p id="profile-status" class="text-sm text-slate-500"></p>
-                  <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Save Profile</button>
+                  <div>
+                    <h2 class="text-xl font-semibold">Messages</h2>
+                    <p class="text-sm text-slate-500">Keep up with friends across your TapMood inbox.</p>
+                  </div>
                 </div>
-              </form>
-            </section>
+                <div class="grid gap-6 lg:grid-cols-[0.45fr_0.55fr]">
+                  <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                    <h3 class="text-lg font-semibold">Inbox</h3>
+                    <p class="text-sm text-slate-500">Recent threads and quick replies.</p>
+                    <div id="messages-inbox" class="mt-4 space-y-3 text-sm text-slate-500">
+                      <p>Sign in to view messages.</p>
+                    </div>
+                  </section>
+                  <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                    <h3 class="text-lg font-semibold">Send a message</h3>
+                    <p class="text-sm text-slate-500">Send a direct note to a friend by their username.</p>
+                    <form id="message-form" class="mt-4 grid gap-3 sm:grid-cols-2">
+                      <div>
+                        <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Recipient username</label>
+                        <input id="message-recipient" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="friendname" />
+                      </div>
+                      <div class="sm:col-span-2">
+                        <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Message</label>
+                        <textarea id="message-text" rows="3" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="Say hello 👋"></textarea>
+                      </div>
+                      <div class="sm:col-span-2 flex flex-wrap items-center justify-between gap-3">
+                        <p id="message-status" class="text-sm text-slate-500"></p>
+                        <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Send Message</button>
+                      </div>
+                    </form>
+                    <div id="messages-list" class="mt-6 space-y-3 text-sm text-slate-500">
+                      <p>Sign in to view messages.</p>
+                    </div>
+                  </section>
+                </div>
+              </section>
 
-            <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-              <h2 class="text-lg font-semibold">Friends</h2>
-              <p class="text-sm text-slate-500">Add a new friend by username.</p>
-              <form id="friend-form" class="mt-4 flex flex-wrap items-center gap-3">
-                <input id="friend-username" type="text" class="flex-1 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="friendname" />
-                <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Add Friend</button>
-              </form>
-              <p id="friend-status" class="mt-3 text-sm text-slate-500"></p>
-              <ul id="friends-list" class="mt-4 space-y-3 text-sm text-slate-500">
-                <li>Sign in to view friends.</li>
-              </ul>
-            </section>
+              <section id="page-friends" data-page="friends" class="tapmood-page hidden space-y-6">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h2 class="text-xl font-semibold">Friends</h2>
+                    <p class="text-sm text-slate-500">Manage connections and discover new people.</p>
+                  </div>
+                </div>
+                <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <h3 class="text-lg font-semibold">Add new friend</h3>
+                  <p class="text-sm text-slate-500">Connect instantly by username.</p>
+                  <form id="friend-form" class="mt-4 flex flex-wrap items-center gap-3">
+                    <input id="friend-username" type="text" class="flex-1 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" placeholder="friendname" />
+                    <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Add Friend</button>
+                  </form>
+                  <p id="friend-status" class="mt-3 text-sm text-slate-500"></p>
+                  <ul id="friends-list" class="mt-4 space-y-3 text-sm text-slate-500">
+                    <li>Sign in to view friends.</li>
+                  </ul>
+                </section>
+                <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <h3 class="text-lg font-semibold">People you may know</h3>
+                  <p class="text-sm text-slate-500">Suggested profiles based on shared moods.</p>
+                  <div id="friend-suggestions" class="mt-4 grid gap-3 sm:grid-cols-2 text-sm text-slate-500"></div>
+                </section>
+              </section>
+
+              <section id="page-profile" data-page="profile" class="tapmood-page hidden space-y-6">
+                <section class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
+                  <h2 class="text-lg font-semibold">Your profile</h2>
+                  <p class="text-sm text-slate-500">Keep your public details fresh.</p>
+                  <div id="profile-card" class="mt-4 flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500">
+                    <div class="h-12 w-12 rounded-full bg-slate-200"></div>
+                    <div>
+                      <p class="font-semibold">Not signed in</p>
+                      <p>Sign in to load your profile.</p>
+                    </div>
+                  </div>
+                  <form id="profile-form" class="mt-4 space-y-3">
+                    <div>
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Display name</label>
+                      <input id="profile-display-name" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
+                    </div>
+                    <div>
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Username</label>
+                      <input id="profile-username" type="text" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
+                    </div>
+                    <div>
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Avatar URL</label>
+                      <input id="profile-avatar" type="url" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
+                    </div>
+                    <div>
+                      <label class="text-xs font-semibold uppercase tracking-widest text-slate-400">Bio</label>
+                      <textarea id="profile-bio" rows="3" class="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm"></textarea>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                      <p id="profile-status" class="text-sm text-slate-500"></p>
+                      <button type="submit" class="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white">Save Profile</button>
+                    </div>
+                  </form>
+                </section>
+              </section>
+            </div>
           </div>
         </div>
       </section>
