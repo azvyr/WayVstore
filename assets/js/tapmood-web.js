@@ -18,6 +18,10 @@ const elements = {
   authSignin: document.getElementById('auth-signin'),
   authSignup: document.getElementById('auth-signup'),
   signOut: document.getElementById('sign-out'),
+  notificationsToggle: document.getElementById('notifications-toggle'),
+  notificationsPanel: document.getElementById('notifications-panel'),
+  notificationsList: document.getElementById('notifications-list'),
+  notificationsBadge: document.getElementById('notifications-badge'),
   refreshDashboard: document.getElementById('refresh-dashboard'),
   friendsCount: document.getElementById('friends-count'),
   messagesCount: document.getElementById('messages-count'),
@@ -36,10 +40,11 @@ const elements = {
   messagesList: document.getElementById('messages-list'),
   messagesInbox: document.getElementById('messages-inbox'),
   friendsList: document.getElementById('friends-list'),
-  friendForm: document.getElementById('friend-form'),
-  friendUsername: document.getElementById('friend-username'),
+  friendSearch: document.getElementById('friend-search'),
+  friendSearchResults: document.getElementById('friend-search-results'),
   friendStatus: document.getElementById('friend-status'),
-  friendSuggestions: document.getElementById('friend-suggestions'),
+  friendRequests: document.getElementById('friend-requests'),
+  friendDiscover: document.getElementById('friend-discover'),
   profileCard: document.getElementById('profile-card'),
   profileForm: document.getElementById('profile-form'),
   profileDisplayName: document.getElementById('profile-display-name'),
@@ -61,6 +66,8 @@ const state = {
   session: null,
   profile: null,
   activePage: 'home',
+  notifications: [],
+  notificationChannel: null,
 };
 
 function setConnectionStatus(text, tone = 'text-slate-400 bg-slate-100') {
@@ -189,6 +196,59 @@ function renderFriends(friends) {
     `;
     elements.friendsList.appendChild(item);
   });
+}
+
+function renderFriendRequests(requests) {
+  if (!elements.friendRequests) return;
+  elements.friendRequests.innerHTML = '';
+  if (!requests.length) {
+    elements.friendRequests.innerHTML = '<p>No pending friend requests.</p>';
+    return;
+  }
+
+  requests.forEach((request) => {
+    const avatar = request.avatar_url
+      ? `<img src="${request.avatar_url}" alt="${request.name}" class="h-9 w-9 rounded-full object-cover" />`
+      : `<div class="h-9 w-9 rounded-full bg-slate-200"></div>`;
+    const row = document.createElement('div');
+    row.className = 'flex items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2';
+    row.innerHTML = `
+      <div class="flex items-center gap-3">
+        ${avatar}
+        <div>
+          <p class="text-sm font-semibold text-slate-700">${request.name}</p>
+          <p class="text-xs text-slate-400">@${request.username}</p>
+        </div>
+      </div>
+      <button type="button" data-request-id="${request.id}" class="rounded-full bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">Accept</button>
+    `;
+    row.querySelector('button')?.addEventListener('click', () => acceptFriendRequest(request.id));
+    elements.friendRequests.appendChild(row);
+  });
+}
+
+function renderNotifications(notifications) {
+  if (!elements.notificationsList || !elements.notificationsBadge) return;
+  elements.notificationsList.innerHTML = '';
+  if (!notifications.length) {
+    elements.notificationsList.innerHTML = '<p class="text-sm text-slate-500">You are all caught up.</p>';
+    elements.notificationsBadge.classList.add('hidden');
+    return;
+  }
+
+  notifications.slice(0, 6).forEach((notification) => {
+    const item = document.createElement('div');
+    item.className = 'rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3';
+    item.innerHTML = `
+      <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">${notification.type}</p>
+      <p class="mt-1 text-sm font-semibold text-slate-700">${notification.title}</p>
+      <p class="text-xs text-slate-500">${notification.subtitle}</p>
+    `;
+    elements.notificationsList.appendChild(item);
+  });
+
+  elements.notificationsBadge.textContent = notifications.length;
+  elements.notificationsBadge.classList.toggle('hidden', notifications.length === 0);
 }
 
 function renderMessages(messages) {
@@ -325,29 +385,63 @@ function renderActivityFeed({ friends = [], emotions = [], messages = [] }) {
     });
 }
 
-function renderFriendSuggestions(profileUsername) {
-  if (!elements.friendSuggestions) return;
-  const suggestions = [
-    { name: 'Avery Moon', username: 'averym', mood: 'Late-night journaling' },
-    { name: 'Jordan Reed', username: 'jordr', mood: 'Sunny day walks' },
-    { name: 'Harper Singh', username: 'harpers', mood: 'Focus sprints' },
-    { name: 'Maya Chen', username: 'mayac', mood: 'Cozy tea chats' },
-  ];
+function renderDiscoverPeople(people) {
+  if (!elements.friendDiscover) return;
+  elements.friendDiscover.innerHTML = '';
+  if (!people.length) {
+    elements.friendDiscover.innerHTML = '<p>No new profiles to show yet.</p>';
+    return;
+  }
 
-  elements.friendSuggestions.innerHTML = '';
-  suggestions
-    .filter((suggestion) => suggestion.username !== profileUsername)
-    .forEach((suggestion) => {
-      const card = document.createElement('div');
-      card.className = 'rounded-2xl border border-slate-100 bg-slate-50 p-4';
-      card.innerHTML = `
-        <p class="text-sm font-semibold text-slate-700">${suggestion.name}</p>
-        <p class="text-xs text-slate-400">@${suggestion.username}</p>
-        <p class="mt-2 text-xs text-slate-500">${suggestion.mood}</p>
-        <button type="button" class="mt-3 rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Connect</button>
-      `;
-      elements.friendSuggestions.appendChild(card);
-    });
+  people.forEach((person) => {
+    const avatar = person.avatar_url
+      ? `<img src="${person.avatar_url}" alt="${person.name}" class="h-10 w-10 rounded-full object-cover" />`
+      : `<div class="h-10 w-10 rounded-full bg-slate-200"></div>`;
+    const card = document.createElement('div');
+    card.className = 'rounded-2xl border border-slate-100 bg-slate-50 p-4';
+    card.innerHTML = `
+      <div class="flex items-center gap-3">
+        ${avatar}
+        <div>
+          <p class="text-sm font-semibold text-slate-700">${person.name}</p>
+          <p class="text-xs text-slate-400">@${person.username}</p>
+        </div>
+      </div>
+      <p class="mt-2 text-xs text-slate-500">${person.bio || 'TapMood member'}</p>
+      <button type="button" class="mt-3 rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500" data-profile-id="${person.id}">Send request</button>
+    `;
+    card.querySelector('button')?.addEventListener('click', () => sendFriendRequest(person));
+    elements.friendDiscover.appendChild(card);
+  });
+}
+
+function renderFriendSearchResults(results) {
+  if (!elements.friendSearchResults) return;
+  elements.friendSearchResults.innerHTML = '';
+  if (!results.length) {
+    elements.friendSearchResults.innerHTML = '<p class="text-sm text-slate-400">Start typing to search for friends.</p>';
+    return;
+  }
+
+  results.forEach((person) => {
+    const avatar = person.avatar_url
+      ? `<img src="${person.avatar_url}" alt="${person.name}" class="h-9 w-9 rounded-full object-cover" />`
+      : `<div class="h-9 w-9 rounded-full bg-slate-200"></div>`;
+    const row = document.createElement('div');
+    row.className = 'flex items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-white px-3 py-2';
+    row.innerHTML = `
+      <div class="flex items-center gap-3">
+        ${avatar}
+        <div>
+          <p class="text-sm font-semibold text-slate-700">${person.name}</p>
+          <p class="text-xs text-slate-400">@${person.username}</p>
+        </div>
+      </div>
+      <button type="button" class="rounded-full bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">Add</button>
+    `;
+    row.querySelector('button')?.addEventListener('click', () => sendFriendRequest(person));
+    elements.friendSearchResults.appendChild(row);
+  });
 }
 
 async function ensureProfile(user) {
@@ -409,6 +503,137 @@ async function loadFriends(userId) {
   });
 }
 
+async function loadFriendRequests(userId) {
+  const { data, error } = await state.supabase
+    .from('friendships')
+    .select('id, requester, status, requester_profile:profiles!friendships_requester_fkey(id, username, display_name, avatar_url)')
+    .eq('status', 'pending')
+    .eq('addressee', userId)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    return [];
+  }
+
+  return data.map((row) => ({
+    id: row.id,
+    name: row.requester_profile?.display_name || row.requester_profile?.username || 'TapMood user',
+    username: row.requester_profile?.username || 'tapmood',
+    avatar_url: row.requester_profile?.avatar_url || '',
+  }));
+}
+
+async function loadExcludedProfileIds(userId) {
+  const { data, error } = await state.supabase
+    .from('friendships')
+    .select('requester, addressee')
+    .or(`requester.eq.${userId},addressee.eq.${userId}`);
+
+  if (error || !data) {
+    return [userId];
+  }
+
+  const ids = new Set([userId]);
+  data.forEach((row) => {
+    if (row.requester && row.requester !== userId) ids.add(row.requester);
+    if (row.addressee && row.addressee !== userId) ids.add(row.addressee);
+  });
+
+  return Array.from(ids);
+}
+
+async function loadSuggestedProfiles(userId) {
+  const excluded = await loadExcludedProfileIds(userId);
+  let query = state.supabase
+    .from('profiles')
+    .select('id, username, display_name, avatar_url, bio')
+    .limit(6);
+
+  if (excluded.length) {
+    query = query.not('id', 'in', `(${excluded.join(',')})`);
+  }
+
+  const { data, error } = await query;
+  if (error || !data) return [];
+
+  return data.map((profile) => ({
+    id: profile.id,
+    name: profile.display_name || profile.username || 'TapMood user',
+    username: profile.username || 'tapmood',
+    avatar_url: profile.avatar_url || '',
+    bio: profile.bio || '',
+  }));
+}
+
+async function searchProfiles(queryText, userId) {
+  if (!queryText) return [];
+  const excluded = await loadExcludedProfileIds(userId);
+  let query = state.supabase
+    .from('profiles')
+    .select('id, username, display_name, avatar_url, bio')
+    .or(`username.ilike.%${queryText}%,display_name.ilike.%${queryText}%`)
+    .limit(6);
+
+  if (excluded.length) {
+    query = query.not('id', 'in', `(${excluded.join(',')})`);
+  }
+
+  const { data, error } = await query;
+  if (error || !data) return [];
+
+  return data.map((profile) => ({
+    id: profile.id,
+    name: profile.display_name || profile.username || 'TapMood user',
+    username: profile.username || 'tapmood',
+    avatar_url: profile.avatar_url || '',
+    bio: profile.bio || '',
+  }));
+}
+
+async function loadIncomingMessages(username) {
+  if (!username) return [];
+  const { data, error } = await state.supabase
+    .from('chat_messages')
+    .select('id, sender_name, sender_code, recipient_code, text, timestamp')
+    .eq('recipient_code', username)
+    .order('timestamp', { ascending: false })
+    .limit(5);
+
+  if (error || !data) return [];
+  return data;
+}
+
+async function loadNotifications({ userId, username }) {
+  const [requests, incomingMessages] = await Promise.all([
+    loadFriendRequests(userId),
+    loadIncomingMessages(username),
+  ]);
+
+  const notifications = [];
+
+  requests.forEach((request) => {
+    notifications.push({
+      type: 'friend request',
+      title: `${request.name} wants to connect`,
+      subtitle: `@${request.username} sent you a request.`,
+      timestamp: new Date().toISOString(),
+    });
+  });
+
+  incomingMessages.forEach((message) => {
+    notifications.push({
+      type: 'message',
+      title: `New message from ${message.sender_name || message.sender_code || 'TapMood user'}`,
+      subtitle: message.text || 'Tap to read the full message.',
+      timestamp: message.timestamp,
+    });
+  });
+
+  notifications.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  state.notifications = notifications;
+  renderNotifications(notifications);
+}
+
 async function loadMessages(username, recipient = '') {
   if (!username) return [];
   let query = state.supabase
@@ -463,10 +688,12 @@ async function loadDashboard() {
     elements.profileBio.value = profile.bio || '';
   }
 
-  const [friends, emotions, messages] = await Promise.all([
+  const [friends, emotions, messages, requests, suggestedPeople] = await Promise.all([
     loadFriends(user.id),
     loadEmotions(user.id),
     loadMessages(profile?.username),
+    loadFriendRequests(user.id),
+    loadSuggestedProfiles(user.id),
   ]);
 
   renderFriends(friends);
@@ -474,7 +701,12 @@ async function loadDashboard() {
   renderMessages(messages);
   renderMessageInbox(messages, profile?.username);
   renderActivityFeed({ friends, emotions, messages });
-  renderFriendSuggestions(profile?.username);
+  renderFriendRequests(requests);
+  renderDiscoverPeople(suggestedPeople);
+  if (profile?.username) {
+    renderFriendSearchResults([]);
+    await loadNotifications({ userId: user.id, username: profile.username });
+  }
 
   setCounts({
     friends: friends.length,
@@ -550,7 +782,10 @@ function resetDashboard() {
   if (elements.activityFeed) {
     elements.activityFeed.innerHTML = '<p>Sign in to see your live activity feed.</p>';
   }
-  renderFriendSuggestions();
+  renderDiscoverPeople([]);
+  renderFriendRequests([]);
+  renderFriendSearchResults([]);
+  renderNotifications([]);
   renderProfile(null, null);
   setStatusMessage(elements.moodStatus, '');
   setStatusMessage(elements.messageStatus, '');
@@ -634,37 +869,30 @@ async function handleMessageSubmit(event) {
   });
 }
 
-async function handleFriendSubmit(event) {
-  event.preventDefault();
-  if (!state.session?.user || !state.profile) return;
+async function sendFriendRequest(profile) {
+  if (!state.session?.user || !state.profile || !profile) return;
 
-  const friendUsername = elements.friendUsername.value.trim();
-  if (!friendUsername) {
-    setStatusMessage(elements.friendStatus, 'Enter a username to add.', 'text-amber-600');
-    return;
-  }
-
-  if (friendUsername === state.profile.username) {
+  if (profile.username === state.profile.username) {
     setStatusMessage(elements.friendStatus, 'You cannot add yourself.', 'text-amber-600');
     return;
   }
 
-  setStatusMessage(elements.friendStatus, 'Adding friend...', 'text-slate-500');
-  const { data, error } = await state.supabase
-    .from('profiles')
-    .select('id, username, display_name, avatar_url')
-    .eq('username', friendUsername)
-    .single();
+  setStatusMessage(elements.friendStatus, 'Sending friend request...', 'text-slate-500');
+  const { data: existing } = await state.supabase
+    .from('friendships')
+    .select('id, status')
+    .or(`and(requester.eq.${state.session.user.id},addressee.eq.${profile.id}),and(requester.eq.${profile.id},addressee.eq.${state.session.user.id})`)
+    .maybeSingle();
 
-  if (error || !data) {
-    setStatusMessage(elements.friendStatus, 'User not found.', 'text-rose-600');
+  if (existing) {
+    setStatusMessage(elements.friendStatus, 'You already have a connection with this user.', 'text-amber-600');
     return;
   }
 
   const { error: insertError } = await state.supabase.from('friendships').insert({
     requester: state.session.user.id,
-    addressee: data.id,
-    status: 'accepted',
+    addressee: profile.id,
+    status: 'pending',
   });
 
   if (insertError) {
@@ -672,8 +900,23 @@ async function handleFriendSubmit(event) {
     return;
   }
 
-  elements.friendUsername.value = '';
-  setStatusMessage(elements.friendStatus, `You are now friends with ${data.display_name || data.username}.`, 'text-emerald-600');
+  setStatusMessage(elements.friendStatus, `Request sent to ${profile.name}.`, 'text-emerald-600');
+  await loadDashboard();
+}
+
+async function acceptFriendRequest(requestId) {
+  if (!state.session?.user) return;
+  const { error } = await state.supabase
+    .from('friendships')
+    .update({ status: 'accepted' })
+    .eq('id', requestId);
+
+  if (error) {
+    setStatusMessage(elements.friendStatus, error.message, 'text-rose-600');
+    return;
+  }
+
+  setStatusMessage(elements.friendStatus, 'Friend request accepted.', 'text-emerald-600');
   await loadDashboard();
 }
 
@@ -722,8 +965,27 @@ function attachListeners() {
   if (elements.messageForm) {
     elements.messageForm.addEventListener('submit', handleMessageSubmit);
   }
-  if (elements.friendForm) {
-    elements.friendForm.addEventListener('submit', handleFriendSubmit);
+  if (elements.friendSearch) {
+    elements.friendSearch.addEventListener('input', async (event) => {
+      if (!state.session?.user) return;
+      const queryText = event.target.value.trim();
+      if (!queryText) {
+        renderFriendSearchResults([]);
+        return;
+      }
+      const results = await searchProfiles(queryText, state.session.user.id);
+      renderFriendSearchResults(results);
+    });
+  }
+  if (elements.notificationsToggle && elements.notificationsPanel) {
+    elements.notificationsToggle.addEventListener('click', () => {
+      elements.notificationsPanel.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (event) => {
+      if (!elements.notificationsPanel.contains(event.target) && !elements.notificationsToggle.contains(event.target)) {
+        elements.notificationsPanel.classList.add('hidden');
+      }
+    });
   }
   if (elements.profileForm) {
     elements.profileForm.addEventListener('submit', handleProfileSubmit);
@@ -760,6 +1022,9 @@ async function initializeSupabase() {
     showAppView();
     setActivePage(state.activePage);
     await loadDashboard();
+    if (state.profile?.username) {
+      subscribeToNotifications(state.profile.username, state.session.user.id);
+    }
   } else {
     setAuthMessage('Sign in to view your TapMood data.', 'text-slate-500');
     resetDashboard();
@@ -772,6 +1037,9 @@ async function initializeSupabase() {
       showAppView();
       setActivePage(state.activePage);
       await loadDashboard();
+      if (state.profile?.username) {
+        subscribeToNotifications(state.profile.username, session.user.id);
+      }
     } else {
       resetDashboard();
       showGuestView();
@@ -779,8 +1047,30 @@ async function initializeSupabase() {
   });
 }
 
+function subscribeToNotifications(username, userId) {
+  if (!state.supabase || !username || !userId) return;
+  if (state.notificationChannel) {
+    state.supabase.removeChannel(state.notificationChannel);
+  }
+
+  state.notificationChannel = state.supabase
+    .channel(`tapmood-notifications-${userId}`)
+    .on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'friendships', filter: `addressee=eq.${userId}` },
+      () => loadNotifications({ userId, username })
+    )
+    .on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'chat_messages', filter: `recipient_code=eq.${username}` },
+      () => loadNotifications({ userId, username })
+    )
+    .subscribe();
+}
+
 setAuthMode('signin');
 setActivePage(state.activePage);
-renderFriendSuggestions();
+renderDiscoverPeople([]);
+renderFriendSearchResults([]);
 attachListeners();
 initializeSupabase();
