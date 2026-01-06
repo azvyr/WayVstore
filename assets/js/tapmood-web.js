@@ -939,39 +939,26 @@ async function handleProfileUpdate(event) {
   }
 }
 
-async function sendFriendRequest(person) {
-  if (!state.session?.access_token) {
-    console.error('No active session found.');
-    return;
+async function sendFriendRequest(payload, accessToken) {
+  if (!accessToken) throw new Error('Not authenticated');
+
+  const res = await fetch('https://lxylwexfjhtzvepwvjal.supabase.co/functions/v1/create-friend-request', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(payload),
+    credentials: 'omit'
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ message: res.statusText }));
+    throw new Error(err.message || 'Failed to send request');
   }
-
-  setStatusMessage(elements.friendStatus, 'Sending request...', 'text-slate-500');
-
-  try {
-    const response = await fetch(`${supabaseUrl}/functions/v1/create-friend-request`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Use the user session token to authorize the Edge Function request.
-        'Authorization': `Bearer ${state.session.access_token}`
-      },
-      body: JSON.stringify({
-        receiver_id: person.id 
-      })
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Failed to send request');
-    }
-
-    setStatusMessage(elements.friendStatus, 'Request sent!', 'text-emerald-600');
-    await loadDashboard();
-  } catch (error) {
-    console.error('Friend request error:', error);
-    setStatusMessage(elements.friendStatus, error.message, 'text-rose-600');
-  }
+  return await res.json();
 }
+
 async function acceptFriendRequest(requestId) {
   if (!state.session?.user) return;
   
