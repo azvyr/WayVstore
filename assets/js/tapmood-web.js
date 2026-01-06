@@ -7,7 +7,7 @@
 // 1. Configuration & Constants
 const config = window.tapmoodConfig || {};
 const supabaseUrl = config.supabaseUrl || 'https://lxylwexfjhtzvepwvjal.supabase.co';
-const supabaseAnonKey = config.supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4eWx3ZXhmamh0enZlcHd2amFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwNTY3ODEsImV4cCI6MjA4MjYzMjc4MX0.78Jc7gu59eU5XOgZiVpkn4dq1GrX3uKCEsV_ffXCU3E';
+const supabaseAnonKey = config.supabaseAnonKey || 'sb_publishable_JkZXE_T506WbzF5D1204KQ_kiNHnDDn';
 
 // 2. DOM Element Reference Map
 const elements = {
