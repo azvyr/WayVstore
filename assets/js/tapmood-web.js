@@ -1014,7 +1014,7 @@ function handleFriendSearch(event) {
 
 // --- Initialization ---
 
-function init() {
+async function init() {
   if (typeof supabase === 'undefined') {
     console.error('Supabase JS library not found.');
     setConnectionStatus('Supabase Missing', 'text-rose-600 bg-rose-100');
@@ -1023,6 +1023,7 @@ function init() {
 
   // Initialize Client
   state.supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+  setConnectionStatus('Checking', 'text-amber-600 bg-amber-100');
 
   // Bind Auth Events
   elements.authSignin?.addEventListener('click', () => setAuthMode('signin'));
@@ -1062,6 +1063,25 @@ function init() {
       resetDashboard();
     }
   });
+
+  const { data, error } = await state.supabase.auth.getSession();
+  if (error) {
+    console.error('Auth Session Error:', error.message);
+    setConnectionStatus('Offline', 'text-rose-600 bg-rose-100');
+    showGuestView();
+    return;
+  }
+
+  if (data?.session) {
+    state.session = data.session;
+    setConnectionStatus('Connected', 'text-emerald-600 bg-emerald-100');
+    showAppView();
+    await loadDashboard();
+  } else {
+    setConnectionStatus('Offline', 'text-slate-400 bg-slate-100');
+    showGuestView();
+    resetDashboard();
+  }
 }
 
 // Start

@@ -11,22 +11,32 @@
 
   <body class="bg-[#F5F5F7] text-[#1D1D1F] font-sans antialiased selection:bg-teal-100 selection:text-teal-900">
     <main class="page-fade relative min-h-screen">
-      <section id="guest-view" class="flex min-h-screen items-center justify-center px-6 py-16">
-        <div class="w-full max-w-5xl rounded-[32px] border border-white/70 bg-white/80 p-8 shadow-[0_24px_80px_rgba(15,23,42,0.16)] backdrop-blur">
+      <section id="guest-view" class="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-16">
+        <div class="pointer-events-none absolute -top-24 right-10 hidden h-72 w-72 rounded-full bg-teal-200/40 blur-3xl md:block"></div>
+        <div class="pointer-events-none absolute -bottom-20 left-10 hidden h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl md:block"></div>
+        <div class="w-full max-w-5xl rounded-[32px] border border-white/70 bg-white/80 p-8 shadow-[0_24px_80px_rgba(15,23,42,0.16)] backdrop-blur sm:p-10">
           <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div class="space-y-6">
               <div class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-teal-600">
                 TapMood Web
                 <span class="h-1.5 w-1.5 rounded-full bg-teal-400"></span>
               </div>
-              <h1 class="text-4xl font-semibold tracking-tight text-slate-800 md:text-5xl">A simpler TapMood that just works.</h1>
+              <h1 class="text-4xl font-semibold tracking-tight text-slate-800 md:text-5xl">Your mood, your circle, everywhere.</h1>
               <p class="text-lg text-slate-600">
                 Sign in to message friends, send mood updates, and keep your profile in sync across every TapMood experience.
               </p>
               <div class="grid gap-3 sm:grid-cols-3">
-                <div class="rounded-2xl border border-slate-100 bg-white p-4 text-sm text-slate-500">💬 Real-time messaging</div>
-                <div class="rounded-2xl border border-slate-100 bg-white p-4 text-sm text-slate-500">🌈 Mood check-ins</div>
-                <div class="rounded-2xl border border-slate-100 bg-white p-4 text-sm text-slate-500">🤝 Friend connections</div>
+                <div class="rounded-2xl border border-slate-100 bg-white/80 p-4 text-sm text-slate-500">💬 Real-time messaging</div>
+                <div class="rounded-2xl border border-slate-100 bg-white/80 p-4 text-sm text-slate-500">🌈 Mood check-ins</div>
+                <div class="rounded-2xl border border-slate-100 bg-white/80 p-4 text-sm text-slate-500">🤝 Friend connections</div>
+              </div>
+              <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-500">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">What you can do</p>
+                <ul class="mt-3 space-y-2">
+                  <li>• Share daily mood updates from any device.</li>
+                  <li>• Keep chats and friend requests in one place.</li>
+                  <li>• Manage your profile, avatar, and status instantly.</li>
+                </ul>
               </div>
             </div>
 
@@ -36,11 +46,11 @@
                   <p class="text-xs font-semibold uppercase tracking-[0.3em] text-teal-500">Account Access</p>
                   <h2 class="mt-2 text-2xl font-semibold text-slate-800">Welcome back</h2>
                 </div>
-                <span id="connection-status" class="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Disconnected</span>
+                <span id="connection-status" class="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Checking</span>
               </div>
               <div class="mt-5 flex gap-2">
-                <button id="auth-signin" class="flex-1 rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white">Sign In</button>
-                <button id="auth-signup" class="flex-1 rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-slate-500">Sign Up</button>
+                <button id="auth-signin" type="button" class="flex-1 rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white">Sign In</button>
+                <button id="auth-signup" type="button" class="flex-1 rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold uppercase tracking-widest text-slate-500">Sign Up</button>
               </div>
               <form id="auth-form" class="mt-6 space-y-4">
                 <div id="auth-username-field" class="hidden">
@@ -66,7 +76,7 @@
 
       <section id="app-view" class="hidden">
         <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
-          <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+          <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-4 md:flex-row md:items-center md:justify-between">
             <div class="flex items-center gap-3">
               <img src="assets/images/wayv-logo.svg" alt="WayV" class="h-10 w-10 rounded-2xl bg-white p-2 shadow" />
               <div>
@@ -74,13 +84,13 @@
                 <p class="text-lg font-semibold text-slate-800">TapMood</p>
               </div>
             </div>
-            <nav class="flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-600">
+            <nav class="flex w-full items-center gap-2 overflow-x-auto pb-2 text-sm font-semibold text-slate-600 md:w-auto md:pb-0">
               <button data-page-target="home" class="tapmood-top-nav rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-50">Home</button>
               <button data-page-target="messages" class="tapmood-top-nav rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-50">Messages</button>
               <button data-page-target="friends" class="tapmood-top-nav rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-50">Friends</button>
               <button data-page-target="profile" class="tapmood-top-nav rounded-full border border-slate-200 bg-white px-4 py-2 transition hover:bg-slate-50">Profile</button>
             </nav>
-            <div class="flex items-center gap-3">
+            <div class="flex w-full items-center gap-3 md:w-auto">
               <div class="relative">
                 <button id="notifications-toggle" class="relative flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-widest text-slate-600 transition hover:bg-slate-50">
                   Notifications
