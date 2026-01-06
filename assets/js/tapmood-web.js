@@ -2025,6 +2025,29 @@ function bindGlobalUX() {
   });
 }
 
+async function recoverSessionAndLoad() {
+  if (!state.supabase) return;
+  const { data, error } = await state.supabase.auth.getSession();
+  if (error) {
+    console.error("Auth Session Error:", error.message);
+    setConnectionStatus("Offline", "text-rose-600 bg-rose-100");
+    showGuestView();
+    return;
+  }
+
+  if (data?.session) {
+    state.session = data.session;
+    setConnectionStatus("Connected", "text-emerald-600 bg-emerald-100");
+    showAppView();
+    await loadDashboard();
+  } else {
+    state.session = null;
+    setConnectionStatus("Offline", "text-slate-400 bg-slate-100");
+    showGuestView();
+    resetDashboard();
+  }
+}
+
 async function init() {
   const supabaseReady = await ensureSupabaseLoaded();
   if (!supabaseReady) {
@@ -2094,6 +2117,15 @@ async function init() {
 
   bindGlobalUX();
 
+  window.addEventListener("online", async () => {
+    setConnectionStatus("Connected", "text-emerald-600 bg-emerald-100");
+    await recoverSessionAndLoad();
+  });
+
+  window.addEventListener("offline", () => {
+    setConnectionStatus("Offline", "text-slate-400 bg-slate-100");
+  });
+
   // Auth state
   state.supabase.auth.onAuthStateChange(async (_event, session) => {
     state.session = session;
@@ -2111,24 +2143,7 @@ async function init() {
   });
 
   // initial session
-  const { data, error } = await state.supabase.auth.getSession();
-  if (error) {
-    console.error("Auth Session Error:", error.message);
-    setConnectionStatus("Offline", "text-rose-600 bg-rose-100");
-    showGuestView();
-    return;
-  }
-
-  if (data?.session) {
-    state.session = data.session;
-    setConnectionStatus("Connected", "text-emerald-600 bg-emerald-100");
-    showAppView();
-    await loadDashboard();
-  } else {
-    setConnectionStatus("Offline", "text-slate-400 bg-slate-100");
-    showGuestView();
-    resetDashboard();
-  }
+  await recoverSessionAndLoad();
 
   // default auth mode UI
   setAuthMode("signin");
