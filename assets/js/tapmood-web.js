@@ -944,7 +944,7 @@ async function sendFriendRequest(person) {
   if (!state.session?.access_token) {
     console.error('Authentication Error: No active session found.');
     setStatusMessage(elements.friendStatus, 'Please sign in to add friends.', 'text-rose-600');
-    throw new Error('Not authenticated');
+    return;
   }
 
   setStatusMessage(elements.friendStatus, 'Sending request...', 'text-slate-500');
