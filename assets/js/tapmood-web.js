@@ -74,6 +74,9 @@ const el = {
   messageThreadStatus: document.getElementById("message-thread-status"),
   messageThreadAvatar: document.getElementById("message-thread-avatar"),
   messageTypingStatus: document.getElementById("message-typing-status"),
+  dbTimeoutPopup: document.getElementById("db-timeout-popup"),
+  dbTimeoutClose: document.getElementById("db-timeout-close"),
+  dbTimeoutRetry: document.getElementById("db-timeout-retry"),
 
   // Friends
   friendsList: document.getElementById("friends-list"),
@@ -246,6 +249,7 @@ function setStatusMessage(node, text, tone = "text-slate-500") {
 /* Minimal toast system, no CSS required, uses Tailwind classes. */
 
 let toastHost = null;
+let dbTimeoutTimer = null;
 
 function ensureToastHost() {
   if (toastHost) return toastHost;
@@ -256,6 +260,21 @@ function ensureToastHost() {
   document.body.appendChild(host);
   toastHost = host;
   return host;
+}
+
+function showDbTimeoutPopup() {
+  if (el.dbTimeoutPopup) el.dbTimeoutPopup.classList.remove("hidden");
+}
+
+function hideDbTimeoutPopup() {
+  if (el.dbTimeoutPopup) el.dbTimeoutPopup.classList.add("hidden");
+}
+
+function scheduleDbTimeoutPopup() {
+  if (dbTimeoutTimer) clearTimeout(dbTimeoutTimer);
+  dbTimeoutTimer = setTimeout(() => {
+    if (state.busy.dashboard) showDbTimeoutPopup();
+  }, 5000);
 }
 
 function toast(msg, kind = "info") {
@@ -1419,9 +1438,12 @@ async function loadDashboard() {
   if (!state.session?.user) return;
 
   const runId = ++state.runId;
+  let hasError = false;
   state.busy.dashboard = true;
   setDashboardLoading(true);
   setAuthMessage("Loading dashboard...", "text-slate-500");
+  hideDbTimeoutPopup();
+  scheduleDbTimeoutPopup();
 
   try {
     const user = state.session.user;
@@ -1491,12 +1513,19 @@ async function loadDashboard() {
     setAuthMessage("Dashboard ready.", "text-emerald-600");
     startRealtime();
   } catch (e) {
+    hasError = true;
     console.error(e);
     setAuthMessage("Dashboard failed to load.", "text-rose-600");
     toast("Failed to load dashboard", "error");
+    showDbTimeoutPopup();
   } finally {
     state.busy.dashboard = false;
     setDashboardLoading(false);
+    if (dbTimeoutTimer) {
+      clearTimeout(dbTimeoutTimer);
+      dbTimeoutTimer = null;
+    }
+    if (!hasError) hideDbTimeoutPopup();
   }
 }
 
@@ -1999,6 +2028,12 @@ async function init() {
   // Notifications panel
   el.notificationsToggle?.addEventListener("click", () => {
     toggleNotifications();
+  });
+
+  el.dbTimeoutClose?.addEventListener("click", () => hideDbTimeoutPopup());
+  el.dbTimeoutRetry?.addEventListener("click", () => {
+    hideDbTimeoutPopup();
+    handleRefresh();
   });
 
   // Page nav

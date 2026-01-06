@@ -24,6 +24,8 @@
       .tm-divider{ height: 1px; background: rgba(226,232,240,1); }
       .tm-skeleton{ background: linear-gradient(90deg, rgba(226,232,240,.6), rgba(226,232,240,1), rgba(226,232,240,.6)); background-size: 200% 100%; animation: tmsh 1.1s infinite linear; border-radius: 999px; }
       @keyframes tmsh { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+      body { -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+      main { min-height: 100svh; }
     </style>
   </head>
 
@@ -317,9 +319,9 @@
                 </div>
               </div>
 
-              <div class="grid gap-6 lg:grid-cols-[0.38fr_0.62fr]">
+              <div class="grid min-h-[calc(100svh-14rem)] gap-6 lg:grid-cols-[0.38fr_0.62fr]">
                 <!-- Inbox -->
-                <section class="tm-card p-6 space-y-4">
+                <section class="tm-card flex h-full min-h-0 flex-col space-y-4 p-6">
                   <div class="flex items-center justify-between gap-2">
                     <div>
                       <h3 class="text-lg font-semibold text-slate-900">Chats</h3>
@@ -346,7 +348,7 @@
                       <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Recents</p>
                       <span class="text-[11px] text-slate-400">Realtime</span>
                     </div>
-                    <div id="messages-inbox" class="mt-3 space-y-3 text-sm text-slate-700">
+                    <div id="messages-inbox" class="mt-3 flex-1 space-y-3 overflow-y-auto text-sm text-slate-700">
                       <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
                         <div class="tm-skeleton h-3 w-32"></div>
                         <div class="mt-2 tm-skeleton h-3 w-52"></div>
@@ -360,7 +362,7 @@
                 </section>
 
                 <!-- Composer + thread -->
-                <section class="tm-card flex h-full min-h-[620px] flex-col overflow-hidden p-0">
+                <section class="tm-card flex h-full min-h-[70svh] flex-col overflow-hidden p-0">
                   <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 bg-white px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div id="message-thread-avatar" class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-sm font-semibold text-slate-500">TM</div>
@@ -563,6 +565,29 @@
 
         <!-- Toasts -->
         <div id="toast-host" class="pointer-events-none fixed right-4 top-20 z-[60] flex w-[22rem] max-w-[calc(100vw-2rem)] flex-col gap-2"></div>
+
+        <!-- Database timeout popup -->
+        <div id="db-timeout-popup" class="fixed inset-0 z-[80] hidden">
+          <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"></div>
+          <div class="relative mx-auto mt-24 w-[92%] max-w-md">
+            <div class="tm-card p-6">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-[0.3em] text-rose-500">Connection issue</p>
+                  <p class="mt-2 text-lg font-semibold text-slate-900">We’re having trouble loading TapMood right now.</p>
+                  <p class="mt-3 text-sm text-slate-600">
+                    It looks like the database is taking longer than usual. We’re sorry for the inconvenience and we’re already working to get things back to normal.
+                  </p>
+                </div>
+                <button id="db-timeout-close" class="tm-btn tm-btn-ghost px-3 py-1.5">Close</button>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <button id="db-timeout-retry" class="tm-btn tm-btn-primary px-4 py-2">Try again</button>
+                <button data-page-target="home" class="tapmood-top-nav tm-btn tm-btn-ghost px-4 py-2">Go home</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Mood modal (optional UI, safe even if unused) -->
         <div id="mood-modal" class="fixed inset-0 z-[70] hidden">
