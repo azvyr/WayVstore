@@ -941,7 +941,7 @@ async function handleProfileUpdate(event) {
 
 async function sendFriendRequest(person) {
   // Guard clause: Ensure session exists before proceeding
-  if (!state.session?.access_token) {
+  if (!state.session?.user) {
     console.error('Authentication Error: No active session found.');
     setStatusMessage(elements.friendStatus, 'Please sign in to add friends.', 'text-rose-600');
     return;
@@ -950,22 +950,11 @@ async function sendFriendRequest(person) {
   setStatusMessage(elements.friendStatus, 'Sending request...', 'text-slate-500');
 
   try {
-    const response = await fetch(`${supabaseUrl}/functions/v1/create-friend-request`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': supabaseAnonKey,
-        'Authorization': `Bearer ${state.session.access_token}`
-      },
-      body: JSON.stringify({
-        receiver_id: person.id 
-      })
+    const { error } = await state.supabase.functions.invoke('create-friend-request', {
+      body: { receiver_id: person.id }
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Failed to send request');
-    }
+    if (error) throw error;
 
     setStatusMessage(elements.friendStatus, 'Request sent successfully!', 'text-emerald-600');
     
