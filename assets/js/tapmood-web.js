@@ -124,11 +124,16 @@ const el = {
 /* ---------------------------- Auth ---------------------------- */
 
 async function ensureProfile(user) {
-  const { data } = await state.supabase
+  const { data, error } = await state.supabase
     .from("profiles")
     .select("*")
     .eq("id", user.id)
     .maybeSingle();
+
+  if (error) {
+    console.error("Profile fetch failed:", error);
+    throw error;
+  }
 
   if (data) return data;
 
@@ -136,17 +141,22 @@ async function ensureProfile(user) {
     user.user_metadata?.username ||
     user.email.split("@")[0];
 
-  const { data: created, error } = await state.supabase
-    .from("profiles")
-    .insert({
-      id: user.id,
-      username,
-      display_name: username,
-    })
-    .select()
-    .single();
+  const { data: created, error: insertError } =
+    await state.supabase
+      .from("profiles")
+      .insert({
+        id: user.id,
+        username,
+        display_name: username,
+      })
+      .select()
+      .single();
 
-  if (error) throw error;
+  if (insertError) {
+    console.error("Profile creation failed:", insertError);
+    throw insertError;
+  }
+
   return created;
 }
 
@@ -318,60 +328,72 @@ function renderMessages(list) {
 /* ---------------------------- Dashboard ---------------------------- */
 
 async function loadDashboard() {
-  const run = ++state.runId;
-  const user = state.session.user;
+  try {
+    const run = ++state.runId;
+    const user = state.session.user;
 
-  state.profile = await ensureProfile(user);
-  if (run !== state.runId) return;
+    state.profile = await ensureProfile(user);
+    if (run !== state.runId) return;
 
-  const [friends, messages, emotions] = await Promise.all([
-    loadFriends(user.id),
-    loadMessages(state.profile.username),
-    loadEmotions(user.id),
-  ]);
+    const [friends, messages, emotions] = await Promise.all([
+      loadFriends(user.id),
+      loadMessages(state.profile.username),
+      loadEmotions(user.id),
+    ]);
 
-  if (run !== state.runId) return;
+    if (run !== state.runId) return;
 
-  state.friends = friends;
-  state.messages = messages;
-  state.emotions = emotions;
+    state.friends = friends;
+    state.messages = messages;
+    state.emotions = emotions;
 
-  renderInbox();
-  startRealtime();
+    renderInbox();
+    startRealtime();
+  } catch (err) {
+    console.error("Dashboard load failed:", err);
+    el.authMessage.textContent =
+      "Account loaded, but data failed to sync. Check console.";
+  }
 }
 
 /* ---------------------------- Init ---------------------------- */
 
 async function init() {
-  if (!window.supabase) {
-    console.error("Supabase not loaded");
+  const sb = window.supabase; // use the global you checked for
+  if (!sb || !sb.createClient) {
+    console.error("Supabase not loaded or wrong global. Check your CDN script.");
     return;
   }
 
-  state.supabase = supabase.createClient(
-    supabaseUrl,
-    supabaseAnonKey
-  );
+  state.supabase = sb.createClient(supabaseUrl, supabaseAnonKey);
 
-  state.supabase.auth.onAuthStateChange(
-    async (_evt, session) => {
-      state.session = session;
-      if (session) {
-        el.guestView.classList.add("hidden");
-        el.appView.classList.remove("hidden");
-        await loadDashboard();
-      } else {
-        stopRealtime();
-        el.appView.classList.add("hidden");
-        el.guestView.classList.remove("hidden");
-      }
-    }
-  );
-
-  const { data } = await state.supabase.auth.getSession();
-  if (data.session) {
-    state.session = data.session;
+  const showApp = async () => {
+    if (el.guestView) el.guestView.classList.add("hidden");
+    if (el.appView) el.appView.classList.remove("hidden");
     await loadDashboard();
+  };
+
+  const showGuest = () => {
+    stopRealtime();
+    if (el.appView) el.appView.classList.add("hidden");
+    if (el.guestView) el.guestView.classList.remove("hidden");
+  };
+
+  state.supabase.auth.onAuthStateChange(async (_evt, session) => {
+    state.session = session;
+    if (session) await showApp();
+    else showGuest();
+  });
+
+  // Initial session restore
+  const { data, error } = await state.supabase.auth.getSession();
+  if (error) console.error("getSession error:", error);
+
+  if (data?.session) {
+    state.session = data.session;
+    await showApp(); // IMPORTANT: also switches UI
+  } else {
+    showGuest();
   }
 }
 
