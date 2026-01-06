@@ -121,6 +121,65 @@ const el = {
   refreshDashboard: $("refresh-dashboard"),
 };
 
+/* ---------------------------- Auth UI ---------------------------- */
+
+const authState = {
+  mode: "signin",
+};
+
+function setAuthMessage(message, tone = "neutral") {
+  if (!el.authMessage) return;
+  el.authMessage.textContent = message || "";
+  el.authMessage.classList.remove("text-rose-500", "text-emerald-600");
+  if (tone === "error") el.authMessage.classList.add("text-rose-500");
+  if (tone === "success") el.authMessage.classList.add("text-emerald-600");
+}
+
+function setAuthMode(mode) {
+  authState.mode = mode;
+  const isSignup = mode === "signup";
+
+  if (el.authUsername?.parentElement) {
+    el.authUsername.parentElement.classList.toggle("hidden", !isSignup);
+  }
+
+  if (el.authSubmit) {
+    el.authSubmit.textContent = isSignup ? "Create Account" : "Sign In";
+  }
+
+  if (el.authSignin) {
+    el.authSignin.classList.toggle("bg-slate-900", !isSignup);
+    el.authSignin.classList.toggle("text-white", !isSignup);
+    el.authSignin.classList.toggle("border", isSignup);
+    el.authSignin.classList.toggle("border-slate-200", isSignup);
+    el.authSignin.classList.toggle("text-slate-600", isSignup);
+  }
+
+  if (el.authSignup) {
+    el.authSignup.classList.toggle("bg-slate-900", isSignup);
+    el.authSignup.classList.toggle("text-white", isSignup);
+    el.authSignup.classList.toggle("border", !isSignup);
+    el.authSignup.classList.toggle("border-slate-200", !isSignup);
+    el.authSignup.classList.toggle("text-slate-600", !isSignup);
+  }
+
+  if (el.authUsername) el.authUsername.required = isSignup;
+  setAuthMessage("");
+}
+
+function setConnectionStatus(text, tone = "idle") {
+  if (el.connectionStatus) {
+    el.connectionStatus.textContent = text;
+    el.connectionStatus.classList.toggle("bg-emerald-100", tone === "good");
+    el.connectionStatus.classList.toggle("text-emerald-700", tone === "good");
+    el.connectionStatus.classList.toggle("bg-rose-100", tone === "bad");
+    el.connectionStatus.classList.toggle("text-rose-700", tone === "bad");
+  }
+  if (el.connectionStatusApp) {
+    el.connectionStatusApp.classList.toggle("hidden", tone !== "good");
+  }
+}
+
 /* ---------------------------- Auth ---------------------------- */
 
 async function ensureProfile(user) {
@@ -362,14 +421,17 @@ async function init() {
   const sb = window.supabase; // use the global you checked for
   if (!sb || !sb.createClient) {
     console.error("Supabase not loaded or wrong global. Check your CDN script.");
+    setConnectionStatus("Offline", "bad");
     return;
   }
 
   state.supabase = sb.createClient(supabaseUrl, supabaseAnonKey);
+  setConnectionStatus("Ready", "good");
 
   const showApp = async () => {
     if (el.guestView) el.guestView.classList.add("hidden");
     if (el.appView) el.appView.classList.remove("hidden");
+    setConnectionStatus("Connected", "good");
     await loadDashboard();
   };
 
@@ -377,7 +439,74 @@ async function init() {
     stopRealtime();
     if (el.appView) el.appView.classList.add("hidden");
     if (el.guestView) el.guestView.classList.remove("hidden");
+    setConnectionStatus("Signed out", "idle");
   };
+
+  if (el.authSignin) el.authSignin.addEventListener("click", () => setAuthMode("signin"));
+  if (el.authSignup) el.authSignup.addEventListener("click", () => setAuthMode("signup"));
+
+  if (el.authForm) {
+    el.authForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (state.busy.auth) return;
+      state.busy.auth = true;
+      setAuthMessage("");
+
+      const email = el.authEmail?.value?.trim();
+      const password = el.authPassword?.value || "";
+      const username = el.authUsername?.value?.trim();
+
+      if (!email || !password) {
+        setAuthMessage("Enter your email and password.", "error");
+        state.busy.auth = false;
+        return;
+      }
+
+      try {
+        if (authState.mode === "signup") {
+          if (!username) {
+            setAuthMessage("Add a username to continue.", "error");
+            state.busy.auth = false;
+            return;
+          }
+
+          const { error } = await state.supabase.auth.signUp({
+            email,
+            password,
+            options: { data: { username } },
+          });
+
+          if (error) {
+            setAuthMessage(error.message, "error");
+          } else {
+            setAuthMessage("Account created. Check your email to confirm.", "success");
+          }
+        } else {
+          const { error } = await state.supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+
+          if (error) {
+            setAuthMessage(error.message, "error");
+          } else {
+            setAuthMessage("Signing you in…", "success");
+          }
+        }
+      } catch (err) {
+        console.error("Auth error:", err);
+        setAuthMessage("Something went wrong. Try again.", "error");
+      } finally {
+        state.busy.auth = false;
+      }
+    });
+  }
+
+  if (el.signOut) {
+    el.signOut.addEventListener("click", async () => {
+      await state.supabase.auth.signOut();
+    });
+  }
 
   state.supabase.auth.onAuthStateChange(async (_evt, session) => {
     state.session = session;
@@ -395,6 +524,8 @@ async function init() {
   } else {
     showGuest();
   }
+
+  setAuthMode("signin");
 }
 
 document.addEventListener("DOMContentLoaded", init);
