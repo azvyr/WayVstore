@@ -939,51 +939,26 @@ async function handleProfileUpdate(event) {
   }
 }
 
-async function sendFriendRequest(person) {
-  if (!state.session) {
-    setStatusMessage(
-      elements.friendStatus,
-      'Please sign in to add friends.',
-      'text-rose-600'
-    );
+async function sendFriendRequest(receiverId) {
+  const { data, error } = await state.supabase
+    .from("friendships")
+    .insert({
+      requester: (await state.supabase.auth.getUser()).data.user.id,
+      addressee: receiverId,
+      status: "pending",
+    });
+
+  if (error) {
+    if (error.code === "23505") {
+      alert("Friend request already exists");
+    } else {
+      console.error(error);
+      alert(error.message);
+    }
     return;
   }
 
-  setStatusMessage(
-    elements.friendStatus,
-    'Sending request...',
-    'text-slate-500'
-  );
-
-  try {
-    const { data, error } = await state.supabase.functions.invoke(
-      'create-friend-request',
-      {
-        body: {
-          receiver_id: person.id,
-        },
-      }
-    );
-
-    if (error) {
-      throw error;
-    }
-
-    setStatusMessage(
-      elements.friendStatus,
-      'Request sent successfully!',
-      'text-emerald-600'
-    );
-
-    await loadDashboard();
-  } catch (err) {
-    console.error('sendFriendRequest failure:', err);
-    setStatusMessage(
-      elements.friendStatus,
-      err.message || 'Failed to send request.',
-      'text-rose-600'
-    );
-  }
+  alert("Friend request sent");
 }
 
 
