@@ -939,11 +939,15 @@ async function handleProfileUpdate(event) {
   }
 }
 
-async function sendFriendRequest(receiverId) {
-  const { data, error } = await state.supabase
+async function sendFriendRequest(person) {
+  if (!state.session?.user) return;
+
+  const receiverId = person.id;
+
+  const { error } = await state.supabase
     .from("friendships")
     .insert({
-      requester: (await state.supabase.auth.getUser()).data.user.id,
+      requester: state.session.user.id,
       addressee: receiverId,
       status: "pending",
     });
@@ -959,25 +963,26 @@ async function sendFriendRequest(receiverId) {
   }
 
   alert("Friend request sent");
+  await loadDashboard();
 }
 
 
 async function acceptFriendRequest(requestId) {
-  if (!state.supabase) return;
+  if (!state.session?.user) return;
 
-  try {
-    const { error } = await state.supabase
-      .from('friendships')
-      .update({ status: 'accepted' })
-      .eq('id', requestId);
+  const { error } = await state.supabase
+    .from("friendships")
+    .update({ status: "accepted" })
+    .eq("id", requestId)
+    .eq("addressee", state.session.user.id);
 
-    if (error) throw error;
-
-    // Trigger dashboard refresh to update friends list and counts
-    await loadDashboard();
-  } catch (error) {
-    console.error('Error accepting request:', error.message);
+  if (error) {
+    console.error("Error accepting request:", error.message);
+    alert("Could not accept friend request.");
+    return;
   }
+
+  await loadDashboard();
 }
 
 let searchTimeout;
