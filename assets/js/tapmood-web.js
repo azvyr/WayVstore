@@ -18,6 +18,11 @@ const supabaseAnonKey =
   config.supabaseAnonKey ||
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4eWx3ZXhmamh0enZlcHd2amFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwNTY3ODEsImV4cCI6MjA4MjYzMjc4MX0.78Jc7gu59eU5XOgZiVpkn4dq1GrX3uKCEsV_ffXCU3E";
 
+const supabaseScriptSources = [
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2",
+  "https://unpkg.com/@supabase/supabase-js@2",
+];
+
 /* ---------------------------- 2) DOM ---------------------------- */
 
 const el = {
@@ -250,6 +255,40 @@ function setStatusMessage(node, text, tone = "text-slate-500") {
 
 let toastHost = null;
 let dbTimeoutTimer = null;
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const existing = Array.from(document.scripts).find((script) => script.src === src);
+    if (existing) {
+      if (typeof supabase !== "undefined") return resolve();
+      existing.addEventListener("load", () => resolve());
+      existing.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)));
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load ${src}`));
+    document.head.appendChild(script);
+  });
+}
+
+async function ensureSupabaseLoaded() {
+  if (typeof supabase !== "undefined") return true;
+
+  for (const src of supabaseScriptSources) {
+    try {
+      await loadScript(src);
+      if (typeof supabase !== "undefined") return true;
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
+  return false;
+}
 
 function ensureToastHost() {
   if (toastHost) return toastHost;
@@ -1987,9 +2026,18 @@ function bindGlobalUX() {
 }
 
 async function init() {
-  if (typeof supabase === "undefined") {
+  const supabaseReady = await ensureSupabaseLoaded();
+  if (!supabaseReady) {
     console.error("Supabase JS library not found.");
     setConnectionStatus("Supabase Missing", "text-rose-600 bg-rose-100");
+    setAuthMessage("TapMood web couldn't load the data service. Please refresh.", "text-rose-600");
+    return;
+  }
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.error("Supabase config missing.");
+    setConnectionStatus("Config Missing", "text-rose-600 bg-rose-100");
+    setAuthMessage("TapMood web is missing its server configuration.", "text-rose-600");
     return;
   }
 
