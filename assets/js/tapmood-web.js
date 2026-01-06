@@ -552,9 +552,13 @@ function renderStats() {
 /* ---------------------------- Dashboard ---------------------------- */
 
 async function loadDashboard() {
+  if (state.busy.dashboard) return;
+  state.busy.dashboard = true;
   try {
     const run = ++state.runId;
-    const user = state.session.user;
+    const session = await ensureFreshSession();
+    if (!session) return;
+    const user = session.user;
 
     state.profile = await ensureProfile(user);
     if (run !== state.runId) return;
@@ -581,10 +585,31 @@ async function loadDashboard() {
     console.error("Dashboard load failed:", err);
     el.authMessage.textContent =
       "Account loaded, but data failed to sync. Check console.";
+  } finally {
+    state.busy.dashboard = false;
   }
 }
 
 /* ---------------------------- Init ---------------------------- */
+
+async function ensureFreshSession() {
+  if (!state.supabase) return null;
+  const { data, error } = await state.supabase.auth.refreshSession();
+  if (error || !data?.session) {
+    if (error) {
+      console.warn("Session refresh failed:", error.message);
+    }
+    const { data: existing, error: sessionError } =
+      await state.supabase.auth.getSession();
+    if (sessionError) {
+      console.warn("Session restore failed:", sessionError.message);
+    }
+    state.session = existing?.session || null;
+    return state.session;
+  }
+  state.session = data.session;
+  return data.session;
+}
 
 async function init() {
   const sb = window.supabase; // use the global you checked for
@@ -695,6 +720,12 @@ async function init() {
     });
   }
 
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && state.session) {
+      loadDashboard();
+    }
+  });
+
   if (el.profileForm) {
     el.profileForm.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -758,6 +789,7 @@ async function init() {
 
   if (data?.session) {
     state.session = data.session;
+    await ensureFreshSession();
     await showApp(); // IMPORTANT: also switches UI
   } else {
     showGuest();
