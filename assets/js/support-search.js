@@ -22,8 +22,6 @@ const supportArticles = [
 
   // --- Wavium ---
 
-  // --- TapMood ---
-
   // --- Community & Contact ---
   {
     title: 'Accessing the Developer Discord',

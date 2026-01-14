@@ -16,18 +16,14 @@
       <div class="founder-popup__backdrop" data-popup-close></div>
       <div class="founder-popup__dialog" role="dialog" aria-modal="true" aria-labelledby="founderPopupTitle">
         <div class="founder-popup__header">
-          <p class="founder-popup__eyebrow">A note from the founders</p>
+          <p class="founder-popup__eyebrow">A note from WayV</p>
           <h2 id="founderPopupTitle" class="founder-popup__title">Thank you for building with us</h2>
           <button type="button" class="founder-popup__close" aria-label="Close founder message" data-popup-close>×</button>
         </div>
         <div class="founder-popup__content">
           <div class="founder-popup__message">
-            <p class="founder-popup__name">Charles-Elliott Roger · Co-Founder of WayV</p>
+            <p class="founder-popup__name">Charles-Elliott Roger · Founder of WayV</p>
             <p class="founder-popup__text">Thank you to everyone who believes in what we're building and takes part in the journey.</p>
-          </div>
-          <div class="founder-popup__message">
-            <p class="founder-popup__name">Eliott Lacroix · Co-Founder of WayV</p>
-            <p class="founder-popup__text">Yes.</p>
           </div>
         </div>
       </div>
