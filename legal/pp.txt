@@ -1,7 +1,7 @@
 Privacy Policy
 Last Updated: December 16, 2025
 
-At WayV ("we," "us," or "our"), privacy is at the core of our product philosophy. Whether you are using WaveOS, interacting with Wavium Interactive, or using our applications like TapMood, we are committed to protecting your personal information and being transparent about how we handle it.
+At WayV ("we," "us," or "our"), privacy is at the core of our product philosophy. Whether you are using WaveOS, interacting with Wavium Interactive, or using our applications, we are committed to protecting your personal information and being transparent about how we handle it.
 
 This Global Privacy Policy explains who we are, how we collect, share, and use personal information about you, and how you can exercise your privacy rights. This policy applies to our website (wayvstore.com) and all related services, applications, and products provided by WayV globally.
 
@@ -13,7 +13,7 @@ We collect information you provide to us voluntarily:
 
 Contact Information: If you email us (e.g., via wayvsoftware@gmail.com), we collect your email address, name, and the content of your message.
 
-Support Data: If you contact us for technical support regarding WaveOS or TapMood, we collect the details required to resolve your specific issue.
+Support Data: If you contact us for technical support regarding WaveOS or other WayV products, we collect the details required to resolve your specific issue.
 
 B. Information Collected Automatically
 When you visit our website or use our apps, certain information is collected automatically via standard internet technologies:
@@ -36,7 +36,7 @@ We use your personal data for specific, lawful reasons:
 
 To Provide Our Services: Delivering the content, software, and functionality of WayV products.
 
-To Improve Our Products: analyzing usage data to fix bugs in WaveOS or improve TapMood features.
+To Improve Our Products: analyzing usage data to fix bugs in WaveOS or improve other WayV products.
 
 To Communicate: Responding to your inquiries or support requests.
 
@@ -50,7 +50,7 @@ WayV does not sell your personal information. We do not sell, rent, or trade you
 4. Legal Bases for Processing (EEA & UK Users)
 If you are located in the European Economic Area (EEA) or the United Kingdom, we process your personal data under the following legal bases in accordance with the GDPR:
 
-Contract: Processing is necessary to perform a contract with you (e.g., providing the services of the TapMood app).
+Contract: Processing is necessary to perform a contract with you (e.g., providing the services of a WayV application).
 
 Legitimate Interests: Processing is necessary for our legitimate interests (e.g., securing our website, analyzing product usage to improve stability), provided these interests do not override your fundamental rights.
 
@@ -63,7 +63,7 @@ We process data primarily within WayV. However, we may share data in the followi
 
 Service Providers: We use trusted third parties to help us run our business (e.g., website hosting, cloud infrastructure, analytics providers). These parties are contractually bound to protect your data and only use it for the services they provide to us.
 
-App Platforms: If you download TapMood or other WayV software via the Apple App Store or similar platforms, your relationship regarding payments and downloads is with that platform provider.
+App Platforms: If you download WayV software via the Apple App Store or similar platforms, your relationship regarding payments and downloads is with that platform provider.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation.
 
@@ -123,7 +123,7 @@ This version is designed to be compliant with major international frameworks, in
 Privacy Policy
 Last Updated: December 16, 2025
 
-At WayV ("we," "us," or "our"), privacy is at the core of our product philosophy. Whether you are using WaveOS, interacting with Wavium Interactive, or using our applications like TapMood, we are committed to protecting your personal information and being transparent about how we handle it.
+At WayV ("we," "us," or "our"), privacy is at the core of our product philosophy. Whether you are using WaveOS, interacting with Wavium Interactive, or using our applications, we are committed to protecting your personal information and being transparent about how we handle it.
 
 This Global Privacy Policy explains who we are, how we collect, share, and use personal information about you, and how you can exercise your privacy rights. This policy applies to our website (wayvstore.com) and all related services, applications, and products provided by WayV globally.
 
@@ -135,7 +135,7 @@ We collect information you provide to us voluntarily:
 
 Contact Information: If you email us (e.g., via wayvsoftware@gmail.com), we collect your email address, name, and the content of your message.
 
-Support Data: If you contact us for technical support regarding WaveOS or TapMood, we collect the details required to resolve your specific issue.
+Support Data: If you contact us for technical support regarding WaveOS or other WayV products, we collect the details required to resolve your specific issue.
 
 B. Information Collected Automatically
 When you visit our website or use our apps, certain information is collected automatically via standard internet technologies:
@@ -158,7 +158,7 @@ We use your personal data for specific, lawful reasons:
 
 To Provide Our Services: Delivering the content, software, and functionality of WayV products.
 
-To Improve Our Products: analyzing usage data to fix bugs in WaveOS or improve TapMood features.
+To Improve Our Products: analyzing usage data to fix bugs in WaveOS or improve other WayV products.
 
 To Communicate: Responding to your inquiries or support requests.
 
@@ -172,7 +172,7 @@ WayV does not sell your personal information. We do not sell, rent, or trade you
 4. Legal Bases for Processing (EEA & UK Users)
 If you are located in the European Economic Area (EEA) or the United Kingdom, we process your personal data under the following legal bases in accordance with the GDPR:
 
-Contract: Processing is necessary to perform a contract with you (e.g., providing the services of the TapMood app).
+Contract: Processing is necessary to perform a contract with you (e.g., providing the services of a WayV application).
 
 Legitimate Interests: Processing is necessary for our legitimate interests (e.g., securing our website, analyzing product usage to improve stability), provided these interests do not override your fundamental rights.
 
@@ -185,7 +185,7 @@ We process data primarily within WayV. However, we may share data in the followi
 
 Service Providers: We use trusted third parties to help us run our business (e.g., website hosting, cloud infrastructure, analytics providers). These parties are contractually bound to protect your data and only use it for the services they provide to us.
 
-App Platforms: If you download TapMood or other WayV software via the Apple App Store or similar platforms, your relationship regarding payments and downloads is with that platform provider.
+App Platforms: If you download WayV software via the Apple App Store or similar platforms, your relationship regarding payments and downloads is with that platform provider.
 
 Legal Requirements: We may disclose information if required by law, court order, or government regulation.
 

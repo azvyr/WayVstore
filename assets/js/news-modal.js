@@ -1,29 +1,5 @@
 (function () {
   const newsData = {
-    "tapmood-approval": {
-      tag: "App Store Status",
-      tagColor: "bg-blue-50 text-blue-600",
-      date: "App Review",
-      title: "TapMood release is delayed during review.",
-      gradient: "bg-gradient-to-r from-blue-50 to-indigo-50",
-      body: `
-        <p class="mb-4">We have submitted TapMood for App Store review.</p>
-        <p class="mb-4">Apple's review is taking longer than expected, so our public release is delayed.</p>
-        <p>Thank you for your patience while we complete the approval process.</p>
-      `
-    },
-    "tapmood-delay": {
-      tag: "Release Update",
-      tagColor: "bg-amber-50 text-amber-700",
-      date: "Today",
-      title: "TapMood has been delayed.",
-      gradient: "bg-gradient-to-r from-amber-50 to-orange-50",
-      body: `
-        <p class="mb-4">We are sorry for the delay.</p>
-        <p class="mb-4">We are working through the remaining App Store steps and will release TapMood as soon as we can.</p>
-        <p>Thank you for sticking with us while we finish up.</p>
-      `
-    },
     "developer-program": {
       tag: "Community",
       tagColor: "bg-emerald-50 text-emerald-600",
@@ -35,23 +11,6 @@
         <p class="mb-4">This space is for developers of any project, big or small, to ask questions and get answers from our team or other developers in the community.</p>
         <p class="mb-4">We will also support creators building on Roblox, future Wave Engine projects, and other creative initiatives.</p>
         <p>More details will be shared as we get closer to launch.</p>
-      `
-    },
-    tapmood: {
-      tag: "Beta 6",
-      tagColor: "bg-blue-50 text-blue-600",
-      date: "Current Status",
-      title: "TapMood readying for release.",
-      gradient: "bg-gradient-to-r from-blue-50 to-indigo-50",
-      body: `
-        <p class="mb-4">We are currently in <strong>Beta 6</strong> of TapMood. This represents a major milestone in our roadmap.</p>
-        <p class="mb-4">Most of the application is now feature-complete and ready for release. Our team is currently focusing entirely on:</p>
-        <ul class="list-disc pl-5 mb-4 space-y-2">
-          <li>Polishing haptic feedback patterns.</li>
-          <li>Fixing remaining UI bugs in the journaling flow.</li>
-          <li>Ensuring stability across all supported iOS devices.</li>
-        </ul>
-        <p>Public release will be coming very soon. Stay tuned.</p>
       `
     },
     waveos: {
