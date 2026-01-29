@@ -1,3 +1,13 @@
+node_modules/
+dist/
+*.ts
+*.tsx
+vite.config.*
+tsconfig.json
+package*.json
+pages/
+components/
+services/
 # Logs
 logs
 *.log
