@@ -6,7 +6,7 @@ import ProductsPage from './pages/ProductsPage';
 import CommunityPage from './pages/CommunityPage';
 import AboutPage from './pages/AboutPage';
 import Footer from './components/Footer';
-import AiAssistant from './components/AiAssistant';
+// ...existing code...
 
 const App: React.FC = () => {
   return (
@@ -22,7 +22,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
-        <AiAssistant />
+        {/* AiAssistant removed */}
       </div>
     </HashRouter>
   );

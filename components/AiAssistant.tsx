@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Sparkles, Bot, Loader2 } from 'lucide-react';
 import { sendMessageToGemini } from '../services/geminiService';
