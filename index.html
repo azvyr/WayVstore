@@ -1,50 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WayV | Build the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              wayv: {
+                dark: '#0B0C15',
+                card: '#161827',
+                primary: '#6366f1',
+                accent: '#06b6d4',
+                glow: '#8b5cf6',
+              }
+            },
+            animation: {
+              'blob': 'blob 7s infinite',
+              'fade-in': 'fadeIn 1s ease-out',
+              'slide-up': 'slideUp 0.8s ease-out',
+              'shimmer': 'shimmer 1.5s infinite',
+            },
+            keyframes: {
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              shimmer: {
+                '100%': { transform: 'translateX(100%)' }
+              }
+            }
+          },
+        },
+      }
+    </script>
     <style>
-      body {
-        background-color: #0B0C15;
-        color: #ffffff;
-        overflow-x: hidden;
-      }
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #0B0C15;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #334155;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #475569;
-      }
+      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0B0C15; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+      .nav-link { position: relative; }
+      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+      .nav-link:hover::after { width: 100%; }
+      .nav-link.active { color: white; }
+      .nav-link.active::after { width: 100%; }
     </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/": "https://esm.sh/react@18.3.1/",
-    "react-dom": "https://esm.sh/react-dom@18.3.1",
-    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom",
-    "recharts": "https://esm.sh/recharts@2.12.7?external=react,react-dom",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0?external=react",
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "recharts": "https://esm.sh/recharts@^3.7.0"
   }
 }
 </script>
-<!-- No index.css present, removed broken link -->
 </head>
-  <body>
-    <div id="root"></div>
-  <!-- Vite injects the correct script during build -->
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b bg-transparent border-transparent py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2 group cursor-pointer">
+                    <div class="bg-gradient-to-tr from-wayv-accent to-wayv-primary p-2 rounded-lg group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)] transition-shadow">
+                        <i data-lucide="terminal" class="h-6 w-6 text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white font-mono">WayV</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="products.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Products</a>
+                    <a href="community.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">Community</a>
+                    <a href="about.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium transition-all backdrop-blur-sm">Get Started</button>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white p-2">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-wayv-card/95 backdrop-blur-xl border-b border-white/10 absolute w-full left-0 top-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="products.html" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Products</a>
+                <a href="community.html" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Community</a>
+                <a href="about.html" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-md">About</a>
+                <div class="pt-4 flex space-x-4 px-3">
+                    <i data-lucide="github" class="w-5 h-5 text-slate-400"></i>
+                    <i data-lucide="twitter" class="w-5 h-5 text-slate-400"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-wayv-primary/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-wayv-accent/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob" style="animation-delay: 2s"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-wayv-glow/20 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob" style="animation-delay: 4s"></div>
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full border border-wayv-accent/30 bg-wayv-accent/10 text-wayv-accent text-xs font-mono mb-8 animate-fade-in">
+                <span class="relative flex h-2 w-2 mr-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                v2.0 of Wave Engine is live
+                <i data-lucide="chevron-right" class="w-3 h-3 ml-1"></i>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 animate-slide-up">
+                <span class="block text-white mb-2">Build the Future</span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-wayv-accent via-wayv-primary to-wayv-glow">With Open Source</span>
+            </h1>
+
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10 animate-slide-up" style="animation-delay: 0.1s">
+                WayV empowers developers with next-gen tools. From robust operating systems to high-performance game engines.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-slide-up" style="animation-delay: 0.2s">
+                <button class="group relative px-8 py-3 bg-white text-black font-bold rounded-lg overflow-hidden transition-all hover:scale-105">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-shimmer"></div>
+                    <span class="flex items-center">
+                        Start Building <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </button>
+                <button class="px-8 py-3 bg-white/5 border border-white/10 text-white font-medium rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+                    <i data-lucide="github" class="w-5 h-5"></i> View on GitHub
+                </button>
+            </div>
+
+            <!-- Code Mockup -->
+            <div class="mt-20 relative w-full max-w-4xl mx-auto h-64 md:h-80 animate-slide-up" style="animation-delay: 0.4s">
+                <div class="absolute inset-0 bg-gradient-to-t from-wayv-dark to-transparent z-20"></div>
+                <div class="absolute inset-0 bg-wayv-card border border-white/5 rounded-t-xl overflow-hidden shadow-2xl transform perspective-1000 rotate-x-12">
+                    <div class="flex items-center px-4 py-2 bg-white/5 border-b border-white/5 space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="ml-4 px-3 py-1 bg-black/50 rounded text-xs font-mono text-slate-500 flex-1">main.rs — WaveEngine</div>
+                    </div>
+                    <div class="p-6 font-mono text-sm text-left overflow-hidden">
+                        <div class="text-pink-500">fn <span class="text-blue-400">main</span>() {</div>
+                        <div class="pl-4 text-slate-400">// Initialize Wave Engine Core</div>
+                        <div class="pl-4 text-white">let engine = <span class="text-yellow-400">WaveEngine</span>::<span class="text-cyan-400">new</span>(Config::default());</div>
+                        <div class="pl-4 text-white">engine.<span class="text-cyan-400">connect</span>(<span class="text-green-400">"wavium-cloud"</span>);</div>
+                        <div class="pl-4 text-white">engine.<span class="text-cyan-400">render_loop</span>(|ctx| {</div>
+                        <div class="pl-8 text-white">ctx.draw_scene();</div>
+                        <div class="pl-4 text-white">});</div>
+                        <div class="text-pink-500">}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="py-24 relative bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+                    Tools for the <span class="text-transparent bg-clip-text bg-gradient-to-r from-wayv-primary to-wayv-accent">Modern Creator</span>
+                </h2>
+                <p class="text-slate-400 text-lg">Our ecosystem enables you to build faster, scale endlessly, and design beautifully.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group relative bg-wayv-card rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 p-0.5 mb-6">
+                            <div class="w-full h-full bg-wayv-card rounded-md flex items-center justify-center">
+                                <i data-lucide="monitor" class="w-7 h-7 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">WaveOS</h3>
+                        <p class="text-sm font-mono text-wayv-accent mb-4">The OS for Cloud Natives</p>
+                        <p class="text-slate-400 mb-6 leading-relaxed">A lightweight, immutable operating system designed purely for containerized workloads.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mr-3"></div>Immutable File System</li>
+                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mr-3"></div>eBPF Tracing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative bg-wayv-card rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 p-0.5 mb-6">
+                            <div class="w-full h-full bg-wayv-card rounded-md flex items-center justify-center">
+                                <i data-lucide="box" class="w-7 h-7 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Wave Engine</h3>
+                        <p class="text-sm font-mono text-wayv-accent mb-4">Hyper-Realistic Physics</p>
+                        <p class="text-slate-400 mb-6 leading-relaxed">A Rust-based game engine prioritizing memory safety and concurrent rendering.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 mr-3"></div>Ray Tracing</li>
+                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 mr-3"></div>WebAssembly Support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative bg-wayv-card rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 p-0.5 mb-6">
+                            <div class="w-full h-full bg-wayv-card rounded-md flex items-center justify-center">
+                                <i data-lucide="layers" class="w-7 h-7 text-white"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Wavium</h3>
+                        <p class="text-sm font-mono text-wayv-accent mb-4">UI at the Speed of Light</p>
+                        <p class="text-slate-400 mb-6 leading-relaxed">An unstyled, accessible component library for React and Vue that handles the logic.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 mr-3"></div>WAI-ARIA Compliant</li>
+                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 mr-3"></div>Headless</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute top-1/2 left-0 w-64 h-64 bg-wayv-primary/10 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-wayv-glow/10 rounded-full filter blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-6">Powered by <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Global Collaboration</span></h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">WayV isn't just a company; it's a movement. Thousands of developers contribute code, design, and ideas to our ecosystem every day.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex flex-col items-center justify-center p-6 bg-white/5 rounded-xl border border-white/5 backdrop-blur-sm">
+                            <i data-lucide="star" class="w-6 h-6 text-wayv-accent mb-3"></i>
+                            <div class="text-3xl font-bold text-white mb-1">12.5k</div>
+                            <div class="text-sm text-slate-400 font-mono">GitHub Stars</div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center p-6 bg-white/5 rounded-xl border border-white/5 backdrop-blur-sm">
+                            <i data-lucide="git-fork" class="w-6 h-6 text-wayv-accent mb-3"></i>
+                            <div class="text-3xl font-bold text-white mb-1">850+</div>
+                            <div class="text-sm text-slate-400 font-mono">Contributors</div>
+                        </div>
+                    </div>
+                    <button class="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-slate-200 transition-colors w-full sm:w-auto">Join Discord Community</button>
+                </div>
+                <!-- CSS Chart Replacement -->
+                <div class="bg-wayv-card/50 rounded-2xl p-6 border border-white/10 backdrop-blur-md shadow-2xl h-[400px] flex flex-col">
+                    <h3 class="text-lg font-semibold text-white mb-6 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+                        Contributor Growth
+                    </h3>
+                    <div class="flex-1 flex items-end space-x-2 relative px-4 pb-4">
+                        <!-- Simulated Area Chart using CSS Gradients/Borders -->
+                        <svg viewBox="0 0 100 50" class="w-full h-full overflow-visible" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.5"/>
+                                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M0,50 L0,45 L16,42 L33,35 L50,25 L66,15 L83,10 L100,5 L100,50 Z" fill="url(#chartGradient)" />
+                            <path d="M0,45 L16,42 L33,35 L50,25 L66,15 L83,10 L100,5" fill="none" stroke="#06b6d4" stroke-width="0.5" />
+                        </svg>
+                        <div class="absolute bottom-0 left-0 w-full flex justify-between text-[10px] text-slate-500 pt-2 font-mono">
+                            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-wayv-dark border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="terminal" class="h-6 w-6 text-wayv-primary"></i>
+                        <span class="text-xl font-bold text-white font-mono">WayV</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">Empowering the next generation of creators with open source tools built for performance and scale.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Products</h4>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><a href="products.html" class="hover:text-wayv-accent transition-colors">WaveOS</a></li>
+                        <li><a href="products.html" class="hover:text-wayv-accent transition-colors">Wave Engine</a></li>
+                        <li><a href="products.html" class="hover:text-wayv-accent transition-colors">Wavium UI</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><a href="#" class="hover:text-wayv-accent transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-wayv-accent transition-colors">API Reference</a></li>
+                        <li><a href="community.html" class="hover:text-wayv-accent transition-colors">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                        <li><a href="about.html" class="hover:text-wayv-accent transition-colors">About Us</a></li>
+                        <li><a href="about.html" class="hover:text-wayv-accent transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-wayv-accent transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 text-center md:text-left">
+                <p class="text-slate-600 text-sm">© 2025 WayV Technology Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Logic
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3');
+                navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5');
+            } else {
+                navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3');
+                navbar.classList.add('bg-transparent', 'border-transparent', 'py-5');
+            }
+        });
+
+        // Mobile Menu Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>

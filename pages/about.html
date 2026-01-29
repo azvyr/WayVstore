@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | WayV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+            colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
+          },
+        },
+      }
+    </script>
+    <style>
+      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0B0C15; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      .nav-link { position: relative; }
+      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+      .nav-link:hover::after { width: 100%; }
+      .nav-link.active { color: white; }
+      .nav-link.active::after { width: 100%; }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b bg-transparent border-transparent py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <div class="bg-gradient-to-tr from-wayv-accent to-wayv-primary p-2 rounded-lg"><i data-lucide="terminal" class="h-6 w-6 text-white"></i></div>
+                    <span class="text-xl font-bold tracking-tight text-white font-mono">WayV</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="products.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Products</a>
+                    <a href="community.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Community</a>
+                    <a href="about.html" class="nav-link active text-sm font-medium">About</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">Get Started</button>
+                </div>
+                <div class="md:hidden"><button id="mobile-menu-btn" class="text-slate-300 p-2"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-wayv-card/95 backdrop-blur-xl border-b border-white/10 absolute w-full left-0 top-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="products.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Products</a>
+                <a href="community.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Community</a>
+                <a href="about.html" class="block px-3 py-3 text-white bg-white/10 rounded-md">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 min-h-screen">
+        <div class="relative border-b border-white/5 bg-wayv-card/30 pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl font-bold text-white mb-6">We Are <span class="text-wayv-primary">WayV</span></h1>
+                <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">We believe that the best software is built in the open. Our mission is to democratize access to high-performance tooling.</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-3 gap-12 mb-32">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 hover:rotate-6 transition-transform"><i data-lucide="target" class="w-8 h-8 text-red-400"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Performance First</h3>
+                    <p class="text-slate-400">We don't compromise on speed. Every millisecond counts.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 -rotate-3 hover:-rotate-6 transition-transform"><i data-lucide="heart" class="w-8 h-8 text-pink-400"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Community Driven</h3>
+                    <p class="text-slate-400">Our roadmap is defined by our users. We build what the community needs.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 rotate-3 hover:rotate-6 transition-transform"><i data-lucide="globe" class="w-8 h-8 text-cyan-400"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3">Radical Openness</h3>
+                    <p class="text-slate-400">No black boxes. Our code and future plans are open for everyone.</p>
+                </div>
+            </div>
+
+            <div class="mb-32">
+                <h2 class="text-3xl font-bold text-white mb-12">The Team</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="group"><div class="relative overflow-hidden rounded-xl mb-4"><img src="https://i.pravatar.cc/300?u=a" class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"></div><h4 class="text-lg font-bold text-white">Alex Chen</h4><p class="text-sm text-slate-500">Founder & CEO</p></div>
+                    <div class="group"><div class="relative overflow-hidden rounded-xl mb-4"><img src="https://i.pravatar.cc/300?u=b" class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"></div><h4 class="text-lg font-bold text-white">Sarah Jones</h4><p class="text-sm text-slate-500">CTO</p></div>
+                    <div class="group"><div class="relative overflow-hidden rounded-xl mb-4"><img src="https://i.pravatar.cc/300?u=c" class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"></div><h4 class="text-lg font-bold text-white">Marcus Drift</h4><p class="text-sm text-slate-500">Lead Engine Dev</p></div>
+                    <div class="group"><div class="relative overflow-hidden rounded-xl mb-4"><img src="https://i.pravatar.cc/300?u=d" class="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"></div><h4 class="text-lg font-bold text-white">Elena V.</h4><p class="text-sm text-slate-500">Head of Product</p></div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-wayv-dark to-wayv-card border border-white/10 rounded-3xl p-12 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-wayv-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div class="relative z-10">
+                    <i data-lucide="briefcase" class="w-12 h-12 text-white mx-auto mb-6"></i>
+                    <h2 class="text-3xl font-bold text-white mb-4">Come Build With Us</h2>
+                    <p class="text-slate-400 mb-8 max-w-xl mx-auto">We are hiring Rust engineers, UI designers, and Developer Advocates. Fully remote.</p>
+                    <button class="px-8 py-3 bg-white text-black font-bold rounded-lg hover:bg-slate-200 transition-colors">View Open Positions</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-wayv-dark border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <p class="text-slate-600 text-sm">© 2025 WayV Technology Inc. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
+            else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
+        });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+    </script>
+</body>
+</html>

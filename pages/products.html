@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | WayV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+            colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
+            animation: { 'slide-up': 'slideUp 0.8s ease-out' },
+            keyframes: { slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } } }
+          },
+        },
+      }
+    </script>
+    <style>
+      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0B0C15; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      .nav-link { position: relative; }
+      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+      .nav-link:hover::after { width: 100%; }
+      .nav-link.active { color: white; }
+      .nav-link.active::after { width: 100%; }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b bg-transparent border-transparent py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <div class="bg-gradient-to-tr from-wayv-accent to-wayv-primary p-2 rounded-lg"><i data-lucide="terminal" class="h-6 w-6 text-white"></i></div>
+                    <span class="text-xl font-bold tracking-tight text-white font-mono">WayV</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="products.html" class="nav-link active text-sm font-medium">Products</a>
+                    <a href="community.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Community</a>
+                    <a href="about.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">About</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">Get Started</button>
+                </div>
+                <div class="md:hidden"><button id="mobile-menu-btn" class="text-slate-300 p-2"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-wayv-card/95 backdrop-blur-xl border-b border-white/10 absolute w-full left-0 top-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="products.html" class="block px-3 py-3 text-white bg-white/10 rounded-md">Products</a>
+                <a href="community.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Community</a>
+                <a href="about.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 pb-16 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-20 animate-slide-up">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">The <span class="text-transparent bg-clip-text bg-gradient-to-r from-wayv-primary to-wayv-accent">WayV Ecosystem</span></h1>
+                <p class="text-xl text-slate-400 max-w-3xl mx-auto">A suite of interconnected tools designed for the next generation of performance-critical applications.</p>
+            </div>
+
+            <!-- WaveOS -->
+            <section class="mb-32 relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent rounded-3xl -z-10 blur-xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="bg-wayv-card border border-white/10 rounded-3xl p-8 md:p-12 overflow-hidden">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="p-3 bg-blue-500/20 rounded-lg"><i data-lucide="monitor" class="w-8 h-8 text-blue-400"></i></div>
+                                <h2 class="text-3xl font-bold text-white">WaveOS</h2>
+                            </div>
+                            <p class="text-slate-300 text-lg mb-6 leading-relaxed">The first operating system designed exclusively for ephemeral container workloads. WaveOS strips away legacy kernel bloat to deliver <span class="text-white font-semibold">sub-100ms boot times</span>.</p>
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-center text-slate-400"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-400 mr-2"></i>Immutable by default file system</li>
+                                <li class="flex items-center text-slate-400"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-400 mr-2"></i>Native eBPF observability stack</li>
+                                <li class="flex items-center text-slate-400"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-400 mr-2"></i>WASM-based kernel modules</li>
+                            </ul>
+                            <div class="flex gap-4">
+                                <button class="px-6 py-2 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors">Download ISO</button>
+                                <button class="px-6 py-2 bg-white/5 border border-white/10 text-white rounded-lg hover:bg-white/10">Documentation</button>
+                            </div>
+                        </div>
+                        <div class="bg-[#0f111a] rounded-xl p-4 font-mono text-sm border border-white/5 shadow-2xl transform rotate-1 transition-transform group-hover:rotate-0">
+                            <div class="flex space-x-2 mb-4"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div>
+                            <div class="space-y-1">
+                                <div class="text-slate-500"># Boot sequence log</div>
+                                <div class="text-green-400">➜  ~ waveos boot --kernel=v2.4.0</div>
+                                <div class="text-slate-300">[0.001s] Kernel loaded @ 0x400000</div>
+                                <div class="text-slate-300">[0.012s] Filesystem mounted (Read-Only)</div>
+                                <div class="text-blue-400 font-bold">System ready in 92ms.</div>
+                                <div class="animate-pulse text-white">_</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wave Engine -->
+            <section class="mb-32 relative group">
+                <div class="absolute inset-0 bg-gradient-to-l from-violet-500/10 to-transparent rounded-3xl -z-10 blur-xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="bg-wayv-card border border-white/10 rounded-3xl p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1 relative h-64 md:h-80 bg-black rounded-xl overflow-hidden border border-white/10 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-violet-900/40 via-transparent to-transparent"></div>
+                            <i data-lucide="box" class="w-32 h-32 text-violet-500 animate-[spin_10s_linear_infinite]"></i>
+                            <div class="absolute bottom-4 left-4 text-xs font-mono text-violet-300">Render Time: 0.4ms <br/>Triangles: 4.2M</div>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="p-3 bg-violet-500/20 rounded-lg"><i data-lucide="cpu" class="w-8 h-8 text-violet-400"></i></div>
+                                <h2 class="text-3xl font-bold text-white">Wave Engine</h2>
+                            </div>
+                            <p class="text-slate-300 text-lg mb-6 leading-relaxed">Built in Rust for safety without sacrificing speed. Wave Engine utilizes a data-oriented ECS architecture.</p>
+                            <button class="px-6 py-2 bg-violet-600 text-white rounded-lg font-medium hover:bg-violet-700 transition-colors mt-6">Start Creating</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="bg-wayv-dark border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <p class="text-slate-600 text-sm">© 2025 WayV Technology Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
+            else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
+        });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community | WayV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+            colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
+          },
+        },
+      }
+    </script>
+    <style>
+      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0B0C15; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      .nav-link { position: relative; }
+      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+      .nav-link:hover::after { width: 100%; }
+      .nav-link.active { color: white; }
+      .nav-link.active::after { width: 100%; }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b bg-transparent border-transparent py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <div class="bg-gradient-to-tr from-wayv-accent to-wayv-primary p-2 rounded-lg"><i data-lucide="terminal" class="h-6 w-6 text-white"></i></div>
+                    <span class="text-xl font-bold tracking-tight text-white font-mono">WayV</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="products.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">Products</a>
+                    <a href="community.html" class="nav-link active text-sm font-medium">Community</a>
+                    <a href="about.html" class="nav-link text-sm font-medium text-slate-300 hover:text-white">About</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">Get Started</button>
+                </div>
+                <div class="md:hidden"><button id="mobile-menu-btn" class="text-slate-300 p-2"><i data-lucide="menu" class="h-6 w-6"></i></button></div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-wayv-card/95 backdrop-blur-xl border-b border-white/10 absolute w-full left-0 top-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="products.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">Products</a>
+                <a href="community.html" class="block px-3 py-3 text-white bg-white/10 rounded-md">Community</a>
+                <a href="about.html" class="block px-3 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-md">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-24 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Join the <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Global Mind</span></h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">WayV is built by thousands of passionate developers. Connect, contribute, and create together.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-24">
+                <a href="#" class="group bg-wayv-card p-6 rounded-2xl border border-white/10 hover:border-wayv-primary/50 transition-all hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-indigo-500/20 rounded-lg text-indigo-400"><i data-lucide="message-square" class="w-6 h-6"></i></div>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 text-slate-500 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Discord Server</h3>
+                    <p class="text-slate-400 text-sm">Chat with 40k+ developers, get real-time support, and share your work.</p>
+                </a>
+                <a href="#" class="group bg-wayv-card p-6 rounded-2xl border border-white/10 hover:border-wayv-primary/50 transition-all hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-slate-500/20 rounded-lg text-slate-300"><i data-lucide="users" class="w-6 h-6"></i></div>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 text-slate-500 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">GitHub Org</h3>
+                    <p class="text-slate-400 text-sm">Explore the source code, file issues, and submit pull requests.</p>
+                </a>
+                <a href="#" class="group bg-wayv-card p-6 rounded-2xl border border-white/10 hover:border-wayv-primary/50 transition-all hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-yellow-500/20 rounded-lg text-yellow-400"><i data-lucide="award" class="w-6 h-6"></i></div>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 text-slate-500 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Ambassador Program</h3>
+                    <p class="text-slate-400 text-sm">Lead local chapters, organize meetups, and get exclusive swag.</p>
+                </a>
+            </div>
+
+            <div class="mb-24">
+                <div class="flex items-center space-x-2 mb-8"><i data-lucide="calendar" class="w-6 h-6 text-wayv-accent"></i><h2 class="text-2xl font-bold text-white">Upcoming Events</h2></div>
+                <div class="space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between bg-white/5 border border-white/5 rounded-xl p-6 hover:bg-white/10 transition-colors">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-2"><span class="text-xs font-bold px-2 py-1 rounded uppercase bg-purple-500/20 text-purple-300">Conference</span><span class="text-sm text-slate-400">Aug 12 - 14, 2025</span></div>
+                            <h3 class="text-xl font-bold text-white mb-1">WaveCon 2025</h3>
+                            <p class="text-slate-400 text-sm">The biggest gathering of Wave ecosystem developers. Keynotes, workshops, and more.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6 flex items-center"><button class="px-4 py-2 rounded-lg border border-white/20 text-white text-sm hover:bg-white/10 whitespace-nowrap">RSVP</button></div>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between bg-white/5 border border-white/5 rounded-xl p-6 hover:bg-white/10 transition-colors">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-3 mb-2"><span class="text-xs font-bold px-2 py-1 rounded uppercase bg-orange-500/20 text-orange-300">Hackathon</span><span class="text-sm text-slate-400">Oct 05, 2025</span></div>
+                            <h3 class="text-xl font-bold text-white mb-1">Game Jam: Physics Edition</h3>
+                            <p class="text-slate-400 text-sm">Build a game using Wave Engine in 48 hours. $10k in prizes.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0 md:ml-6 flex items-center"><button class="px-4 py-2 rounded-lg border border-white/20 text-white text-sm hover:bg-white/10 whitespace-nowrap">RSVP</button></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-16">
+                <h2 class="text-2xl font-bold text-white mb-8 text-center">Top Contributors This Month</h2>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="relative group"><div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full opacity-75 blur"></div><img src="https://i.pravatar.cc/150?u=1" class="relative w-16 h-16 rounded-full border-2 border-black object-cover transform transition-transform group-hover:scale-110"></div>
+                    <div class="relative group"><div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full opacity-75 blur"></div><img src="https://i.pravatar.cc/150?u=2" class="relative w-16 h-16 rounded-full border-2 border-black object-cover transform transition-transform group-hover:scale-110"></div>
+                    <div class="relative group"><div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full opacity-75 blur"></div><img src="https://i.pravatar.cc/150?u=3" class="relative w-16 h-16 rounded-full border-2 border-black object-cover transform transition-transform group-hover:scale-110"></div>
+                    <div class="relative group"><div class="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full opacity-75 blur"></div><img src="https://i.pravatar.cc/150?u=4" class="relative w-16 h-16 rounded-full border-2 border-black object-cover transform transition-transform group-hover:scale-110"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-wayv-dark border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <p class="text-slate-600 text-sm">© 2025 WayV Technology Inc. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        lucide.createIcons();
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
+            else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
+        });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.toggle('hidden'); });
+    </script>
+</body>
+</html>
