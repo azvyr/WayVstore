@@ -1,6 +1,6 @@
 # WayVstore
 
-WayVstore is a static marketing site for WayV, highlighting the WaveOS platform and TapMood app. The pages are built with semantic HTML and Tailwind via CDN, making it easy to view locally without a build step.
+WayVstore is a static marketing site for WayV, highlighting the WaveOS platform and Wavium studio. The pages are built with semantic HTML and Tailwind via CDN, making it easy to view locally without a build step.
 
 ## Getting started
 - Clone the repository and open any page directly in your browser (for example, `index.html`).
@@ -10,7 +10,6 @@ WayVstore is a static marketing site for WayV, highlighting the WaveOS platform 
 ## Project structure
 - `index.html` – Landing page overview.
 - `waveos.html` – WaveOS product details.
-- `tapmood.html` – TapMood product details.
 - `company.html` – Company mission and values.
 - `support.html` – Support and contact information.
 - `assets/` – Shared images, CSS, and JavaScript (including the responsive navigation controller).
