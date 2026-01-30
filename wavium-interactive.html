@@ -8,14 +8,39 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="../assets/js/include.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0B0C15; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      .nav-link { position: relative; }
+      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+      .nav-link:hover::after { width: 100%; }
+      .nav-link.active { color: white; }
+      .nav-link.active::after { width: 100%; }
+    </style>
 </head>
 <body>
     <div id="header-include"></div>
-    <section class="pt-32 pb-24 text-center">
-        <img src="../assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="mx-auto h-20 w-20 mb-6" />
-        <h1 class="text-5xl font-extrabold text-white mb-4 tracking-tight">Wavium Interactive Group</h1>
-        <p class="text-lg text-slate-400 max-w-2xl mx-auto">An open, creator-funded collective for indie studios and solo devs. Build, ship, and grow real games through shared tools, competitions, and community support—all powered by open source WayV tech.</p>
-    </section>
+        <main class="pt-32 pb-24 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80 flex flex-col items-center justify-center">
+            <div class="max-w-2xl w-full mx-auto">
+                <div class="bg-white/10 border border-cyan-500/30 rounded-3xl p-10 shadow-2xl backdrop-blur-xl flex flex-col items-center relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl z-0"></div>
+                    <div class="relative z-10 flex flex-col items-center">
+                        <img src="../assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="h-24 w-24 mb-6 drop-shadow-xl" />
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight text-center">Wavium Interactive Group</h1>
+                        <p class="text-lg text-slate-300 mb-6 text-center">Wavium Interactive Group is an open, creator-funded collective for indie studios and solo devs. We empower creators to build, ship, and grow real games through shared tools, monthly competitions, mentorship, and a vibrant communityall powered by open source WayV technology.</p>
+                        <ul class="text-slate-400 text-base space-y-2 mb-8 text-left w-full max-w-md">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Monthly game jams & events</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Mentorship & collaboration</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Open source, community-driven tools</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Support for indie studios & solo devs</li>
+                        </ul>
+                        <a href="/community.html" class="px-6 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-colors">Join the Community</a>
+                    </div>
+                </div>
+            </div>
+        </main>
     <div id="footer-include"></div>
     <script>lucide.createIcons();</script>
 </body>

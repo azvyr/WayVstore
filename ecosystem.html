@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Ecosystem | WayV</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://unpkg.com/lucide@latest"></script>
+	<script src="/assets/js/include.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+	<script>
+	  tailwind.config = {
+		theme: {
+		  extend: {
+			fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+			colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
+			animation: { 'slide-up': 'slideUp 0.8s ease-out' },
+			keyframes: { slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } } }
+		  },
+		},
+	  }
+	</script>
+	<style>
+	  body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+	  ::-webkit-scrollbar { width: 8px; }
+	  ::-webkit-scrollbar-track { background: #0B0C15; }
+	  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+	  .nav-link { position: relative; }
+	  .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+	  .nav-link:hover::after { width: 100%; }
+	  .nav-link.active { color: white; }
+	  .nav-link.active::after { width: 100%; }
+	</style>
+</head>
+<body>
+	<!-- Header Include -->
+	<div id="header-include"></div>
+
+
+	<div class="pt-24 pb-16 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80">
+	  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="text-center mb-20 animate-slide-up">
+		  <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">The <span class="text-transparent bg-clip-text bg-gradient-to-r from-wayv-primary to-wayv-accent">WayV Ecosystem</span></h1>
+		  <p class="text-xl text-slate-400 max-w-3xl mx-auto">A suite of interconnected tools designed for the next generation of performance-critical applications.</p>
+		</div>
+		<div class="flex flex-col md:flex-row gap-10 md:gap-8 justify-center items-stretch">
+		  <!-- Wave Engine Card -->
+		  <div class="flex-1 min-w-[320px] max-w-md bg-white/10 border border-violet-500/30 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-violet-500/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
+			<div class="absolute -top-10 -right-10 w-32 h-32 bg-violet-500/20 rounded-full blur-2xl z-0"></div>
+			<div class="relative z-10 flex flex-col items-center">
+			  <img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="h-20 w-20 mb-6 drop-shadow-xl" />
+			  <h2 class="text-2xl font-bold text-white mb-2">Wave Engine</h2>
+			  <p class="text-slate-300 text-base mb-4 text-center">Built in Rust for safety and speed. Data-oriented ECS architecture for games and simulations.</p>
+			  <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
+				<li class="flex items-center"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>Data-oriented ECS</li>
+				<li class="flex items-center"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>WASM scripting</li>
+				<li class="flex items-center"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>GPU-accelerated</li>
+			  </ul>
+			  <a href="/wave-engine.html" class="px-5 py-2 bg-violet-600 text-white rounded-lg font-medium hover:bg-violet-700 transition-colors">Learn More</a>
+			</div>
+		  </div>
+		  <!-- Wavium Interactive Group Card -->
+		  <div class="flex-1 min-w-[320px] max-w-md bg-white/10 border border-cyan-500/30 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-cyan-500/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
+			<div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl z-0"></div>
+			<div class="relative z-10 flex flex-col items-center">
+			  <img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="h-20 w-20 mb-6 drop-shadow-xl" />
+			  <h2 class="text-2xl font-bold text-white mb-2">Wavium Interactive Group</h2>
+			  <p class="text-slate-300 text-base mb-4 text-center">Open, creator-funded collective for indie studios and solo devs. Community, mentorship, and shared tools.</p>
+			  <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
+				<li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Monthly competitions & events</li>
+				<li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Mentorship & collaboration</li>
+				<li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Open source, community-driven</li>
+			  </ul>
+			  <a href="/wavium-interactive.html" class="px-5 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-colors">Learn More</a>
+			</div>
+		  </div>
+		  <!-- WayV Originals Card -->
+		  <div class="flex-1 min-w-[320px] max-w-md bg-white/10 border border-fuchsia-500/30 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-fuchsia-500/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
+			<div class="absolute -top-10 -right-10 w-32 h-32 bg-fuchsia-500/20 rounded-full blur-2xl z-0"></div>
+			<div class="relative z-10 flex flex-col items-center">
+			  <img src="/assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="h-20 w-20 mb-6 drop-shadow-xl" />
+			  <h2 class="text-2xl font-bold text-white mb-2">WayV Originals</h2>
+			  <p class="text-slate-300 text-base mb-4 text-center">WayV's own studio for flagship games, prototypes, and creative experiments. Inspiring the community.</p>
+			  <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
+				<li class="flex items-center"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Flagship titles & prototypes</li>
+				<li class="flex items-center"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Creative experiments</li>
+				<li class="flex items-center"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Community inspiration</li>
+			  </ul>
+			  <a href="/wayv-originals.html" class="px-5 py-2 bg-fuchsia-600 text-white rounded-lg font-medium hover:bg-fuchsia-700 transition-colors">See Projects</a>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<!-- Footer Include -->
+	<div id="footer-include"></div>
+
+	<script>
+		lucide.createIcons();
+		const navbar = document.getElementById('navbar');
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
+			else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
+		});
+		// Hamburger menu logic is handled in /assets/js/include.js
+	</script>
+</body>
+</html>

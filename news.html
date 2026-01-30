@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News | WayV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="/assets/js/include.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
+            colors: { wayv: { dark: '#0B0C15', card: '#161827', primary: '#6366f1', accent: '#06b6d4', glow: '#8b5cf6' } },
+          },
+        },
+      }
+    </script>
+    <style>
+      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0B0C15; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+      .nav-link { position: relative; }
+      .nav-link::after { content: ''; position: absolute; height: 2px; background: #06b6d4; left: 0; bottom: -4px; width: 0; transition: width 0.3s; }
+      .nav-link:hover::after { width: 100%; }
+      .nav-link.active { color: white; }
+      .nav-link.active::after { width: 100%; }
+    </style>
+</head>
+<body>
+    <!-- Header Include -->
+    <div id="header-include"></div>
+
+    <div class="pt-24 pb-16 min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">WayV News</h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Latest updates, releases, and stories from the WayV ecosystem.</p>
+            </div>
+            <div class="space-y-10">
+                <!-- News Post 2 -->
+                <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
+                    <div class="flex items-center mb-4 text-wayv-accent font-mono text-xs">
+                        <i data-lucide="star" class="w-4 h-4 mr-2"></i> Jan 15, 2026
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-2">Wavium UI Kit Now Open Source</h2>
+                    <p class="text-slate-300 mb-4">Wavium UI, our modern dashboard and app component library, is now fully open source. Build beautiful apps faster with 100+ ready-to-use components.</p>
+                    <a href="#" class="text-wayv-accent font-semibold hover:underline">Explore Wavium UI</a>
+                </article>
+                <!-- News Post 3 -->
+                <article class="bg-wayv-card/80 border border-white/10 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
+                    <div class="flex items-center mb-4 text-wayv-glow font-mono text-xs">
+                        <i data-lucide="users" class="w-4 h-4 mr-2"></i> Dec 20, 2025
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-2">WayV Community Hits 40,000 Members</h2>
+                    <p class="text-slate-300 mb-4">Thank you to everyone who has joined, contributed, and built with us. The community is the heart of WayV, and we're just getting started!</p>
+                    <a href="#" class="text-wayv-accent font-semibold hover:underline">Join the Community</a>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Include -->
+    <div id="footer-include"></div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
