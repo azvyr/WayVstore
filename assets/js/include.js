@@ -9,9 +9,9 @@ function loadInclude(id, file) {
 }
 document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById('header-include')) {
-    loadInclude('header-include', '/assets/js/header.html');
+    loadInclude('header-include', 'assets/js/header.html');
   }
   if (document.getElementById('footer-include')) {
-    loadInclude('footer-include', '/assets/js/footer.html');
+    loadInclude('footer-include', 'assets/js/footer.html');
   }
 });
