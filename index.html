@@ -85,12 +85,16 @@
     <div id="header-include"></div>
 
     <!-- WayV Introduction Section -->
-    <section class="relative py-20 bg-transparent">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <img src="assets/images/wayv-logo.svg" alt="WayV Logo" class="mx-auto h-16 w-16 mb-6" />
-            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">Welcome to <span class="text-wayv-primary">WayV</span></h1>
-            <p class="text-2xl md:text-3xl font-bold text-wayv-accent mb-6">Surf the Wave</p>
-            <p class="text-lg text-slate-400 max-w-2xl mx-auto">WayV empowers the next generation of creators with open source tools built for performance, scale, and beautiful design. Join us and ride the wave of innovation.</p>
+    <section class="relative py-28 bg-gradient-to-b from-wayv-dark via-wayv-card/60 to-transparent">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-wayv-primary/10 rounded-full blur-3xl z-0"></div>
+        <div class="max-w-3xl mx-auto px-4 text-center relative z-10">
+            <img src="assets/images/wayv-logo.svg" alt="WayV Logo" class="mx-auto h-20 w-20 mb-8 drop-shadow-2xl" />
+            <h1 class="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+                Welcome to <span class="text-wayv-primary bg-gradient-to-r from-wayv-primary to-wayv-accent bg-clip-text text-transparent">WayV</span>
+            </h1>
+            <p class="text-3xl md:text-4xl font-bold text-wayv-accent mb-8 tracking-tight">Surf the Wave</p>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-2">Empowering the next generation of creators with open source tools for performance, scale, and beautiful design.</p>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">Join us and ride the wave of innovation.</p>
         </div>
     </section>
             <!-- Code Mockup -->
@@ -125,72 +129,34 @@
     </section>
 
     <!-- Product Showcase -->
-    <section class="py-24 relative bg-slate-950/50">
+    <section class="py-32 relative bg-gradient-to-b from-wayv-card/60 to-slate-950/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
-                    Tools for the <span class="text-transparent bg-clip-text bg-gradient-to-r from-wayv-primary to-wayv-accent">Modern Creator</span>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight">
+                    <span class="bg-gradient-to-r from-wayv-primary to-wayv-accent bg-clip-text text-transparent">The WayV Ecosystem</span>
                 </h2>
-                <p class="text-slate-400 text-lg">Our ecosystem enables you to build faster, scale endlessly, and design beautifully.</p>
+                <p class="text-slate-300 text-xl">Build faster, scale endlessly, and design beautifully with our open ecosystem.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="group relative bg-wayv-card rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-center mb-8">
-                            <div class="rounded-full bg-white shadow-xl p-0 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 96px; height: 96px;">
-                                <img src="assets/images/waveos-logo.svg" alt="WaveOS Logo" class="w-full h-full object-cover rounded-full" />
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">WaveOS</h3>
-                        <p class="text-sm font-mono text-wayv-accent mb-4">The OS for Cloud Natives</p>
-                        <p class="text-slate-400 mb-6 leading-relaxed">A lightweight, immutable operating system designed purely for containerized workloads.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mr-3"></div>Immutable File System</li>
-                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mr-3"></div>eBPF Tracing</li>
-                        </ul>
+            <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
+                <a href="originals.html" class="group flex-1 min-w-[220px] max-w-xs mx-auto bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-3xl p-8 border border-white/10 hover:border-wayv-primary/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 flex flex-col items-center text-center no-underline">
+                    <div class="rounded-full bg-white shadow-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 104px; height: 104px;">
+                        <img src="assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="w-full h-full object-cover rounded-full" />
                     </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="group relative bg-wayv-card rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-violet-500 to-fuchsia-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-center mb-8">
-                            <div class="rounded-full bg-white shadow-xl p-0 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 96px; height: 96px;">
-                                <img src="assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="w-full h-full object-cover rounded-full" />
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Wave Engine</h3>
-                        <p class="text-sm font-mono text-wayv-accent mb-4">Hyper-Realistic Physics</p>
-                        <p class="text-slate-400 mb-6 leading-relaxed">A C++ game engine prioritizing performance, memory safety, and concurrent rendering.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 mr-3"></div>Ray Tracing</li>
-                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 mr-3"></div>WebAssembly Support</li>
-                        </ul>
+                    <h3 class="text-2xl font-extrabold text-white tracking-tight">WayV Originals</h3>
+                </a>
+                <a href="wave-engine.html" class="group flex-1 min-w-[220px] max-w-xs mx-auto bg-gradient-to-br from-violet-500/10 to-fuchsia-500/5 rounded-3xl p-8 border border-white/10 hover:border-violet-400/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 flex flex-col items-center text-center no-underline">
+                    <div class="rounded-full bg-white shadow-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 104px; height: 104px;">
+                        <img src="assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="w-full h-full object-cover rounded-full" />
                     </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="group relative bg-wayv-card rounded-2xl p-8 border border-white/5 hover:border-white/10 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-center mb-8">
-                            <div class="rounded-full bg-white shadow-xl p-0 flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 96px; height: 96px;">
-                                <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="w-full h-full object-cover rounded-full" />
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Wavium</h3>
-                        <p class="text-sm font-mono text-wayv-accent mb-4">UI at the Speed of Light</p>
-                        <p class="text-slate-400 mb-6 leading-relaxed">An unstyled, accessible component library for React and Vue that handles the logic.</p>
-                        <ul class="space-y-3">
-                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 mr-3"></div>WAI-ARIA Compliant</li>
-                            <li class="flex items-center text-sm text-slate-300"><div class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 mr-3"></div>Headless</li>
-                        </ul>
+                    <h3 class="text-2xl font-extrabold text-white tracking-tight">Wave Engine</h3>
+                </a>
+                <a href="wavium-interactive.html" class="group flex-1 min-w-[220px] max-w-xs mx-auto bg-gradient-to-br from-emerald-500/10 to-teal-500/5 rounded-3xl p-8 border border-white/10 hover:border-emerald-400/60 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 flex flex-col items-center text-center no-underline">
+                    <div class="rounded-full bg-white shadow-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:-translate-y-2" style="box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25); width: 104px; height: 104px;">
+                        <img src="assets/images/wavium-logo.svg" alt="Wavium Logo" class="w-full h-full object-cover rounded-full" />
                     </div>
-                </div>
+                    <h3 class="text-2xl font-extrabold text-white tracking-tight">Wavium Interactive Group</h3>
+                </a>
             </div>
         </div>
     </section>
