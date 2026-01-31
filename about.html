@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="/assets/js/include.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <title>About | WayV</title>
-    {/* Favicon */}
     <link rel="icon" type="image/svg+xml" href="/assets/images/wayv-logo.svg" />
-    {/* SEO & Social Meta Tags */}
     <meta name="description" content="Learn about WayV: our mission, values, and commitment to open source, high-performance creative technology." />
     <meta name="keywords" content="WayV, about, open source, mission, values, developer tools, community, creative technology" />
     <meta name="author" content="WayV Inc." />
@@ -36,7 +34,13 @@
       }
     </script>
     <style>
-      body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+            body { background-color: #0B0C15; color: #ffffff; overflow-x: hidden; }
+            #navbar { left: 0; right: 0; }
+            @media (max-width: 768px) {
+                #navbar { padding-left: 0.5rem; padding-right: 0.5rem; }
+                .nav-link { font-size: 1rem; }
+                #mobile-menu { top: 56px !important; max-width: 100vw !important; border-radius: 0 0 1.5rem 1.5rem; }
+            }
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: #0B0C15; }
       ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -107,12 +111,47 @@
     <div id="footer-include"></div>
     <script>
         lucide.createIcons();
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
-            else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
-        });
-        // Hamburger menu logic is handled in /assets/js/include.js
+                const navbar = document.getElementById('navbar');
+                window.addEventListener('scroll', () => {
+                        if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
+                        else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
+                });
+                // Mobile Menu Logic
+                const menuBtn = document.getElementById('mobile-menu-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (menuBtn && mobileMenu) {
+                    menuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const isOpen = mobileMenu.classList.contains('opacity-100');
+                        if (!isOpen) {
+                            mobileMenu.classList.remove('hidden');
+                            setTimeout(() => {
+                                mobileMenu.classList.add('opacity-100');
+                                mobileMenu.classList.remove('opacity-0', 'scale-y-95');
+                                mobileMenu.classList.add('scale-y-100');
+                                mobileMenu.style.pointerEvents = 'auto';
+                            }, 10);
+                        } else {
+                            mobileMenu.classList.remove('opacity-100', 'scale-y-100');
+                            mobileMenu.classList.add('opacity-0', 'scale-y-95');
+                            mobileMenu.style.pointerEvents = 'none';
+                            setTimeout(() => {
+                                mobileMenu.classList.add('hidden');
+                            }, 300);
+                        }
+                    });
+                    // Close menu when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                            mobileMenu.classList.remove('opacity-100', 'scale-y-100');
+                            mobileMenu.classList.add('opacity-0', 'scale-y-95');
+                            mobileMenu.style.pointerEvents = 'none';
+                            setTimeout(() => {
+                                mobileMenu.classList.add('hidden');
+                            }, 300);
+                        }
+                    });
+                }
     </script>
 </body>
 </html>
