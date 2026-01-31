@@ -15,27 +15,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.getElementById('mobile-menu');
     if (!menuBtn || !mobileMenu) return;
 
-    // Toggle menu
+
+    // Toggle menu with animation
     menuBtn.addEventListener('click', function(e) {
       e.stopPropagation();
-      mobileMenu.classList.toggle('hidden');
+      const isOpen = mobileMenu.classList.contains('opacity-100');
+      if (!isOpen) {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+          mobileMenu.classList.add('opacity-100');
+          mobileMenu.classList.remove('opacity-0', 'scale-y-95');
+          mobileMenu.classList.add('scale-y-100');
+          mobileMenu.style.pointerEvents = 'auto';
+        }, 10);
+      } else {
+        mobileMenu.classList.remove('opacity-100', 'scale-y-100');
+        mobileMenu.classList.add('opacity-0', 'scale-y-95');
+        mobileMenu.style.pointerEvents = 'none';
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+      }
     });
+
 
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
       if (!mobileMenu.classList.contains('hidden')) {
         if (!mobileMenu.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
-          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('opacity-100', 'scale-y-100');
+          mobileMenu.classList.add('opacity-0', 'scale-y-95');
+          mobileMenu.style.pointerEvents = 'none';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
         }
       }
     });
 
+
     // Close menu when clicking a link inside
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function() {
-        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('opacity-100', 'scale-y-100');
+        mobileMenu.classList.add('opacity-0', 'scale-y-95');
+        mobileMenu.style.pointerEvents = 'none';
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
       });
     });
+
+    // Initial state
+    mobileMenu.classList.add('opacity-0', 'scale-y-95');
+    mobileMenu.classList.remove('opacity-100', 'scale-y-100');
+    mobileMenu.style.pointerEvents = 'none';
   }
 
   if (document.getElementById('header-include')) {
