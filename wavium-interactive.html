@@ -39,25 +39,46 @@
 </head>
 <body>
     <div id="header-include"></div>
-        <main class="pt-32 pb-24 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80 flex flex-col items-center justify-center animate-fade-in">
-            <div class="max-w-2xl w-full mx-auto">
-                <div class="bg-white/10 border border-cyan-500/30 rounded-3xl p-10 shadow-2xl backdrop-blur-xl flex flex-col items-center relative overflow-hidden group transition-transform duration-500 ease-out hover:scale-[1.025] hover:shadow-cyan-500/30 animate-slide-up">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl z-0 animate-blob"></div>
-                    <div class="relative z-10 flex flex-col items-center">
-                        <img src="../assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="h-24 w-24 mb-6 drop-shadow-xl animate-fade-in" />
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight text-center animate-slide-up">Wavium Interactive Group</h1>
-                        <p class="text-lg text-slate-300 mb-6 text-center animate-fade-in delay-200">Wavium Interactive Group is an open, creator-funded collective for indie studios and solo devs. We empower creators to build, ship, and grow real games through shared tools, monthly competitions, mentorship, and a vibrant community—all powered by open source WayV technology.</p>
-                        <ul class="text-slate-400 text-base space-y-2 mb-8 text-left w-full max-w-md">
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Monthly game jams & events</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Mentorship & collaboration</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Open source, community-driven tools</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-cyan-300"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Support for indie studios & solo devs</li>
-                        </ul>
-                        <a href="/community.html" class="px-6 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-all duration-300 shadow-lg hover:shadow-cyan-500/40 scale-100 hover:scale-105 animate-fade-in delay-300">Join the Community</a>
-                    </div>
+        <div class="wave-hero-bg"></div>
+        <section class="wave-section text-center pt-32 pb-16 max-w-3xl mx-auto animate-slide-up">
+            <img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive Logo" class="mx-auto mb-8 w-32 h-32 drop-shadow-2xl" />
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">Wavium Interactive Group</h1>
+            <p class="text-xl text-slate-300 mb-8">Wavium Interactive Group is an open, creator-funded collective for indie studios and solo devs. We empower creators to build, ship, and grow real games through shared tools, monthly competitions, mentorship, and a vibrant community—all powered by open source WayV technology.</p>
+            <div class="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
+                <div class="bg-white/10 rounded-2xl p-8 shadow-xl flex-1 min-w-[260px]">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-2">Monthly Game Jams</h2>
+                    <p class="text-slate-300">Participate in monthly game jams and events, collaborate with other creators, and showcase your work to the world.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-8 shadow-xl flex-1 min-w-[260px]">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-2">Mentorship & Tools</h2>
+                    <p class="text-slate-300">Access mentorship, open source tools, and a supportive community to help you grow as a developer and bring your ideas to life.</p>
                 </div>
             </div>
-        </main>
+            <div class="mt-8 mb-12">
+                <h2 class="text-2xl font-bold text-white mb-4">Join the Community</h2>
+                <p class="text-slate-300 max-w-xl mx-auto">Connect with fellow indie studios and solo devs, learn from each other, and help shape the future of games and interactive experiences.</p>
+            </div>
+            <div class="mt-12">
+                <a href="/community.html" class="px-7 py-3 bg-cyan-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:bg-cyan-700 transition-colors">Join Now</a>
+            </div>
+        </section>
+        <section class="wave-section max-w-4xl mx-auto pt-8 pb-24 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Why Wavium Interactive?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-cyan-200 mb-2">Collaboration</h3>
+                    <p class="text-slate-300">Work with a diverse group of creators, share knowledge, and build together.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-cyan-200 mb-2">Open Source</h3>
+                    <p class="text-slate-300">Leverage and contribute to open source tools and technology from WayV.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-cyan-200 mb-2">Support</h3>
+                    <p class="text-slate-300">Get support from mentors and the community to help you succeed as an indie developer.</p>
+                </div>
+            </div>
+        </section>
     <div id="footer-include"></div>
         <script>
             lucide.createIcons();

@@ -40,25 +40,46 @@
 </head>
 <body>
     <div id="header-include"></div>
-        <main class="pt-32 pb-24 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80 flex flex-col items-center justify-center animate-fade-in">
-            <div class="max-w-2xl w-full mx-auto">
-                <div class="bg-wayv-card/80 border border-fuchsia-500/30 rounded-3xl p-10 shadow-2xl backdrop-blur-xl flex flex-col items-center relative overflow-hidden group transition-transform duration-500 ease-out hover:scale-[1.025] hover:shadow-fuchsia-500/30 animate-slide-up">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-fuchsia-500/30 rounded-full blur-2xl z-0 animate-blob"></div>
-                    <div class="relative z-10 flex flex-col items-center">
-                        <img src="../assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="h-24 w-24 mb-6 drop-shadow-xl animate-fade-in" />
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight text-center animate-slide-up">WayV Originals</h1>
-                        <p class="text-lg text-slate-300 mb-6 text-center animate-fade-in delay-200">WayV Originals is our flagship studio, building original games and creative experiments with Wave Engine and open source tech. We inspire and support the developer community through innovation, prototypes, and creative storytelling.</p>
-                        <ul class="text-slate-400 text-base space-y-2 mb-8 text-left w-full max-w-md">
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-fuchsia-300"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Flagship titles & prototypes</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-fuchsia-300"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Creative experiments & innovation</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-fuchsia-300"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Community inspiration & support</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-fuchsia-300"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Powered by Wave Engine</li>
-                        </ul>
-                        <a href="/news.html" class="px-6 py-2 bg-fuchsia-600 text-white rounded-lg font-medium hover:bg-fuchsia-700 transition-all duration-300 shadow-lg hover:shadow-fuchsia-500/40 scale-100 hover:scale-105 animate-fade-in delay-300">See Latest Projects</a>
-                    </div>
+        <div class="wave-hero-bg"></div>
+        <section class="wave-section text-center pt-32 pb-16 max-w-3xl mx-auto animate-slide-up">
+            <img src="/assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="mx-auto mb-8 w-32 h-32 drop-shadow-2xl" />
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">WayV Originals</h1>
+            <p class="text-xl text-slate-300 mb-8">WayV Originals is our signature label for unique games, stories, and creative works made by the WayV team. We focus on innovation, storytelling, and building experiences that inspire and connect our community.</p>
+            <div class="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
+                <div class="bg-white/10 rounded-2xl p-8 shadow-xl flex-1 min-w-[260px]">
+                    <h2 class="text-2xl font-bold text-pink-300 mb-2">Signature Experiences</h2>
+                    <p class="text-slate-300">Original games, stories, and creative projects that define the WayV spirit. Every release is crafted with passion and a drive to push boundaries.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-8 shadow-xl flex-1 min-w-[260px]">
+                    <h2 class="text-2xl font-bold text-pink-300 mb-2">Community-Driven</h2>
+                    <p class="text-slate-300">We collaborate with our fans and creators to shape the future of WayV Originals. Your feedback and ideas help us grow and evolve.</p>
                 </div>
             </div>
-        </main>
+            <div class="mt-8 mb-12">
+                <h2 class="text-2xl font-bold text-white mb-4">Discover Our Originals</h2>
+                <p class="text-slate-300 max-w-xl mx-auto">Explore our growing library of original games, stories, and creative works. Each project is a testament to our commitment to quality and innovation.</p>
+            </div>
+            <div class="mt-12">
+                <a href="#" class="px-7 py-3 bg-pink-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:bg-pink-700 transition-colors">Browse Originals (Coming Soon)</a>
+            </div>
+        </section>
+        <section class="wave-section max-w-4xl mx-auto pt-8 pb-24 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Why WayV Originals?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-pink-200 mb-2">Creativity</h3>
+                    <p class="text-slate-300">We celebrate bold ideas and creative risks, delivering experiences that stand out.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-pink-200 mb-2">Quality</h3>
+                    <p class="text-slate-300">Every project is crafted with care, attention to detail, and a commitment to excellence.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-pink-200 mb-2">Inspiration</h3>
+                    <p class="text-slate-300">Our goal is to inspire players and creators, sparking imagination and connection.</p>
+                </div>
+            </div>
+        </section>
     <div id="footer-include"></div>
         <script>
             lucide.createIcons();
