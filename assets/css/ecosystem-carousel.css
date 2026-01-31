@@ -1,0 +1,156 @@
+/* Ecosystem carousel wheel for desktop */
+.ecosystem-carousel {
+  width: 100vw;
+  max-width: 1000px;
+  margin: 120px auto 0 auto;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(99,102,241,0.10) 0%, rgba(139,92,246,0.10) 100%);
+  border-radius: 2.5rem;
+  box-shadow: 0 16px 64px 0 rgba(99,102,241,0.13), 0 1.5px 0 0 rgba(255,255,255,0.12) inset;
+  overflow: visible;
+  backdrop-filter: blur(32px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(1.08);
+  border: 1.5px solid rgba(255,255,255,0.13);
+}
+.ecosystem-carousel-track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0;
+  position: relative;
+  height: 420px;
+  margin-bottom: 2.5rem;
+  z-index: 2;
+}
+.ecosystem-carousel-card {
+  flex: 0 0 340px;
+  width: 340px;
+  height: 420px;
+  margin: 0 -60px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 48px 0 rgba(99,102,241,0.10), 0 0 0 2px #6366f1 inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.7s cubic-bezier(.4,0,.2,1), box-shadow 0.5s, background 0.5s, filter 0.5s, opacity 0.5s;
+  cursor: pointer;
+  opacity: 0.7;
+  filter: blur(1.5px) grayscale(0.2) brightness(0.95);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1.5px solid rgba(255,255,255,0.10);
+  overflow: visible;
+}
+.ecosystem-carousel-card.active {
+  z-index: 10;
+  transform: scale(1.18) translateY(-18px) rotate(-2deg);
+  box-shadow: 0 24px 96px 0 rgba(99,102,241,0.22), 0 0 0 6px #6366f1 inset, 0 0 48px 0 #8b5cf6 inset;
+  background: linear-gradient(135deg, rgba(99,102,241,0.22) 0%, rgba(139,92,246,0.18) 100%), rgba(255,255,255,0.22);
+  opacity: 1;
+  filter: none;
+  backdrop-filter: blur(32px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(1.08);
+  border: 2.5px solid #6366f1;
+}
+.ecosystem-carousel-card .ecosystem-logo {
+  width: 8.5rem;
+  height: 8.5rem;
+  margin-bottom: 2.2rem;
+  filter: drop-shadow(0 8px 32px rgba(99,102,241,0.13));
+  transition: filter 0.4s, transform 0.5s;
+}
+.ecosystem-carousel-card.active .ecosystem-logo {
+  filter: drop-shadow(0 24px 96px #6366f1) drop-shadow(0 0 48px #8b5cf6);
+  transform: scale(1.13) rotate(-2deg);
+}
+.ecosystem-carousel-card .ecosystem-name {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #222;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  letter-spacing: -1px;
+  transition: color 0.4s, opacity 0.4s, text-shadow 0.4s;
+  text-shadow: 0 2px 18px rgba(99,102,241,0.08);
+}
+.ecosystem-carousel-card.active .ecosystem-name {
+  color: #fff;
+  opacity: 1;
+  text-shadow: 0 2px 32px #6366f1, 0 2px 16px #8b5cf6;
+}
+.ecosystem-carousel-card .ecosystem-desc {
+  font-size: 1.13rem;
+  color: #555;
+  text-align: center;
+  margin-bottom: 2.2rem;
+  opacity: 0.8;
+  transition: color 0.4s, opacity 0.4s;
+}
+.ecosystem-carousel-card.active .ecosystem-desc {
+  color: #e0e7ef;
+  opacity: 1;
+  text-shadow: 0 2px 16px #6366f1;
+}
+.ecosystem-carousel-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  z-index: 3;
+}
+.ecosystem-carousel-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px 0 rgba(99,102,241,0.13);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  outline: none;
+  border: 2px solid transparent;
+}
+.ecosystem-carousel-btn:active, .ecosystem-carousel-btn:focus {
+  background: #6366f1;
+  box-shadow: 0 1px 4px 0 rgba(99,102,241,0.18);
+  border: 2px solid #fff;
+  transform: scale(1.08);
+}
+@media (max-width: 900px) {
+  .ecosystem-carousel { min-height: 0; margin-top: 90px; background: none; box-shadow: none; border: none; }
+  .ecosystem-carousel-track { flex-direction: column; height: auto; }
+  .ecosystem-carousel-card, .ecosystem-carousel-card.active {
+    width: 98vw; min-width: 0; max-width: 98vw;
+    height: 220px; min-height: 120px; max-height: 320px;
+    margin: 0.7rem 0;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 12px 0 rgba(99,102,241,0.06);
+    filter: none;
+    opacity: 1;
+    transform: none;
+    background: #fff;
+    border: none;
+  }
+  .ecosystem-carousel-card .ecosystem-logo { width: 4rem; height: 4rem; }
+  .ecosystem-carousel-card .ecosystem-name { font-size: 1.2rem; }
+  .ecosystem-carousel-controls { gap: 1.2rem; }
+}

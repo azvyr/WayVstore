@@ -54,73 +54,68 @@
 	<div id="header-include"></div>
 
 
-	<div class="pt-24 pb-16 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80">
-	  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="text-center mb-20 animate-slide-up">
-		  <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">The <span class="text-transparent bg-clip-text bg-gradient-to-r from-wayv-primary to-wayv-accent">WayV Ecosystem</span></h1>
-		  <p class="text-xl text-slate-400 max-w-3xl mx-auto">A suite of interconnected tools designed for the next generation of performance-critical applications.</p>
+	<link rel="stylesheet" href="/assets/css/ecosystem-carousel.css">
+	<section class="max-w-3xl mx-auto text-center pt-32 pb-12 animate-slide-up">
+		<h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">The WayV Ecosystem</h1>
+		<p class="text-xl text-slate-300 mb-8">Our mission is to empower creators, developers, and studios with a unified suite of open, high-performance tools and creative platforms. The WayV ecosystem is designed to break down barriers between technology, art, and community—enabling anyone to build, collaborate, and launch world-class interactive experiences.</p>
+		<div class="text-lg text-slate-400 mb-8">
+			<strong>What is the WayV Ecosystem?</strong><br>
+			<span class="block mt-2">It’s a collection of products and communities that work together to make game development, creative coding, and digital art more accessible, powerful, and fun. We believe in open source, transparency, and supporting creators at every level.</span>
 		</div>
-		<div class="flex flex-col md:flex-row gap-10 md:gap-8 justify-center items-stretch">
-		  <!-- Wave Engine Card -->
-		  <div class="flex-1 min-w-[320px] max-w-md bg-white/10 border border-violet-500/30 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-violet-500/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
-			<div class="absolute -top-10 -right-10 w-32 h-32 bg-violet-500/20 rounded-full blur-2xl z-0"></div>
-			<div class="relative z-10 flex flex-col items-center">
-			  <img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="h-20 w-20 mb-6 drop-shadow-xl" />
-			  <h2 class="text-2xl font-bold text-white mb-2">Wave Engine</h2>
-			  <p class="text-slate-300 text-base mb-4 text-center">Built in Rust for safety and speed. Data-oriented ECS architecture for games and simulations.</p>
-			  <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
-				<li class="flex items-center"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>Data-oriented ECS</li>
-				<li class="flex items-center"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>WASM scripting</li>
-				<li class="flex items-center"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>GPU-accelerated</li>
-			  </ul>
-			  <a href="/wave-engine.html" class="px-5 py-2 bg-violet-600 text-white rounded-lg font-medium hover:bg-violet-700 transition-colors">Learn More</a>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+			<div class="bg-white/10 rounded-2xl p-8 shadow-xl flex flex-col items-center">
+				<img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="w-20 h-20 mb-4" />
+				<h2 class="text-2xl font-bold text-white mb-2">Wave Engine</h2>
+				<p class="text-slate-300 text-base">A next-gen, data-oriented game engine built in Rust for safety and speed. Designed for games, simulations, and creative tech.</p>
+				<a href="/wave-engine.html" class="mt-4 px-5 py-2 bg-violet-600 text-white rounded-lg font-medium hover:bg-violet-700 transition-colors">Learn More</a>
 			</div>
-		  </div>
-		  <!-- Wavium Interactive Group Card -->
-		  <div class="flex-1 min-w-[320px] max-w-md bg-white/10 border border-cyan-500/30 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-cyan-500/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
-			<div class="absolute -top-10 -right-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-2xl z-0"></div>
-			<div class="relative z-10 flex flex-col items-center">
-			  <img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="h-20 w-20 mb-6 drop-shadow-xl" />
-			  <h2 class="text-2xl font-bold text-white mb-2">Wavium Interactive Group</h2>
-			  <p class="text-slate-300 text-base mb-4 text-center">Open, creator-funded collective for indie studios and solo devs. Community, mentorship, and shared tools.</p>
-			  <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
-				<li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Monthly competitions & events</li>
-				<li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Mentorship & collaboration</li>
-				<li class="flex items-center"><span class="w-2 h-2 bg-cyan-400 rounded-full mr-2"></span>Open source, community-driven</li>
-			  </ul>
-			  <a href="/wavium-interactive.html" class="px-5 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-colors">Learn More</a>
+			<div class="bg-white/10 rounded-2xl p-8 shadow-xl flex flex-col items-center">
+				<img src="/assets/images/wavium-logo.svg" alt="Wavium Interactive Group Logo" class="w-20 h-20 mb-4" />
+				<h2 class="text-2xl font-bold text-white mb-2">Wavium Interactive Group</h2>
+				<p class="text-slate-300 text-base">A creator-funded collective for indie studios and solo devs. Community, mentorship, and shared open tools for everyone.</p>
+				<a href="/wavium-interactive.html" class="mt-4 px-5 py-2 bg-cyan-600 text-white rounded-lg font-medium hover:bg-cyan-700 transition-colors">Learn More</a>
 			</div>
-		  </div>
-		  <!-- WayV Originals Card -->
-		  <div class="flex-1 min-w-[320px] max-w-md bg-white/10 border border-fuchsia-500/30 rounded-3xl p-8 shadow-2xl backdrop-blur-xl hover:scale-105 hover:shadow-fuchsia-500/30 transition-all duration-300 group relative overflow-hidden flex flex-col items-center">
-			<div class="absolute -top-10 -right-10 w-32 h-32 bg-fuchsia-500/20 rounded-full blur-2xl z-0"></div>
-			<div class="relative z-10 flex flex-col items-center">
-			  <img src="/assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="h-20 w-20 mb-6 drop-shadow-xl" />
-			  <h2 class="text-2xl font-bold text-white mb-2">WayV Originals</h2>
-			  <p class="text-slate-300 text-base mb-4 text-center">WayV's own studio for flagship games, prototypes, and creative experiments. Inspiring the community.</p>
-			  <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
-				<li class="flex items-center"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Flagship titles & prototypes</li>
-				<li class="flex items-center"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Creative experiments</li>
-				<li class="flex items-center"><span class="w-2 h-2 bg-fuchsia-400 rounded-full mr-2"></span>Community inspiration</li>
-			  </ul>
-			  <a href="/wayv-originals.html" class="px-5 py-2 bg-fuchsia-600 text-white rounded-lg font-medium hover:bg-fuchsia-700 transition-colors">See Projects</a>
+			<div class="bg-white/10 rounded-2xl p-8 shadow-xl flex flex-col items-center">
+				<img src="/assets/images/wayv-logo.svg" alt="WayV Originals Logo" class="w-20 h-20 mb-4" />
+				<h2 class="text-2xl font-bold text-white mb-2">WayV Originals</h2>
+				<p class="text-slate-300 text-base">Our own studio for flagship games, prototypes, and creative experiments. Inspiring the community and pushing boundaries.</p>
+				<a href="/wayv-originals.html" class="mt-4 px-5 py-2 bg-fuchsia-600 text-white rounded-lg font-medium hover:bg-fuchsia-700 transition-colors">See Projects</a>
 			</div>
-		  </div>
 		</div>
-	  </div>
-	</div>
+	</section>
 
 	<!-- Footer Include -->
 	<div id="footer-include"></div>
 
 	<script>
 		lucide.createIcons();
-		const navbar = document.getElementById('navbar');
-		window.addEventListener('scroll', () => {
-			if (window.scrollY > 20) { navbar.classList.add('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.remove('bg-transparent', 'border-transparent', 'py-5'); }
-			else { navbar.classList.remove('bg-wayv-dark/80', 'backdrop-blur-md', 'border-white/10', 'py-3'); navbar.classList.add('bg-transparent', 'border-transparent', 'py-5'); }
+		// Ecosystem carousel logic
+		const cards = Array.from(document.querySelectorAll('.ecosystem-carousel-card'));
+		let current = 0;
+		function updateCarousel(idx) {
+			cards.forEach((card, i) => {
+				card.classList.toggle('active', i === idx);
+				card.style.zIndex = i === idx ? 10 : 2;
+				card.style.pointerEvents = i === idx ? 'auto' : 'none';
+			});
+		}
+		function goto(idx) {
+			if (idx < 0) idx = cards.length - 1;
+			if (idx >= cards.length) idx = 0;
+			current = idx;
+			updateCarousel(current);
+		}
+		document.getElementById('carousel-prev').onclick = () => goto(current - 1);
+		document.getElementById('carousel-next').onclick = () => goto(current + 1);
+		cards.forEach((card, i) => {
+			card.onclick = () => { if (i === current) window.location.href = card.getAttribute('data-link'); };
 		});
-		// Hamburger menu logic is handled in /assets/js/include.js
+		document.addEventListener('keydown', e => {
+			if (['ArrowLeft','a'].includes(e.key)) goto(current - 1);
+			if (['ArrowRight','d'].includes(e.key)) goto(current + 1);
+			if (['Enter',' '].includes(e.key)) cards[current].click();
+		});
+		goto(0);
 	</script>
 </body>
 </html>
