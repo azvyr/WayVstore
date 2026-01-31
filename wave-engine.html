@@ -39,25 +39,46 @@
 </head>
 <body>
     <div id="header-include"></div>
-        <main class="pt-32 pb-24 min-h-screen bg-gradient-to-br from-wayv-dark via-wayv-card to-wayv-dark/80 flex flex-col items-center justify-center animate-fade-in">
-            <div class="max-w-2xl w-full mx-auto">
-                <div class="bg-white/10 border border-violet-500/30 rounded-3xl p-10 shadow-2xl backdrop-blur-xl flex flex-col items-center relative overflow-hidden group transition-transform duration-500 ease-out hover:scale-[1.025] hover:shadow-violet-500/30 animate-slide-up">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-violet-500/20 rounded-full blur-2xl z-0 animate-blob"></div>
-                    <div class="relative z-10 flex flex-col items-center">
-                        <img src="../assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="h-24 w-24 mb-6 drop-shadow-xl animate-fade-in" />
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight text-center animate-slide-up">Wave Engine</h1>
-                        <p class="text-lg text-slate-300 mb-6 text-center animate-fade-in delay-200">Wave Engine is a next-generation, high-performance game engine built in Rust for safety and speed. Featuring a data-oriented ECS architecture, blazing-fast GPU rendering, and seamless WASM scripting, it's designed for ambitious games and simulations.</p>
-                        <ul class="text-slate-400 text-base space-y-2 mb-8 text-left w-full max-w-md">
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-violet-300"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>Data-oriented ECS architecture</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-violet-300"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>WASM scripting & extensibility</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-violet-300"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>GPU-accelerated rendering</li>
-                            <li class="flex items-center transition-all duration-300 hover:scale-105 hover:text-violet-300"><span class="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>Open source, built for creators</li>
-                        </ul>
-                        <a href="/ecosystem.html" class="px-6 py-2 bg-violet-600 text-white rounded-lg font-medium hover:bg-violet-700 transition-all duration-300 shadow-lg hover:shadow-violet-500/40 scale-100 hover:scale-105 animate-fade-in delay-300">Explore the Ecosystem</a>
-                    </div>
+        <div class="wave-hero-bg"></div>
+        <section class="wave-section text-center pt-32 pb-16 max-w-3xl mx-auto animate-slide-up">
+            <img src="/assets/images/wave-engine-logo.svg" alt="Wave Engine Logo" class="mx-auto mb-8 w-32 h-32 drop-shadow-2xl" />
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">Wave Engine</h1>
+            <p class="text-xl text-slate-300 mb-8">Wave Engine is a modern, open-source C++ 2D game engine developed and maintained by the Wavium Team at WayV. Designed for performance, portability, and extensibility, Wave Engine empowers developers to build advanced, feature-rich 2D games with ease.</p>
+            <div class="flex flex-col md:flex-row gap-8 justify-center items-center mb-12">
+                <div class="bg-white/10 rounded-2xl p-8 shadow-xl flex-1 min-w-[260px]">
+                    <h2 class="text-2xl font-bold text-violet-300 mb-2">Lightweight & Powerful</h2>
+                    <p class="text-slate-300">Wave Engine provides a robust foundation for both indie and professional game developers. Its architecture is designed for speed and flexibility, letting you build advanced, feature-rich 2D games with ease.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-8 shadow-xl flex-1 min-w-[260px]">
+                    <h2 class="text-2xl font-bold text-violet-300 mb-2">Open Source & Extensible</h2>
+                    <p class="text-slate-300">Wave Engine is fully open-source and maintained by the Wavium Team and the WayV community. Its extension market will allow you to add new features, tools, and even support for 3D games—built by us and the community.</p>
                 </div>
             </div>
-        </main>
+            <div class="mt-8 mb-12">
+                <h2 class="text-2xl font-bold text-white mb-4">Extension Marketplace</h2>
+                <p class="text-slate-300 max-w-xl mx-auto">Wave Engine will feature a marketplace for extensions, enabling developers to add complete support for new features, platforms, and workflows. Whether you need advanced physics, 3D support, or custom tools, the extension market will make Wave Engine endlessly adaptable.</p>
+            </div>
+            <div class="mt-12">
+                <a href="#" class="px-7 py-3 bg-violet-600 text-white rounded-xl font-semibold text-lg shadow-lg hover:bg-violet-700 transition-colors">Get Started (Coming Soon)</a>
+            </div>
+        </section>
+        <section class="wave-section max-w-4xl mx-auto pt-8 pb-24 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Why Choose Wave Engine?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-violet-200 mb-2">Performance</h3>
+                    <p class="text-slate-300">Built in C++ for blazing speed and efficiency, optimized for modern hardware.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-violet-200 mb-2">Portability</h3>
+                    <p class="text-slate-300">Runs on Windows, macOS, Linux, and more. Designed for easy cross-platform deployment.</p>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold text-violet-200 mb-2">Extensibility</h3>
+                    <p class="text-slate-300">Add new features and tools via the extension marketplace. Community-driven innovation.</p>
+                </div>
+            </div>
+        </section>
     <div id="footer-include"></div>
         <script>
             lucide.createIcons();
@@ -76,14 +97,14 @@
             document.addEventListener('DOMContentLoaded', animateOnScroll);
         </script>
         <style>
+            .wave-hero-bg { background: linear-gradient(120deg, #6366f1 0%, #8b5cf6 100%); filter: blur(32px) saturate(180%); opacity: 0.18; position: absolute; top: -80px; left: 0; right: 0; height: 340px; z-index: 0; }
+            .wave-section { position: relative; z-index: 1; }
             @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
             @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-            @keyframes blob { 0% { transform: scale(1) translate(0,0); } 33% { transform: scale(1.1) translate(20px,-20px); } 66% { transform: scale(0.95) translate(-10px,10px); } 100% { transform: scale(1) translate(0,0); } }
             .animate-fade-in { opacity: 0; transition: opacity 0.7s; }
             .animate-fade-in.in-view { opacity: 1; animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) both; }
             .animate-slide-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s, transform 0.7s; }
             .animate-slide-up.in-view { opacity: 1; transform: translateY(0); animation: slideUp 1.1s cubic-bezier(.4,0,.2,1) both; }
-            .animate-blob { animation: blob 7s infinite ease-in-out; }
         </style>
 </body>
 </html>
